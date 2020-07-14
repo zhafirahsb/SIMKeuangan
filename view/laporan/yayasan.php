@@ -21,50 +21,46 @@
             <ol class="breadcrumb">
               <li class="breadcrumb-item"><a href="<?= $url; ?>">Dashboard</a></li>
               <li class="breadcrumb-item">Yayasan</li>
-              <li class="breadcrumb-item active">Perencanaan Dana</li>
+              <li class="breadcrumb-item active">Dana Yayasan</li>
             </ol>
           </div>
         </div>
         <div class="card">
           <div class="card-block">
-            <h4><u>Perencanaan Dana Yayasan (SPP)</u></h4>
-            <div class="row mt-3">
+            <div class="row">
+              <div class="col-2 align-self-center">
+                <h5>Pilih Tahun</h5>
+              </div>
               <div class="col-2">
-                <div class="form-group">
-                  <label for="">Tanggal</label>
-                  <input type="date" class="form-control" name="tanggal">
-                </div>
+                <select name="tahun" class="form-control" id="">
+                  <option value="2017">2017</option>
+                  <option value="2018">2018</option>
+                </select>
               </div>
-              <div class="col-5">
-                <div class="form-group">
-                  <label for="">Uraian</label>
-                  <input type="text" class="form-control" name="uraian">
-                </div>
+              <div class="col-1">
+                <a href="" class="btn btn-primary">Lihat</a>
               </div>
-              <div class="col-3">
-                <div class="form-group">
-                  <label for="">Total (Rp)</label>
-                  <input type="text" class="form-control" name="total">
-                </div>
-              </div>
-              <div class="col-1 align-self-center">
-                <div class="form-group">
-                  <input type="submit" value="Tambah" class="mt-4 mr-5 btn btn-default">
-                </div>
+              <div class="col-1">
+                <a href="" class="btn btn-primary">Cetak Ke PDF</a>
               </div>
             </div>
-            <table class="table table-bordered mt-3" id="example">
-              <thead>
-                <th>No</th>
-                <th>Tanggal</th>
-                <th>Uraian</th>
-                <th>Jumlah</th>
-                <th>Volume</th>
-                <th>Aksi</th>
-              </thead>
-              <tbody>
-              </tbody>
-            </table>
+            <hr>
+            <h3 class="text-center">Realisasi Rekapitulasi Penggunaan Dana Yayasan<br>SMP Muhammadiyah 19<br>Tahun : 2018</h3>
+            <hr>
+            <div class="row">
+              <div class="offset-3 col-7 text-center">
+                <table class="table">
+                  <thead class="">
+                    <tr>
+                      <th>Dana DIterima</th>
+                      <th>Saldo Priode Sebelumnya</th>
+                      <th>Total Dana BOS Periode Ini</th>
+                      <th>Saldo BOS Periode Ini</th>
+                    </tr>
+                  </thead>
+                </table>
+              </div>
+            </div>
           </div>
         </div>
       </div>

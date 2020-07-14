@@ -54,7 +54,7 @@
           <div class="col-12">
             <div class="card">
               <div class="card-block">
-                <table class="table table-bordered mt-3" id="example">
+                <table class="table table-bordered mt-3">
                   <thead>
                     <th>No</th>
                     <th>Nama Program</th>

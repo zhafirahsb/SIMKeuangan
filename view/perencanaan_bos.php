@@ -119,15 +119,32 @@
               <div class="card-block">
                 <!-- <a class="btn btn-default mb-5"></a> -->
                 <p>Rencana Pengeluaran / Belanja</p>
-                <table class="table table-bordered mt-3 example" id="">
+                <table class="table table-bordered mt-3" id="">
                   <thead>
-                    <th>No</th>
+                    <th>Kode</th>
                     <th>Nama Program</th>
-                    <th>Tahun Ajaran</th>
-                    <th>Jumlah</th>
+                    <th>Persentase</th>
+                    <th>Jumlah Dana</th>
                     <th>Aksi</th>
                   </thead>
                   <tbody>
+                    <?php
+                    $no = 1;
+                    foreach ($standar as $st) {
+                    ?>
+                      <tr>
+                        <td>1.<?= $no; ?></td>
+                        <td><?= $st['nama_program']; ?></td>
+                        <td></td>
+                        <td></td>
+                        <td>
+                          <a href="" class="btn btn-default">Ubah</a>
+                        </td>
+                      </tr>
+                    <?php
+                      $no++;
+                    }
+                    ?>
                   </tbody>
                 </table>
               </div>

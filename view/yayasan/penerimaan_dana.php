@@ -53,13 +53,12 @@
                 </div>
               </div>
             </div>
-            <table class="table table-bordered mt-3" id="example">
+            <table class="table table-bordered mt-3" id="">
               <thead>
                 <th>No</th>
                 <th>Tanggal</th>
                 <th>Uraian</th>
                 <th>Jumlah</th>
-                <th>Volume</th>
                 <th>Aksi</th>
               </thead>
               <tbody>

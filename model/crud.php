@@ -99,48 +99,9 @@ class Crud extends Koneksi
       return false;
   }
 
-  public function transaksi()
+  public function reliasasi_bos()
   {
-    $query = "SELECT transaksi.id_transaksi,kode_pesanan,status_transaksi,tanggal_transaksi,nama_plgn,nama_produk,quantity_dk,harga_pdk,total FROM transaksi JOIN detail_transaksi ON detail_transaksi.id_transaksi = transaksi.id_transaksi JOIN pelanggan on pelanggan.id_plgn = transaksi.id_pelanggan JOIN produk ON produk.id_produk = detail_transaksi.id_produk";
-    $hasil = $this->conn->query($query);
-    if (!$hasil)
-      return false;
-    $rows = array();
-    while ($row = $hasil->fetch_assoc()) {
-      $rows[] = $row;
-    }
-    return $rows;
-  }
-
-  public function transaksi_penjualan()
-  {
-    $query = "SELECT transaksi.id_transaksi,kode_pesanan,status_transaksi,tanggal_transaksi,nama_plgn,bukti_transfer,GROUP_CONCAT(nama_produk) as nama_produk,GROUP_CONCAT(quantity_dk) as quantity_dk,GROUP_CONCAT(harga_pdk) as harga_pdk,GROUP_CONCAT(total) as total,total_bayar FROM transaksi JOIN detail_transaksi ON detail_transaksi.id_transaksi = transaksi.id_transaksi JOIN pelanggan on pelanggan.id_plgn = transaksi.id_pelanggan JOIN produk ON produk.id_produk = detail_transaksi.id_produk GROUP BY (detail_transaksi.id_transaksi)";
-    $hasil = $this->conn->query($query);
-    if (!$hasil)
-      return false;
-    $rows = array();
-    while ($row = $hasil->fetch_assoc()) {
-      $rows[] = $row;
-    }
-    return $rows;
-  }
-
-  public function laporan_transaksi($data)
-  {
-    $query = "SELECT kode_pesanan,tanggal_transaksi,nama_plgn,nama_produk,status_transaksi,quantity_dk,harga_pdk,total FROM transaksi JOIN detail_transaksi ON detail_transaksi.id_transaksi = transaksi.id_transaksi JOIN pelanggan on pelanggan.id_plgn = transaksi.id_pelanggan JOIN produk ON produk.id_produk = detail_transaksi.id_produk WHERE DATE(transaksi.tanggal_transaksi) >= '" . $data['tgl_awal'] . "' AND DATE(transaksi.tanggal_transaksi) <= '" . $data['tgl_akhir'] . "'";
-    $hasil = $this->conn->query($query);
-    if (!$hasil)
-      return false;
-    $rows = array();
-    while ($row = $hasil->fetch_assoc()) {
-      $rows[] = $row;
-    }
-    return $rows;
-  }
-
-  public function jumlah_transaksi($tanggal_transaksi)
-  {
-    $query = "SELECT SUM(quantity_dk) as jumlah FROM transaksi JOIN detail_transaksi ON detail_transaksi.id_transaksi = transaksi.id_transaksi WHERE MONTH(tanggal_transaksi) = MONTH('" . $tanggal_transaksi . "') AND YEAR(tanggal_transaksi) = YEAR('" . $tanggal_transaksi . "')";
+    $query = "SELECT tbl_realisasi.id id_relasi,tbl_detail_relasi.* FROM tbl_realisasi JOIN tbl_detail_relasi ON tbl_realisasi.id = tbl_detail_relasi.relasi_id";
     $hasil = $this->conn->query($query);
     if (!$hasil)
       return false;

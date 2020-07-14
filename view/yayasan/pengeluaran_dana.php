@@ -59,7 +59,6 @@
                 <th>Tanggal</th>
                 <th>Uraian</th>
                 <th>Jumlah</th>
-                <th>Volume</th>
                 <th>Aksi</th>
               </thead>
               <tbody>
