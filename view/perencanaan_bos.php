@@ -122,6 +122,7 @@
                 <table class="table table-bordered mt-3" id="">
                   <thead>
                     <th>Kode</th>
+                    <th>Tahun</th>
                     <th>Nama Program</th>
                     <th>Persentase</th>
                     <th>Jumlah Dana</th>
