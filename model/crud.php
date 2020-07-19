@@ -101,7 +101,20 @@ class Crud extends Koneksi
 
   public function reliasasi_bos()
   {
-    $query = "SELECT tbl_realisasi.id id_relasi,tbl_detail_relasi.* FROM tbl_realisasi JOIN tbl_detail_relasi ON tbl_realisasi.id = tbl_detail_relasi.relasi_id";
+    $query = "SELECT bos_realisasi_rekapitulasi.id id_relasi,bos_realisasi_detail_komponen.* FROM bos_realisasi_rekapitulasi JOIN bos_realisasi_detail_komponen ON bos_realisasi_rekapitulasi.id = bos_realisasi_detail_komponen.relasi_id";
+    $hasil = $this->conn->query($query);
+    if (!$hasil)
+      return false;
+    $rows = array();
+    while ($row = $hasil->fetch_assoc()) {
+      $rows[] = $row;
+    }
+    return $rows;
+  }
+
+  public function pendapatan_belanja()
+  {
+    $query = "SELECT * FROM bos_rkas JOIN bos_rkas_detail ON bos_rkas.id = bos_rkas_detail.bos_rkas LEFT JOIN tbl_standar_nasional ON bos_rkas.npsn = tbl_standar_nasional.idsnp";
     $hasil = $this->conn->query($query);
     if (!$hasil)
       return false;

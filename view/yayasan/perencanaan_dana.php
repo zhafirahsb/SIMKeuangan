@@ -27,54 +27,78 @@
         </div>
         <div class="card">
           <div class="card-block">
-            <h4><u>Perencanaan Dana Yayasan</u></h4>
-            <div class="row">
-              <div class="col-3">
-                <div class="form-group">
-                  <label for="">Keterangan</label>
-                  <input type="text" class="form-control" name="keterangan" id="">
+            <h4><u>Perencanaan Dana Yayasan (Pendapatan)</u></h4>
+            <form action="" method="POST">
+              <div class="row">
+                <div class="col-2">
+                  <div class="form-group">
+                    <label for="">Tahun</label>
+                    <input type="text" class="form-control" name="tahun" id="">
+                  </div>
+                </div>
+                <div class="col-3">
+                  <div class="form-group">
+                    <label for="">Keterangan</label>
+                    <input type="text" class="form-control" name="keterangan" id="">
+                  </div>
+                </div>
+                <div class="col-2">
+                  <div class="form-group">
+                    <label for="">Jumlah Siswa</label>
+                    <input type="number" class="form-control" name="jml_siswa" id="">
+                  </div>
+                </div>
+                <div class="col-2">
+                  <div class="form-group">
+                    <label for="">Jumlah Dana (Rp)</label>
+                    <input type="number" class="form-control" name="jml_dana" id="">
+                  </div>
+                </div>
+                <div class="col-1 align-self-center">
+                  <div class="form-group">
+                    <input type="submit" name="submit" value="Tambah" class="mt-4 mr-5 btn btn-default">
+                  </div>
                 </div>
               </div>
-              <div class="col-2">
-                <div class="form-group">
-                  <label for="">Jumlah Siswa</label>
-                  <input type="number" class="form-control" name="jml_siswa" id="">
-                </div>
-              </div>
-              <div class="col-2">
-                <div class="form-group">
-                  <label for="">Jumlah Bulan</label>
-                  <input type="number" class="form-control" name="jml_bulan" id="">
-                </div>
-              </div>
-              <div class="col-2">
-                <div class="form-group">
-                  <label for="">Jumlah Dana (Rp)</label>
-                  <input type="number" class="form-control" name="jml_dana" id="">
-                </div>
-              </div>
-              <div class="col-2">
-                <div class="form-group">
-                  <label for="">Total (Rp)</label>
-                  <input type="number" class="form-control" name="total" id="">
-                </div>
-              </div>
-              <div class="col-1 align-self-center">
-                <div class="form-group">
-                  <input type="submit" value="Tambah" class="mt-4 mr-5 btn btn-default">
-                </div>
-              </div>
-            </div>
+            </form>
             <table class="table table-bordered">
               <thead>
-                <tr>
+                <tr class="text-center">
                   <th>No</th>
+                  <th>Tahun</th>
                   <th>Keterangan</th>
-                  <th>Uraian</th>
+                  <th colspan="7">Uraian</th>
                   <th>Jumlah</th>
                   <th>ِAksi</th>
                 </tr>
               </thead>
+              <tbody>
+                <?php
+                $no = 0;
+                $jumlah = 0;
+                foreach ($pendapatan as $p) {
+
+                ?>
+                  <tr>
+                    <td><?= $no + 1; ?></td>
+                    <td><?= $p['tahun']; ?></td>
+                    <td><?= $p['keterangan']; ?></td>
+                    <td><?= $p['jumlah_siswa'] > 0 ? $p['jumlah_siswa'] : ''; ?></td>
+                    <td><?= $p['jumlah_siswa'] > 0 ? 'sis' : ''; ?></td>
+                    <td><?= $p['jumlah_siswa'] > 0 ? 'x' : ''; ?></td>
+                    <td><?= $p['jumlah_siswa'] > 0 ? '12' : ''; ?></td>
+                    <td><?= $p['jumlah_siswa'] > 0 ? 'x' : ''; ?></td>
+                    <td><?= $p['jumlah_siswa'] > 0 ? 'bln' : ''; ?></td>
+                    <td>Rp. <?= number_format($p['jumlah_iuran'], 0, ',', '.'); ?></td>
+                    <td>Rp. <?= number_format($p['jumlah_siswa'] > 0 ? $p['jumlah_siswa'] * $p['jumlah_iuran'] * 12 : $p['jumlah_iuran'], 0, ',', '.'); ?></td>
+                    <!-- <td>Rp. <?= number_format($p['jumlah_iuran'], 0, ',', '.'); ?></td> -->
+                    <td></td>
+                  </tr>
+                <?php
+                  $no++;
+                }
+                ?>
+              </tbody>
             </table>
           </div>
         </div>
@@ -82,7 +106,7 @@
           <div class="col-12">
             <div class="card">
               <div class="card-block">
-                <button class="btn btn-default mb-5">Tambah Data</button>
+                <a href="tambah.php" class="btn btn-primary mb-5">Tambah Data</a>
                 <table class="table table-bordered mt-3" id="example">
                   <thead>
                     <th>No</th>

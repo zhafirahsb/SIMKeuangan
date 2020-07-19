@@ -7,7 +7,7 @@
 <!--Wave Effects -->
 <script src="<?= $url; ?>assets/js/waves.js"></script>
 <!--Menu sidebar -->
-<script src="<?= $url; ?>assetsjs/sidebarmenu.js"></script>
+<script src="<?= $url; ?>assets/js/sidebarmenu.js"></script>
 <!--stickey kit -->
 <script src="<?= $url; ?>assets/plugins/sticky-kit-master/dist/sticky-kit.min.js"></script>
 <!--Custom JavaScript -->

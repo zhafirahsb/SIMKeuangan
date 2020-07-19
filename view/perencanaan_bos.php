@@ -50,23 +50,17 @@
             </ol>
           </div>
         </div>
-        <!-- ============================================================== -->
-        <!-- End Bread crumb and right sidebar toggle -->
-        <!-- ============================================================== -->
-        <!-- ============================================================== -->
-        <!-- Start Page Content -->
-        <!-- ============================================================== -->
         <div class="row">
           <div class="col-12">
             <div class="card">
               <div class="card-block">
                 <p>Rencana Pemasukan</p>
-                <form action="" method="post">
+                <form action="<?= $url; ?>perencanaan_bos/rencana.php" method="post">
                   <div class="row">
                     <div class="col-2">
                       <div class="form-group">
                         <label for="">Tahun</label>
-                        <select name="tahun" class="form-control" id="">
+                        <select name="tahun" class="form-control" id="" required>
                           <option value="2017">2017</option>
                           <option value="2018">2018</option>
                         </select>
@@ -75,24 +69,18 @@
                     <div class="col-2">
                       <div class="form-group">
                         <label for="">Jumlah Siswa</label>
-                        <input type="text" name="jumlah" class="form-control">
+                        <input type="number" name="jumlah" class="form-control" required>
                       </div>
                     </div>
                     <div class="col-3">
                       <div class="form-group">
                         <label for="">Dana Per Siswa</label>
-                        <input type="text" name="dana" class="form-control">
-                      </div>
-                    </div>
-                    <div class="col-3">
-                      <div class="form-group">
-                        <label for="">Jumlah Dana</label>
-                        <input type="text" name="jumlah_dana" class="form-control">
+                        <input type="number" name="dana" class="form-control">
                       </div>
                     </div>
                     <div class="col-2 align-self-center">
                       <div class="form-group">
-                        <input type="submit" class="btn btn-primary" value="Simpan">
+                        <input type="submit" name="submit" class="btn btn-primary" value="Simpan">
                       </div>
                     </div>
                   </div>
@@ -118,11 +106,11 @@
             <div class="card">
               <div class="card-block">
                 <!-- <a class="btn btn-default mb-5"></a> -->
+                <a href="tambah.php" class="btn btn-primary mb-4">Tambah Data</a>
                 <p>Rencana Pengeluaran / Belanja</p>
                 <table class="table table-bordered mt-3" id="">
                   <thead>
                     <th>Kode</th>
-                    <th>Tahun</th>
                     <th>Nama Program</th>
                     <th>Persentase</th>
                     <th>Jumlah Dana</th>
@@ -132,12 +120,18 @@
                     <?php
                     $no = 1;
                     foreach ($standar as $st) {
+                      $jumlah = 0;
+                      foreach ($pendapatan_belanja as $pb) {
+                        if ($pb['nama_program'] === $st['nama_program']) {
+                          $jumlah += $pb['jumlah'];
+                        }
+                      }
                     ?>
                       <tr>
                         <td>1.<?= $no; ?></td>
                         <td><?= $st['nama_program']; ?></td>
                         <td></td>
-                        <td></td>
+                        <td>Rp.<?= number_format($jumlah, 0, '.', '.'); ?></td>
                         <td>
                           <a href="" class="btn btn-default">Ubah</a>
                         </td>
@@ -152,21 +146,8 @@
             </div>
           </div>
         </div>
-        <!-- ============================================================== -->
-        <!-- End PAge Content -->
-        <!-- ============================================================== -->
       </div>
-      <!-- ============================================================== -->
-      <!-- End Container fluid  -->
-      <!-- ============================================================== -->
-      <!-- ============================================================== -->
-      <!-- footer -->
-      <!-- ============================================================== -->
       <?php require('template/footer.php') ?>
-
-      <!-- ============================================================== -->
-      <!-- End footer -->
-      <!-- ============================================================== -->
     </div>
     <!-- ============================================================== -->
     <!-- End Page wrapper  -->

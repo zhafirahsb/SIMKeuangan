@@ -9,7 +9,7 @@ if (isset($_POST['submit'])) {
     // 'tahun_ajaran' => $_POST['tanggal'],
   );
 
-  $realisasi_id = $crud->simpan('tbl_realisasi', $realisasi, true);
+  $realisasi_id = $crud->simpan('bos_realisasi_rekapitulasi', $realisasi, true);
 
   $detail_realisasi = array(
     'relasi_id' => $realisasi_id,
@@ -20,9 +20,9 @@ if (isset($_POST['submit'])) {
     'tanggal' => $_POST['tanggal'],
   );
 
-  $crud->simpan('tbl_detail_relasi', $detail_realisasi);
+  $crud->simpan('bos_realisasi_detail_komponen', $detail_realisasi);
   header('Location:' . $url . 'realisasi');
 }
 $standar = $crud->read_data('tbl_standar_nasional');
-$sub_program = $crud->read_data('tbl_sub_progran');
+$sub_program = $crud->read_data('bos_realisasi_komponen');
 require('../view/realisasi_form.php');

@@ -14,5 +14,5 @@ if (isset($_POST['submit'])) {
   $crud->simpan('yayasan_rencana_pendapatan', $data);
   header('Location:' . $url . 'yayasan/perencanaan/');
 }
-$pendapatan = $crud->read_data('yayasan_rencana_pendapatan');
-require('../../view/yayasan/perencanaan_dana.php');
+// $pendapatan = $crud->read_data('yayasan_rencana_pendapatan');
+require('../../view/yayasan/perencanaan_dana_form.php');
