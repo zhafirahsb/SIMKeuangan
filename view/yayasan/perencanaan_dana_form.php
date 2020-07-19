@@ -53,28 +53,26 @@
                       </select>
                     </div>
                   </div>
-                  <div class="form-group row">
-                    <label for="" class="col-sm-2 col-form-label">Uraian</label>
-                    <div class="col-sm-10">
-                      <input type="text" name="uraian" class="form-control" required>
-                    </div>
-                  </div>
-                  <div class="form-group row">
-                    <label for="" class="col-sm-2 col-form-label">Detail Uraian</label>
-                    <div class="col-sm-1">
-                      <input type="checkbox" name="detail" id="detail" class="form-control" required>
-                    </div>
-                  </div>
-                  <div class="form-group row">
-                    <label class="col-sm-2 col-form-label">Total</label>
-                    <div class="col-sm-10">
-                      <input type="number" name="total" class="form-control" required>
-                    </div>
-                  </div>
-                  <hr>
-                  <button type="button" class="btn btn-primary" id="tambah">Tambah Uraian</button>
+                  <table class="table table-bordered">
+                    <tr class="text-center">
+                      <td>Uraian</td>
+                      <td colspan="2" width="20%">Satuan</td>
+                      <td colspan="2" width="20%">Volume</td>
+                      <td>Jumlah</td>
+                      <td>Total</td>
+                    </tr>
+                    <tr>
+                      <td><input type="text" name="uraian" class="form-control" id=""></td>
+                      <td><input type="number" name="jumlah_satuan" class="form-control" id=""></td>
+                      <td><input type="text" name="satuan" class="form-control" id=""></td>
+                      <td><input type="number" name="jumlah_volume" class="form-control" id=""></td>
+                      <td><input type="text" name="volume" class="form-control" id=""></td>
+                      <td><input type="number" name="jumlah" class="form-control" id=""></td>
+                      <td><input type="number" name="total" class="form-control" id=""></td>
+                    </tr>
+                  </table>
                   <input type="submit" name="submit" value="Submit" class="btn btn-success">
-                  <a href="<?= $url; ?>perencanaan_bos" class="btn btn-default">Batal</a>
+                  <a href="<?= $url; ?>yayasan/perencanaan" class="btn btn-secondary">Batal</a>
                 </form>
               </div>
             </div>

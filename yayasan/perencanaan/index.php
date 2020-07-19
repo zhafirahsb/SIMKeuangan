@@ -15,4 +15,5 @@ if (isset($_POST['submit'])) {
   header('Location:' . $url . 'yayasan/perencanaan/');
 }
 $pendapatan = $crud->read_data('yayasan_rencana_pendapatan');
+$pengeluaran = $crud->read_data('yayasan_rencana_pengeluaran');
 require('../../view/yayasan/perencanaan_dana.php');

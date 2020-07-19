@@ -75,9 +75,7 @@
               <tbody>
                 <?php
                 $no = 0;
-                $jumlah = 0;
                 foreach ($pendapatan as $p) {
-
                 ?>
                   <tr>
                     <td><?= $no + 1; ?></td>
@@ -109,16 +107,31 @@
                 <a href="tambah.php" class="btn btn-primary mb-5">Tambah Data</a>
                 <table class="table table-bordered mt-3" id="example">
                   <thead>
-                    <th>No</th>
-                    <th>Keterangan</th>
-                    <th>Satuan</th>
-                    <th></th>
-                    <th>Volume</th>
-                    <th></th>
-                    <th>Jumlah</th>
-                    <th>Total</th>
-                    <th>Aksi</th>
+                    <tr class="text-center">
+                      <th>Tahun</th>
+                      <th>Uraian</th>
+                      <th colspan="2" width="20%">Satuan</th>
+                      <th colspan="2" width="20%">Volume</th>
+                      <th>Jumlah</th>
+                      <th>Total</th>
+                    </tr>
                   </thead>
+                  <?php
+                  foreach ($pengeluaran as $pe) {
+                  ?>
+                    <tr>
+                      <td><?= $pe['tahun']; ?></td>
+                      <td><?= $pe['uraian']; ?></td>
+                      <td><?= $pe['nilai_satuan'] > 0 ? $pe['nilai_satuan'] : '-'; ?></td>
+                      <td><?= $pe['satuan']; ?></td>
+                      <td><?= $pe['nilai_volume'] > 0 ? $pe['nilai_volume'] : '-'; ?></td>
+                      <td><?= $pe['volume']; ?></td>
+                      <td><?= $pe['jumlah'] > 0 ? 'Rp .' . number_format($pe['jumlah'], 0, ',', '.') : '-'; ?></td>
+                      <td>Rp. <?= number_format($pe['total'], 0, '.', '.'); ?></td>
+                    </tr>
+                  <?php
+                  }
+                  ?>
                   <tbody>
                   </tbody>
                 </table>
