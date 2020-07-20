@@ -17,42 +17,44 @@
       <div class="container-fluid">
         <div class="row page-titles">
           <div class="col-md-6 col-8 align-self-center">
-            <h3 class="text-themecolor m-b-0 m-t-0">Perencanaan Dana Yayasan</h3>
+            <h3 class="text-themecolor m-b-0 m-t-0">Pengeluaran Dana Yayasan</h3>
             <ol class="breadcrumb">
               <li class="breadcrumb-item"><a href="<?= $url; ?>">Dashboard</a></li>
               <li class="breadcrumb-item">Yayasan</li>
-              <li class="breadcrumb-item active">Perencanaan Dana</li>
+              <li class="breadcrumb-item active">Pengeluaran Dana</li>
             </ol>
           </div>
         </div>
         <div class="card">
           <div class="card-block">
-            <h4><u>Perencanaan Dana Yayasan (SPP)</u></h4>
-            <div class="row mt-3">
-              <div class="col-2">
-                <div class="form-group">
-                  <label for="">Tanggal</label>
-                  <input type="date" class="form-control" name="tanggal">
+            <h4><u>Pengeluaran Dana Yayasan</u></h4>
+            <form action="" method="post">
+              <div class="row mt-3">
+                <div class="col-2">
+                  <div class="form-group">
+                    <label for="">Tanggal</label>
+                    <input type="date" class="form-control" name="tanggal">
+                  </div>
+                </div>
+                <div class="col-5">
+                  <div class="form-group">
+                    <label for="">Uraian</label>
+                    <input type="text" class="form-control" name="uraian">
+                  </div>
+                </div>
+                <div class="col-3">
+                  <div class="form-group">
+                    <label for="">Total (Rp)</label>
+                    <input type="text" class="form-control" name="total">
+                  </div>
+                </div>
+                <div class="col-1 align-self-center">
+                  <div class="form-group">
+                    <input type="submit" name="submit" value="Tambah" class="mt-4 mr-5 btn btn-default">
+                  </div>
                 </div>
               </div>
-              <div class="col-5">
-                <div class="form-group">
-                  <label for="">Uraian</label>
-                  <input type="text" class="form-control" name="uraian">
-                </div>
-              </div>
-              <div class="col-3">
-                <div class="form-group">
-                  <label for="">Total (Rp)</label>
-                  <input type="text" class="form-control" name="total">
-                </div>
-              </div>
-              <div class="col-1 align-self-center">
-                <div class="form-group">
-                  <input type="submit" value="Tambah" class="mt-4 mr-5 btn btn-default">
-                </div>
-              </div>
-            </div>
+            </form>
             <table class="table table-bordered mt-3" id="example">
               <thead>
                 <th>No</th>
@@ -61,6 +63,24 @@
                 <th>Jumlah</th>
                 <th>Aksi</th>
               </thead>
+              <?php
+              $no = 1;
+              foreach ($pengeluaran as $sp) {
+              ?>
+                <tr>
+                  <td><?= $no; ?></td>
+                  <td><?= date('d-m-Y', strtotime($sp['tanggal'])); ?></td>
+                  <td><?= $sp['uraian']; ?></td>
+                  <td>Rp. <?= number_format($sp['jumlah'], 0, ',', '.'); ?></td>
+                  <td>
+                    <a href="#" class="btn btn-default">Ubah</a>|
+                    <a href="hapus.php?pengeluaran=<?= $sp['id']; ?>" onclick="return confirm('Akan Menghapus Data Ini ?')" class="btn btn-default">Hapus</a>
+                  </td>
+                </tr>
+              <?php
+                $no++;
+              }
+              ?>
               <tbody>
               </tbody>
             </table>
