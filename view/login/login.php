@@ -24,10 +24,10 @@
       </div>
 
       <!-- Login Form -->
-      <form method="POST">
-        <input type="text" id="login" class="fadeIn second" name="login" placeholder="login">
-        <input type="text" id="password" class="fadeIn third" name="login" placeholder="password">
-        <input type="submit" class="fadeIn fourth" value="Log In">
+      <form action="" method="POST">
+        <input type="text" id="login" class="fadeIn second" name="username" placeholder="Username">
+        <input type="text" id="password" class="fadeIn third" name="password" placeholder="Password">
+        <input type="submit" name="submit" class="fadeIn fourth" value="Log In">
       </form>
 
       <!-- Remind Passowrd -->
