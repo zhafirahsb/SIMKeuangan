@@ -10,11 +10,27 @@ if (isset($_POST['submit'])) {
   $login = $crud->read_data('tbl_user', $data);
   if (!$login) {
     $_SESSION['notice'] = 'Username atau Password yang anda masukan salah !';
-    header('Location:../login');
+    header('Location:' . $url . '');
     exit;
   } else {
-    $_SESSION['login'] = [true, $pelanggan[0]['id_plgn']];
-    header('Location:../pelanggan');
+    $_SESSION['login'] = [true, $login[0]['id']];
+    switch ($hasil[0]['role']) {
+      case 'Admin':
+        header('Location:' . $url . 'admin');
+        break;
+      case 'Bendahara Yayasan':
+        header('Location:' . $url . 'bendahara');
+        break;
+      case 'Tata Usaha':
+        header('Location:' . $url . 'tata_usaha');
+        break;
+      case 'Yayasan':
+        header('Location:' . $url . 'yayasan');
+        break;
+      case 'Kepala Sekolah':
+        header('Location:' . $url . 'kepala_sekolah');
+        break;
+    }
     exit;
   }
 } else {

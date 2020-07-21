@@ -19,14 +19,14 @@
       <!-- Tabs Titles -->
 
       <!-- Icon -->
-      <div class="fadeIn first">
-        <img src="<?= $url; ?>assets/logo.jpg" id="icon" alt="User Icon" />
-      </div>
+      <!-- <div class="fadeIn first"> -->
+      <img src="<?= $url; ?>assets/logo.jpg" class="mt-5" width="100px" alt="User Icon" />
+      <!-- </div> -->
 
       <!-- Login Form -->
       <form action="" method="POST">
-        <input type="text" id="login" class="fadeIn second" name="username" placeholder="Username">
-        <input type="text" id="password" class="fadeIn third" name="password" placeholder="Password">
+        <input type="text" id="login" class="fadeIn" name="username" placeholder="Username">
+        <input type="text" id="password" class="fadeIn" name="password" placeholder="Password">
         <input type="submit" name="submit" class="fadeIn fourth" value="Log In">
       </form>
 
@@ -34,7 +34,6 @@
       <div id="formFooter">
         <a class="underlineHover" href="#">Forgot Password?</a>
       </div>
-
     </div>
   </div>
 </body>
