@@ -14,7 +14,7 @@ if (isset($_POST['submit'])) {
     exit;
   } else {
     $_SESSION['login'] = [true, $login[0]['id']];
-    switch ($hasil[0]['role']) {
+    switch ($login[0]['role']) {
       case 'Admin':
         header('Location:' . $url . 'admin');
         break;
@@ -28,7 +28,7 @@ if (isset($_POST['submit'])) {
         header('Location:' . $url . 'yayasan');
         break;
       case 'Kepala Sekolah':
-        header('Location:' . $url . 'kepala_sekolah');
+        header('Location:' . $url . 'kepala');
         break;
     }
     exit;
@@ -36,5 +36,3 @@ if (isset($_POST['submit'])) {
 } else {
   require('view/login/login.php');
 }
-// require('view/dashboard.php');
-// require('view/login/login.php');
