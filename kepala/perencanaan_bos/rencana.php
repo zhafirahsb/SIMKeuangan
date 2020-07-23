@@ -1,4 +1,5 @@
 <?php
+session_start();
 require('../url.php');
 require('../model/crud.php');
 $crud = new Crud;
@@ -10,4 +11,4 @@ $data = array(
 );
 $standar = $crud->simpan('bos_rkas_rencana', $data);
 // require('../view/perencanaan_bos.php');
-header('Location:' . $url . 'perencanaan_bos');
+header('Location:' . $url . 'kepala/perencanaan_bos');

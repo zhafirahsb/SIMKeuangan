@@ -1,4 +1,5 @@
 <?php
+session_start();
 require('../../../url.php');
 require('../../../model/crud.php');
 $crud = new Crud;
@@ -12,8 +13,8 @@ if (isset($_POST['submit'])) {
   );
 
   $crud->simpan('yayasan_rencana_pendapatan', $data);
-  header('Location:' . $url . 'yayasan/perencanaan/');
+  header('Location:' . $url . 'kepala/perencanaan/');
 }
 $pendapatan = $crud->read_data('yayasan_rencana_pendapatan');
 $pengeluaran = $crud->read_data('yayasan_rencana_pengeluaran');
-require('../../../view/tata_usaha/yayasan/perencanaan_dana.php');
+require('../../../view/kepala/yayasan/perencanaan_dana.php');

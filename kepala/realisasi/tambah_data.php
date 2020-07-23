@@ -1,4 +1,5 @@
 <?php
+session_start();
 require('../url.php');
 require('../model/crud.php');
 $crud = new Crud;
@@ -21,8 +22,8 @@ if (isset($_POST['submit'])) {
   );
 
   $crud->simpan('bos_realisasi_detail_komponen', $detail_realisasi);
-  header('Location:' . $url . 'realisasi');
+  header('Location:' . $url . 'kepala/realisasi');
 }
 $standar = $crud->read_data('tbl_standar_nasional');
 $sub_program = $crud->read_data('bos_realisasi_komponen');
-require('../view/realisasi_form.php');
+require('../../view/kepala/realisasi_form.php');

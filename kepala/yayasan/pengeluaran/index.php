@@ -1,4 +1,5 @@
 <?php
+session_start();
 require('../../../url.php');
 require('../../../model/crud.php');
 $crud = new Crud;
@@ -13,5 +14,5 @@ if (isset($_POST['submit'])) {
   header('Location:' . $url . 'yayasan/pengeluaran');
 } else {
   $pengeluaran = $crud->read_data('yayasan_realisasi_pemasukan_pengeluaran');
-  require('../../../view/tata_usaha/yayasan/pengeluaran_dana.php');
+  require('../../../view/kepala/yayasan/pengeluaran_dana.php');
 }

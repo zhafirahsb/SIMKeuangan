@@ -1,4 +1,5 @@
 <?php
+session_start();
 require('url.php');
 require('model/crud.php');
 if (isset($_POST['submit'])) {
@@ -10,10 +11,11 @@ if (isset($_POST['submit'])) {
   $login = $crud->read_data('tbl_user', $data);
   if (!$login) {
     $_SESSION['notice'] = 'Username atau Password yang anda masukan salah !';
-    header('Location:' . $url . '');
+    header('Location:' . $url);
     exit;
   } else {
     $_SESSION['login'] = [true, $login[0]['id']];
+    $_SESSION['user'] = $login[0]['role'];
     switch ($login[0]['role']) {
       case 'Admin':
         header('Location:' . $url . 'admin');

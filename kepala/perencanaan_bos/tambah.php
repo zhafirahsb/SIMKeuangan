@@ -1,4 +1,5 @@
 <?php
+session_start();
 require('../url.php');
 require('../model/crud.php');
 $crud = new Crud;
@@ -53,5 +54,5 @@ if (isset($_POST['submit'])) {
 } else {
   $standar = $crud->read_data('tbl_standar_nasional');
   $dana = $crud->read_data('bos_rkas_rencana');
-  require('../view/perencanaan_bos_form.php');
+  require('../view/kepala/perencanaan_bos_form.php');
 }

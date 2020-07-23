@@ -1,4 +1,5 @@
 <?php
+session_start();
 require('../url.php');
 require('../model/crud.php');
 $crud = new Crud;
@@ -24,7 +25,7 @@ if (isset($_POST['submit'])) {
 
   // $crud->simpan('tbl_detail_relasi', $detail_realisasi);
   $crud->update('tbl_detail_relasi', $detail_realisasi, 'id', $_POST['detail']);
-  header('Location:' . $url . 'realisasi');
+  header('Location:' . $url . 'kepala/realisasi');
 }
 
 $standar = $crud->read_data('tbl_standar_nasional');
