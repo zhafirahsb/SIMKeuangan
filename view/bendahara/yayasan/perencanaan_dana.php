@@ -33,7 +33,16 @@
                 <div class="col-2">
                   <div class="form-group">
                     <label for="">Tahun</label>
-                    <input type="text" class="form-control" name="tahun" id="">
+                    <!-- <input type="text" class="form-control" name="tahun" id=""> -->
+                    <select name="tahun" class="form-control" id="">
+                      <?php
+                      for ($i = 2017; $i <= date('Y'); $i++) {
+                      ?>
+                        <option value="<?= $i; ?>"><?= $i; ?></option>
+                      <?php
+                      }
+                      ?>
+                    </select>
                   </div>
                 </div>
                 <div class="col-3">

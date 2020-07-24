@@ -124,4 +124,17 @@ class Crud extends Koneksi
     }
     return $rows;
   }
+
+  public function report_realisasi()
+  {
+    $query = "SELECT * FROM bos_rkas JOIN bos_rkas_detail ON bos_rkas.id = bos_rkas_detail.bos_rkas LEFT JOIN tbl_standar_nasional ON bos_rkas.npsn = tbl_standar_nasional.idsnp";
+    $hasil = $this->conn->query($query);
+    if (!$hasil)
+      return false;
+    $rows = array();
+    while ($row = $hasil->fetch_assoc()) {
+      $rows[] = $row;
+    }
+    return $rows;
+  }
 }

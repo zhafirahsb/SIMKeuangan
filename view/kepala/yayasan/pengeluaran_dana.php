@@ -39,7 +39,6 @@
                 <th>Tanggal</th>
                 <th>Uraian</th>
                 <th>Jumlah</th>
-                <th>Aksi</th>
               </thead>
               <?php
               $no = 1;
@@ -50,10 +49,6 @@
                   <td><?= date('d-m-Y', strtotime($sp['tanggal'])); ?></td>
                   <td><?= $sp['uraian']; ?></td>
                   <td>Rp. <?= number_format($sp['jumlah'], 0, ',', '.'); ?></td>
-                  <td>
-                    <a href="#" class="btn btn-default">Ubah</a>|
-                    <a href="hapus.php?pengeluaran=<?= $sp['id']; ?>" onclick="return confirm('Akan Menghapus Data Ini ?')" class="btn btn-default">Hapus</a>
-                  </td>
                 </tr>
               <?php
                 $no++;
