@@ -47,7 +47,7 @@
             <h3 class="text-themecolor m-b-0 m-t-0">Data Komponen</h3>
             <ol class="breadcrumb">
               <li class="breadcrumb-item"><a href="<?= $url; ?>">Home</a></li>
-              <li class="breadcrumb-item active">Data Komponen</li>
+              <li class="breadcrumb-item active">Ubah Data Komponen</li>
             </ol>
           </div>
         </div>
@@ -61,34 +61,20 @@
           <div class="col-12">
             <div class="card">
               <div class="card-block">
-                <a href="tambah.php" class="btn btn-primary" data-toggle="modal" data-target="#tambahModal">Tambah</a>
-                <table class="table">
-                  <thead>
-                    <tr>
-                      <th>No</th>
-                      <th>Nama Komponen</th>
-                      <th>Aksi</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <?php
-                    $no = 0;
-                    foreach ($komponen as $u) {
-                    ?>
-                      <tr>
-                        <td><?= $no + 1; ?></td>
-                        <td><?= $u['nama_program']; ?></td>
-                        <td>
-                          <a href="ubah.php?komponen=<?= $u['id']; ?>">Ubah</a> |
-                          <a href="">Hapus</a>
-                        </td>
-                      </tr>
-                    <?php
-                      $no++;
-                    }
-                    ?>
-                  </tbody>
-                </table>
+                <form action="" method="POST">
+                  <div class="row">
+                    <div class="col-2 align-self-center">
+                      Nama Komponen
+                    </div>
+                    <div class="col-6">
+                      <input type="hidden" name="komponen" value="<?= $komponen[0]['id']; ?>">
+                      <input type="text" name="nama" class="form-control" value="<?= $komponen[0]['nama_program']; ?>">
+                    </div>
+                    <div class="col-1">
+                      <input type="submit" value="Simpan" name="submit" class="btn btn-outline-default">
+                    </div>
+                  </div>
+                </form>
               </div>
             </div>
           </div>
@@ -119,26 +105,7 @@
   <!-- All Jquery -->
   <!-- ============================================================== -->
   <?php require('template/jquery.php') ?>
-  <!-- Modal -->
-  <div class="modal fade" id="tambahModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-        <div class="modal-body">
-          ...
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-          <button type="button" class="btn btn-primary">Save changes</button>
-        </div>
-      </div>
-    </div>
-  </div>
+
 </body>
 
 </html>

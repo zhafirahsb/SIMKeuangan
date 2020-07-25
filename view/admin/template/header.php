@@ -32,7 +32,7 @@
         <li class="nav-item"> <a class="nav-link nav-toggler hidden-md-up text-muted waves-effect waves-dark" href="javascript:void(0)"><i class="ti-menu"></i></a> </li>
         <li class="nav-item hidden-sm-down">
           <form class="app-search p-l-20">
-            <h2 class="text-white">SMP Muhammadiyah - 19 Pematang Siantara</h2>
+            <h2 class="text-white">SMP Muhammadiyah - 19 Pematang Siantar</h2>
           </form>
         </li>
       </ul>
