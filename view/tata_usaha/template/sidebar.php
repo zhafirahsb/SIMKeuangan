@@ -7,20 +7,21 @@
         <li class="active">
           <a href="<?= $url; ?>tata_usaha" class="waves-effect"><i class="fa fa-clock-o m-r-10" aria-hidden="true"></i>Dashboard</a>
         </li>
-        <li><a href="#" class="waves-effect"><i class="fa fa-clock-o m-r-10" aria-hidden="true"></i>BOS</a>
+        <li><a href="#" class="waves-effect"><i class="fa fa-folder m-r-10" aria-hidden="true"></i>BOS</a>
           <ul>
             <li class="">
-              <a href="<?= $url; ?>tata_usaha/perencanaan_bos" class="waves-effect"><i class="fa fa-clock-o m-r-10" aria-hidden="true"></i>Perencanaan Dana Bos</a>
+              <a href="<?= $url; ?>tata_usaha/perencanaan_bos" class="waves-effect"><i class="fa fa-folder-o m-r-10" aria-hidden="true"></i>Perencanaan Dana Bos</a>
             </li>
             <li class="">
-              <a href="<?= $url; ?>tata_usaha/komponen_pengunaan" class="waves-effect"><i class="fa fa-clock-o m-r-10" aria-hidden="true"></i>Komponen Pengunaan</a>
+              <a href="<?= $url; ?>tata_usaha/komponen_pengunaan" class="waves-effect"><i class="fa fa-folder-o m-r-10" aria-hidden="true"></i>Komponen Pengunaan</a>
             </li>
             <li class="">
-              <a href="<?= $url; ?>tata_usaha/realisasi" class="waves-effect"><i class="fa fa-clock-o m-r-10" aria-hidden="true"></i>Realisasi Dana BOS</a>
+              <a href="<?= $url; ?>tata_usaha/realisasi" class="waves-effect"><i class="fa fa-folder-o m-r-10" aria-hidden="true"></i>Realisasi Dana BOS</a>
             </li>
           </ul>
         </li>
-        <li><a href="#" class="waves-effect"><i class="fa fa-clock-o m-r-10" aria-hidden="true"></i>Laporan Rekapitulasi Dana</a>
+        <!-- <li>
+          <a href="#" class="waves-effect"><i class="fa fa-clock-o m-r-10" aria-hidden="true"></i>Laporan Rekapitulasi Dana</a>
           <ul>
             <li class="">
               <a href="<?= $url; ?>tata_usaha/laporan/bos" class="waves-effect"><i class="fa fa-clock-o m-r-10" aria-hidden="true"></i>Dana BOS</a>
@@ -29,9 +30,9 @@
               <a href="<?= $url; ?>tata_usaha/laporan/yayasan" class="waves-effect"><i class="fa fa-clock-o m-r-10" aria-hidden="true"></i>Dana Yayasan</a>
             </li>
           </ul>
-        </li>
+        </li> -->
         <li class="">
-          <a href="<?= $url; ?>tata_usaha/logout.php" class="waves-effect"><i class="fa fa-clock-o m-r-10" aria-hidden="true"></i>Logout</a>
+          <a href="<?= $url; ?>tata_usaha/logout.php" class="waves-effect"><i class="fa fa-power-off m-r-10" aria-hidden="true"></i>Logout</a>
         </li>
       </ul>
     </nav>

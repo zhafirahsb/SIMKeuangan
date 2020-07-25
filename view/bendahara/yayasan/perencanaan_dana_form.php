@@ -51,29 +51,50 @@
                     <div class="col-sm-10">
                       <select name="tahun_ajaran" class="form-control" required>
                         <option value="">Tahun</option>
-                        <option value="2017">2017</option>
-                        <option value="2018">2018</option>
+                        <?php for ($i = 2017; $i <= date('Y'); $i++) {
+                        ?>
+                          <option value="<?= $i; ?>"><?= $i; ?></option>
+                        <?php
+                        }
+                        ?>
                       </select>
                     </div>
                   </div>
+                  <div class="form-group row mt-3">
+                    <label class="col-sm-2 col-form-label">Uraian</label>
+                    <div class="col-sm-10">
+                      <input type="text" name="uraian" class="form-control" id="">
+                    </div>
+                  </div>
+                  <div class="form-group row mt-3">
+                    <label class="col-sm-2 col-form-label">Sub Uraian</label>
+                    <div class="col-sm-10">
+                      <input type="text" name="sub_uraian" class="form-control" id="">
+                    </div>
+                  </div>
                   <table class="table table-bordered">
-                    <tr class="text-center">
-                      <td>Uraian</td>
-                      <td colspan="2" width="20%">Satuan</td>
-                      <td colspan="2" width="20%">Volume</td>
-                      <td>Jumlah</td>
-                      <td>Total</td>
-                    </tr>
-                    <tr>
-                      <td><input type="text" name="uraian" class="form-control" id=""></td>
-                      <td><input type="number" name="jumlah_satuan" class="form-control" id=""></td>
-                      <td><input type="text" name="satuan" class="form-control" id=""></td>
-                      <td><input type="number" name="jumlah_volume" class="form-control" id=""></td>
-                      <td><input type="text" name="volume" class="form-control" id=""></td>
-                      <td><input type="number" name="jumlah" class="form-control" id=""></td>
-                      <td><input type="number" name="total" class="form-control" id=""></td>
-                    </tr>
+                    <thead>
+                      <tr class="text-center">
+                        <td>Detail Uraian</td>
+                        <td colspan="2" width="20%">Satuan</td>
+                        <td colspan="2" width="20%">Volume</td>
+                        <td>Jumlah</td>
+                        <td>Total</td>
+                      </tr>
+                    </thead>
+                    <tbody id="datanya">
+                      <tr>
+                        <td><input type="text" name="detail_uraian[]" class="form-control" id=""></td>
+                        <td><input type="number" name="jumlah_satuan[]" class="form-control" id=""></td>
+                        <td><input type="text" name="satuan[]" class="form-control" id=""></td>
+                        <td><input type="number" name="jumlah_volume[]" class="form-control" id=""></td>
+                        <td><input type="text" name="volume[]" class="form-control" id=""></td>
+                        <td><input type="number" name="jumlah[]" class="form-control" id=""></td>
+                        <td><input type="number" name="total[]" class="form-control" id=""></td>
+                      </tr>
+                    </tbody>
                   </table>
+                  <button class="btn btn-primary" type="button" id="tambah">Tambah Detail</button>
                   <input type="submit" name="submit" value="Submit" class="btn btn-success">
                   <a href="<?= $url; ?>bendahara/yayasan/perencanaan/" class="btn btn-secondary">Batal</a>
                 </form>
@@ -93,26 +114,16 @@
   <script>
     $('#tambah').click(function() {
       console.log('pencet');
-      $('#uraian').append(`
-        <hr>
-        <div class="form-group row">
-          <label class="col-sm-2 col-form-label">No Kode</label>
-          <div class="col-sm-10">
-            <input type="text" name="no_kode[]" class="form-control" required>
-          </div>
-        </div>
-        <div class="form-group row">
-          <label class="col-sm-2 col-form-label">Uraian</label>
-          <div class="col-sm-10">
-            <input type="text" name="uraian[]" class="form-control" required>
-          </div>
-        </div>
-        <div class="form-group row">
-          <label class="col-sm-2 col-form-label">Jumlah</label>
-          <div class="col-sm-10">
-            <input type="number" name="jumlah[]" class="form-control" required>
-          </div>
-        </div>
+      $('#datanya').append(`
+        <tr>
+          <td><input type="text" name="detail_uraian[]" class="form-control" id=""></td>
+          <td><input type="number" name="jumlah_satuan[]" class="form-control" id=""></td>
+          <td><input type="text" name="satuan[]" class="form-control" id=""></td>
+          <td><input type="number" name="jumlah_volume[]" class="form-control" id=""></td>
+          <td><input type="text" name="volume[]" class="form-control" id=""></td>
+          <td><input type="number" name="jumlah[]" class="form-control" id=""></td>
+          <td><input type="number" name="total[]" class="form-control" id=""></td>
+        </tr>
       `);
     });
   </script>
