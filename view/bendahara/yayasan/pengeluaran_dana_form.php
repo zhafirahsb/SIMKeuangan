@@ -32,61 +32,33 @@
           <div class="card-block">
             <h4><u>Pengeluaran Dana Yayasan</u></h4>
             <form action="" method="post">
+              <input type="hidden" name="id" value="<?= $pengeluaran[0]['id_yayasan_realisasi_pemasukan_pengeluaran']; ?>">
               <div class="row mt-3">
                 <div class="col-2">
                   <div class="form-group">
                     <label for="">Tanggal</label>
-                    <input type="date" class="form-control" name="tanggal">
+                    <input type="date" class="form-control" name="tanggal" value="<?= $pengeluaran[0]['tanggal']; ?>">
                   </div>
                 </div>
                 <div class="col-5">
                   <div class="form-group">
                     <label for="">Uraian</label>
-                    <input type="text" class="form-control" name="uraian">
+                    <input type="text" class="form-control" name="uraian" value="<?= $pengeluaran[0]['uraian']; ?>">
                   </div>
                 </div>
                 <div class="col-3">
                   <div class="form-group">
                     <label for="">Total (Rp)</label>
-                    <input type="text" class="form-control" name="total">
+                    <input type="text" class="form-control" name="total" value="<?= $pengeluaran[0]['jumlah']; ?>">
                   </div>
                 </div>
                 <div class="col-1 align-self-center">
                   <div class="form-group">
-                    <input type="submit" name="submit" value="Tambah" class="mt-4 mr-5 btn btn-default">
+                    <input type="submit" name="submit" value="Simpan" class="mt-4 mr-5 btn btn-default">
                   </div>
                 </div>
               </div>
             </form>
-            <table class="table table-bordered mt-3" id="example">
-              <thead>
-                <th>No</th>
-                <th>Tanggal</th>
-                <th>Uraian</th>
-                <th>Jumlah</th>
-                <th>Aksi</th>
-              </thead>
-              <?php
-              $no = 1;
-              foreach ($pengeluaran as $sp) {
-              ?>
-                <tr>
-                  <td><?= $no; ?></td>
-                  <td><?= date('d-m-Y', strtotime($sp['tanggal'])); ?></td>
-                  <td><?= $sp['uraian']; ?></td>
-                  <td>Rp. <?= number_format($sp['jumlah'], 0, ',', '.'); ?></td>
-                  <td>
-                    <a href="ubah.php?ubah=<?= $sp['id_yayasan_realisasi_pemasukan_pengeluaran']; ?>" class="btn btn-default">Ubah</a>|
-                    <a href="hapus.php?pengeluaran=<?= $sp['id_yayasan_realisasi_pemasukan_pengeluaran']; ?>" onclick="return confirm('Akan Menghapus Data Ini ?')" class="btn btn-default">Hapus</a>
-                  </td>
-                </tr>
-              <?php
-                $no++;
-              }
-              ?>
-              <tbody>
-              </tbody>
-            </table>
           </div>
         </div>
       </div>

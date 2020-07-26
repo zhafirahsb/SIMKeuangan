@@ -67,8 +67,13 @@
                   <div class="form-group">
                     <label>Tahun</label>
                     <select name="tahun" class="form-control">
-                      <option value="2017">2017</option>
-                      <option value="2018">2018</option>
+                      <?php
+                      for ($i = 2017; $i <= date('Y'); $i++) {
+                      ?>
+                        <option value="<?= $i; ?>"><?= $i; ?></option>
+                      <?php
+                      }
+                      ?>
                     </select>
                   </div>
                 </div>
@@ -83,6 +88,32 @@
                 </div>
               </div>
             </form>
+            <table class="table">
+              <thead>
+                <tr>
+                  <th>Tahun</th>
+                  <th>Jumlah Dana</th>
+                  <th>Aksi</th>
+                </tr>
+              </thead>
+              <tbody>
+                <?php
+                foreach ($pendapatan as $pe) {
+                ?>
+                  <tr>
+                    <td><?= $pe['tahun']; ?></td>
+                    <td><?= $pe['nominal']; ?></td>
+                    <td>
+                      <a href="ubah_pendapatan.php?id=<?= $pe['id_bos_realisasi_pendapatan']; ?>" class="btn btn-default">Ubah</a>
+                      <a href="hapus_pendapatan.php?id=<?= $pe['id_bos_realisasi_pendapatan']; ?>" class="btn btn-default">Hapus</a>
+                    </td>
+                  </tr>
+                <?php
+                }
+
+                ?>
+              </tbody>
+            </table>
           </div>
         </div>
         <div class="row">
@@ -115,8 +146,8 @@
                         <td>Rp.<?= number_format($re['jumlah'], 0, ',', '.'); ?></td>
                         <td><?= $re['status']; ?></td>
                         <td>
-                          <a href="ubah_data.php?realisasi=<?= $re['id_relasi'] ?>&detail=<?= $re['id'] ?>" class="btn btn-default">Ubah</a>
-                          <a href="hapus_data.php?realisasi=<?= $re['id_relasi'] ?>&detail=<?= $re['id'] ?>" class="btn btn-default">Hapus</a>
+                          <a href="ubah_data.php?realisasi=<?= $re['id_relasi'] ?>&detail=<?= $re['id_bos_realisasi_detail_komponen'] ?>" class="btn btn-default">Ubah</a>
+                          <a href="hapus_data.php?realisasi=<?= $re['id_relasi'] ?>&detail=<?= $re['id_bos_realisasi_detail_komponen'] ?>" class="btn btn-default">Hapus</a>
                         </td>
                       </tr>
                     <?php

@@ -22,7 +22,6 @@ if (isset($_POST['submit'])) {
     "jumlah='" . $_POST['jumlah'] . "'",
     "tanggal='" . $_POST['tanggal'] . "'",
   );
-
   // $crud->simpan('tbl_detail_relasi', $detail_realisasi);
   $crud->update('tbl_detail_relasi', $detail_realisasi, 'id', $_POST['detail']);
   header('Location:' . $url . 'realisasi');

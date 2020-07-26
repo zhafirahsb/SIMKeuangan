@@ -8,13 +8,18 @@ if (isset($_POST['submit'])) {
     'username' => $_POST['username'],
     'password' => sha1($_POST['password']),
   );
+  if (empty($data['username']) || empty($data['password'])) {
+    $_SESSION['notice'] = 'Username atau Password belum di isi !';
+    header('Location:' . $url);
+    exit;
+  }
   $login = $crud->read_data('tbl_user', $data);
   if (!$login) {
     $_SESSION['notice'] = 'Username atau Password yang anda masukan salah !';
     header('Location:' . $url);
     exit;
   } else {
-    $_SESSION['login'] = [true, $login[0]['id']];
+    $_SESSION['login'] = [true, $login[0]['id_user']];
     $_SESSION['user'] = $login[0]['role'];
     switch ($login[0]['role']) {
       case 'Admin':

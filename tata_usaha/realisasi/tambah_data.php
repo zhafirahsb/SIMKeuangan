@@ -7,6 +7,9 @@ if (isset($_POST['submit'])) {
   $realisasi = array(
     'idsnp' => $_POST['standar'],
     'sub_program_id' => $_POST['komponen'],
+    'id_user' => $_SESSION['login'][1],
+    'tahun_ajaran' => $_POST['tahun'],
+    'dibuat_tanggal' => date('Y-m-d'),
     // 'tahun_ajaran' => $_POST['tanggal'],
   );
 

@@ -101,7 +101,7 @@ class Crud extends Koneksi
 
   public function reliasasi_bos()
   {
-    $query = "SELECT bos_realisasi_rekapitulasi.id id_relasi,bos_realisasi_detail_komponen.* FROM bos_realisasi_rekapitulasi JOIN bos_realisasi_detail_komponen ON bos_realisasi_rekapitulasi.id = bos_realisasi_detail_komponen.relasi_id";
+    $query = "SELECT bos_realisasi_rekapitulasi.id_bos_realisasi_rekapitulasi id_relasi,bos_realisasi_detail_komponen.* FROM bos_realisasi_rekapitulasi JOIN bos_realisasi_detail_komponen ON bos_realisasi_rekapitulasi.id_bos_realisasi_rekapitulasi = bos_realisasi_detail_komponen.id_bos_realisasi_detail_komponen";
     $hasil = $this->conn->query($query);
     if (!$hasil)
       return false;
@@ -114,7 +114,7 @@ class Crud extends Koneksi
 
   public function pendapatan_belanja()
   {
-    $query = "SELECT * FROM bos_rkas JOIN bos_rkas_detail ON bos_rkas.id = bos_rkas_detail.bos_rkas LEFT JOIN tbl_standar_nasional ON bos_rkas.npsn = tbl_standar_nasional.idsnp";
+    $query = "SELECT * FROM bos_rkas JOIN bos_rkas_detail ON bos_rkas.id_bos_rkas = bos_rkas_detail.bos_rkas LEFT JOIN tbl_standar_nasional ON bos_rkas.npsn = tbl_standar_nasional.idsnp";
     $hasil = $this->conn->query($query);
     if (!$hasil)
       return false;

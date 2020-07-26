@@ -26,6 +26,7 @@ if (isset($_POST['submit'])) {
   // $crud->simpan('tbl_detail_relasi', $detail_realisasi);
   $crud->update('tbl_detail_relasi', $detail_realisasi, 'id', $_POST['detail']);
   header('Location:' . $url . 'kepala/realisasi');
+  exit;
 }
 
 $standar = $crud->read_data('tbl_standar_nasional');

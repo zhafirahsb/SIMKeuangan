@@ -72,8 +72,8 @@
                   <td><?= $sp['uraian']; ?></td>
                   <td>Rp. <?= number_format($sp['total'], 0, ',', '.'); ?></td>
                   <td>
-                    <a href="ubah.php?spp=<?= $sp['id']; ?>" class="btn btn-default">Ubah</a>|
-                    <a href="hapus.php?spp=<?= $sp['id']; ?>" onclick="return confirm('Akan Menghapus Data Ini ?')" class="btn btn-default">Hapus</a>
+                    <a href="ubah.php?spp=<?= $sp['id_yayasan_penerimaan_spp']; ?>" class="btn btn-default">Ubah</a>|
+                    <a href="hapus.php?spp=<?= $sp['id_yayasan_penerimaan_spp']; ?>" onclick="return confirm('Akan Menghapus Data Ini ?')" class="btn btn-default">Hapus</a>
                   </td>
                 </tr>
               <?php

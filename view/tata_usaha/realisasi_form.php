@@ -29,8 +29,22 @@
           <div class="card-block">
             <h4><u>Form Tambah Data Pengeluaran BOS</u></h4>
             <form class="mt-5" action="" method="POST">
+
               <input type="hidden" name="realisasi" value="<?= @$id_realisasi; ?>">
               <input type="hidden" name="detail" value="<?= @$detail_realisasi; ?>">
+              <div class="form-group row">
+                <label class="col-sm-4 col-form-label">Tahun Ajaran</label>
+                <div class="col-sm-8">
+                  <select name="tahun" class="form-control" required>
+                    <?php for ($i = 2017; $i <= date('Y'); $i++) {
+                    ?>
+                      <option value="<?= $i ?>" <?= @$realisasi['tahun_ajaran'] == $i ? 'selected' : ''; ?>><?= $i; ?></option>
+                    <?php
+                    }
+                    ?>
+                  </select>
+                </div>
+              </div>
               <div class="form-group row">
                 <label class="col-sm-4 col-form-label">Program Standar Pendidikan</label>
                 <div class="col-sm-8">
@@ -48,7 +62,7 @@
                 <div class="col-sm-8">
                   <select name="komponen" class="form-control">
                     <?php foreach ($sub_program as $sp) { ?>
-                      <option value="<?= $sp['id'] ?>" <?= @$realisasi['idsnp'] == $sp['id'] ? 'selected' : ''; ?>><?= $sp['nama_program']; ?></option>
+                      <option value="<?= $sp['id_bos_realisasi_komponen'] ?>" <?= @$realisasi['idsnp'] == $sp['id_bos_realisasi_komponen'] ? 'selected' : ''; ?>><?= $sp['nama_program']; ?></option>
                     <?php
                     }
                     ?>
@@ -89,7 +103,7 @@
                 <label class="col-sm-4 col-form-label"></label>
                 <div class="col-sm-8">
                   <input type="submit" name="submit" class="btn btn-primary" value="Simpan">
-                  <button type="reset" class="btn btn-default">Batal</button>
+                  <a href="<?= $url; ?>tata_usaha/realisasi/" class="btn btn-default">Batal</a>
                 </div>
               </div>
             </form>

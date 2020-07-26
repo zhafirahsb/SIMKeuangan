@@ -83,7 +83,6 @@
                     <th>Nama Program</th>
                     <th>Persentase</th>
                     <th>Jumlah Dana</th>
-                    <th>Aksi</th>
                   </thead>
                   <tbody>
                     <?php
@@ -101,9 +100,6 @@
                         <td><?= $st['nama_program']; ?></td>
                         <td></td>
                         <td>Rp.<?= number_format($jumlah, 0, '.', '.'); ?></td>
-                        <td>
-                          <a href="" class="btn btn-default">Ubah</a>
-                        </td>
                       </tr>
                     <?php
                       $no++;

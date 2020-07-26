@@ -13,9 +13,6 @@
               <a href="<?= $url; ?>bendahara/perencanaan_bos" class="waves-effect"><i class="fa fa-folder-o m-r-10" aria-hidden="true"></i>Perencanaan Dana Bos</a>
             </li>
             <li class="">
-              <a href="<?= $url; ?>bendahara/komponen_pengunaan" class="waves-effect"><i class="fa fa-folder-o m-r-10" aria-hidden="true"></i>Komponen Pengunaan</a>
-            </li>
-            <li class="">
               <a href="<?= $url; ?>bendahara/realisasi" class="waves-effect"><i class="fa fa-folder-o m-r-10" aria-hidden="true"></i>Realisasi Dana BOS</a>
             </li>
           </ul>

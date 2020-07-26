@@ -15,6 +15,6 @@ if (isset($_POST['submit'])) {
   header('Location:' . $url . 'bendahara/yayasan/penerimaan');
 } else {
   $spp = $_GET['spp'];
-  $data = $crud->read_data('yayasan_penerimaan_spp', ['id' => $spp]);
+  $data = $crud->read_data('yayasan_penerimaan_spp', ['id_yayasan_penerimaan_spp' => $spp]);
   require('../../../view/bendahara/yayasan/penerimaan_dana_form.php');
 }
