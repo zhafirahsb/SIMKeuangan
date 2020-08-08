@@ -62,8 +62,33 @@
                       <tr>
                         <td><?= $no; ?></td>
                         <td><?= $st['nama_program']; ?></td>
-                        <td><button class="btn btn-warning">Ubah</button></td>
+                        <td><button class="btn btn-warning" data-toggle="modal" data-target="#komponen<?= $no; ?>">Ubah</button></td>
                       </tr>
+                      <div class="modal fade" id="komponen<?= $no; ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog" role="document">
+                          <form action="<?= $url; ?>tata_usaha/komponen_pengunaan/ubah.php" method="post">
+                            <input type="hidden" name="komponen" value="<?= $rk['id_bos_realisasi_komponen']; ?>">
+                            <div class="modal-content">
+                              <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLabel">Ubah Komponen Program</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                  <span aria-hidden="true">&times;</span>
+                                </button>
+                              </div>
+                              <div class="modal-body">
+                                <div class="form-group">
+                                  <label for="">Nama Program</label>
+                                  <input type="text" name="program" class="form-control" value="<?= $st['nama_program']; ?>" required>
+                                </div>
+                              </div>
+                              <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                <input type="submit" class="btn btn-primary" name="submit" value="Simpan">
+                              </div>
+                            </div>
+                          </form>
+                        </div>
+                      </div>
                     <?php
                       $no++;
                     }

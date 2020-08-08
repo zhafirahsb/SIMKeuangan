@@ -1,5 +1,7 @@
 <?php
 session_start();
+require('../../proses/function.php');
+cek_session();
 require('../../url.php');
 require('../../model/crud.php');
 $crud = new Crud;

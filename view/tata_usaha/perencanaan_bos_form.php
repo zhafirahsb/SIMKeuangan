@@ -51,7 +51,7 @@
           </div>
         </div>
         <div class="row">
-          <div class="col-12">
+          <!-- <div class="col-12">
             <div class="card">
               <div class="card-block">
                 <h3><u>Perencanaan Dana BOS (Pendapatan)</u></h3>
@@ -71,8 +71,6 @@
                       </select>
                     </div>
                   </div>
-
-                  <!-- <input type="text" name="tahun_ajaran" class="form-control mt-3 mb-3" placeholder="Tahun Ajaran" required> -->
                   <div class="form-group row">
                     <label for="" class="col-sm-2 col-form-label">Pendapatan</label>
                     <div class="col-sm-10">
@@ -85,7 +83,7 @@
                 </form>
               </div>
             </div>
-          </div>
+          </div> -->
           <div class="col-12">
             <div class="card">
               <div class="card-block">
@@ -148,7 +146,7 @@
                   </div>
                   <button type="button" class="btn btn-primary" id="tambah">Tambah Uraian</button>
                   <input type="submit" name="submit" value="Submit" class="btn btn-success">
-                  <a href="<?= $url; ?>perencanaan_bos" class="btn btn-default">Batal</a>
+                  <a href="<?= $url; ?>tata_usaha/perencanaan_bos" class="btn btn-default">Batal</a>
                 </form>
               </div>
             </div>
@@ -159,6 +157,8 @@
     </div>
   </div>
   <?php require('template/jquery.php') ?>
+  <!-- Modal -->
+
   <script>
     $('#tambah').click(function() {
       console.log('pencet');

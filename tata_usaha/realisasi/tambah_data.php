@@ -13,21 +13,32 @@ if (isset($_POST['submit'])) {
     // 'tahun_ajaran' => $_POST['tanggal'],
   );
 
-  $realisasi_id = $crud->simpan('bos_realisasi_rekapitulasi', $realisasi, true);
+  $cek = $crud->read_data('bos_realisasi_rekapitulasi', ['idsnp' => $realisasi['idsnp'], 'sub_program_id' => $realisasi['sub_program_id'], 'tahun_ajaran' => $realisasi['tahun_ajaran']]);
 
-  $detail_realisasi = array(
-    'relasi_id' => $realisasi_id,
-    'no_kode' => $_POST['kode'],
-    'no_bukti' => $_POST['bukti'],
-    'uraian' => $_POST['uraian'],
-    'jumlah' => $_POST['jumlah'],
-    'tanggal' => $_POST['tanggal'],
-  );
+  if (!$cek) {
+    $realisasi_id = $crud->simpan('bos_realisasi_rekapitulasi', $realisasi, true);
+  } else {
+    $realisasi_id = $cek[0]['id_bos_realisasi_rekapitulasi'];
+  }
 
-  $crud->simpan('bos_realisasi_detail_komponen', $detail_realisasi);
+
+  for ($i = 0; $i < count($_POST['kode']); $i++) {
+    # code...
+    $detail_realisasi = array(
+      'relasi_id' => $realisasi_id,
+      'no_kode' => $_POST['kode'][$i],
+      'no_bukti' => $_POST['bukti'][$i],
+      'uraian' => $_POST['uraian'][$i],
+      'jumlah' => $_POST['jumlah'][$i],
+      'tanggal' => $_POST['tanggal'][$i],
+    );
+
+    $crud->simpan('bos_realisasi_detail_komponen', $detail_realisasi);
+  }
   header('Location:' . $url . 'tata_usaha/realisasi');
   exit;
 }
+$pendapatan = $crud->read_data('bos_realisasi_pendapatan');
 $standar = $crud->read_data('tbl_standar_nasional');
 $sub_program = $crud->read_data('bos_realisasi_komponen');
 require('../../view/tata_usaha/realisasi_form.php');

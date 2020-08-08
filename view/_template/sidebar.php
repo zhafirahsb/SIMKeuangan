@@ -6,7 +6,7 @@
       <ul id="sidebarnav">
 
         <!-- admin -->
-        <?php if ($_SESSION['user']=='Admin') { ?>
+        <?php if ($_SESSION['user'] == 'Admin') { ?>
           <li class="">
             <a href="<?= $url; ?>view/admin" class="waves-effect"><i class="fa fa-clock-o m-r-10" aria-hidden="true"></i>Dashboard</a>
           </li>
@@ -22,11 +22,12 @@
         <?php } ?>
 
         <!-- Bendahara Yayasan -->
-        <?php if ($_SESSION['user']=='Bendahara Yayasan') { ?>
+        <?php if ($_SESSION['user'] == 'Bendahara Yayasan') { ?>
           <li class="active">
             <a href="<?= $url; ?>view/bendahara" class="waves-effect"><i class="fa fa-clock-o m-r-10" aria-hidden="true"></i>Dashboard</a>
           </li>
-          <li><a href="#" class="waves-effect"><i class="fa fa-folder m-r-10" aria-hidden="true"></i>BOS</a>
+          <li>
+            <a href="#" class="waves-effect"><i class="fa fa-folder m-r-10" aria-hidden="true"></i>BOS</a>
             <ul>
               <li class="">
                 <a href="<?= $url; ?>view/bendahara/perencanaan_bos.php" class="waves-effect"><i class="fa fa-folder-o m-r-10" aria-hidden="true"></i>Perencanaan Dana Bos</a>
@@ -67,7 +68,7 @@
         <?php } ?>
 
         <!-- Tata Usaha -->
-        <?php if ($_SESSION['user']=='Tata Usaha') { ?>
+        <?php if ($_SESSION['user'] == 'Tata Usaha') { ?>
           <li class="active">
             <a href="<?= $url; ?>view/tata_usaha" class="waves-effect"><i class="fa fa-clock-o m-r-10" aria-hidden="true"></i>Dashboard</a>
           </li>
@@ -98,7 +99,7 @@
         <?php } ?>
 
         <!-- Yayasan -->
-        <?php if ($_SESSION['user']=='Yayasan') { ?>
+        <?php if ($_SESSION['user'] == 'Yayasan') { ?>
           <li class="active">
             <a href="<?= $url; ?>view/yayasan" class="waves-effect"><i class="fa fa-clock-o m-r-10" aria-hidden="true"></i>Dashboard</a>
           </li>
@@ -144,7 +145,7 @@
         <?php } ?>
 
         <!-- Kepala Sekolah -->
-        <?php if ($_SESSION['user']=='Kepala Sekolah') { ?>
+        <?php if ($_SESSION['user'] == 'Kepala Sekolah') { ?>
           <li class="active">
             <a href="<?= $url; ?>view/kepala" class="waves-effect"><i class="fa fa-clock-o m-r-10" aria-hidden="true"></i>Dashboard</a>
           </li>
@@ -158,7 +159,7 @@
                 <a href="<?= $url; ?>view/kepala/realisasi_bos.php" class="waves-effect"><i class="fa fa-folder-o m-r-10" aria-hidden="true"></i>Realisasi Dana BOS</a>
               </li>
             </ul>
-          </li>          
+          </li>
           <!-- <li>
             <a href="#" class="waves-effect"><i class="fa fa-clock-o m-r-10" aria-hidden="true"></i>Laporan Rekapitulasi Dana</a>
             <ul>

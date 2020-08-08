@@ -1,7 +1,7 @@
 <?php
 session_start();
-require('../url.php');
-require('../model/crud.php');
+require('../../url.php');
+require('../../model/crud.php');
 $crud = new Crud;
 if (isset($_POST['submit'])) {
   $tipe = $_POST['tipe'];
@@ -11,10 +11,11 @@ if (isset($_POST['submit'])) {
     $sub_program = $_POST['sub_program'];
 
     $data = array(
-      'tahun_ajaran' => $tahun_ajaran,
-      'npsn' => $nama_program,
-      'sub_program' => $sub_program,
-      'tipe' => $tipe,
+      'tahun_ajaran'   => $tahun_ajaran,
+      'npsn'           => $nama_program,
+      'sub_program'    => $sub_program,
+      'tipe'           => $tipe,
+      'id_user'        => $_SESSION['login'][1],
       'dibuat_tanggal' => date('Y-m-d H:i:s'),
     );
 
@@ -50,9 +51,9 @@ if (isset($_POST['submit'])) {
     );
     $crud->simpan('bos_rkas_detail', $detail);
   }
-  header('Location:' . $url . 'perencanaan_bos');
+  header('Location:' . $url . 'tata_usaha/perencanaan_bos');
 } else {
   $standar = $crud->read_data('tbl_standar_nasional');
   $dana = $crud->read_data('bos_rkas_rencana');
-  require('../view/perencanaan_bos_form.php');
+  require('../../view/tata_usaha/perencanaan_bos_form.php');
 }

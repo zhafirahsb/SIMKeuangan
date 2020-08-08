@@ -3,25 +3,25 @@
 require_once('function.php');
 
 if (isset($_POST['submit'])) {
-  $table ="tbl_user";
+  $table = "tbl_user";
   $data = [
     'username' => $_POST['username'],
     'password' => sha1($_POST['password'])
   ];
-  
-  if (empty($data['username'])||empty($data['password'])) {
+
+  if (empty($data['username']) || empty($data['password'])) {
     $_SESSION['notice'] = 'Username atau Password belum di isi !';
     header('Location:' . $url);
     exit;
   }
-  
-  $login = get_data($table,$data);
+
+  $login = get_data($table, $data);
   if (!$login) {
     $_SESSION['notice'] = 'Username atau Password yang anda masukan salah !';
     header('Location:' . $url);
     exit;
   } else {
-    $_SESSION['login'] = true;
+    $_SESSION['login'] = [true, $login[0]['id_user']];
     $_SESSION['id'] = $login[0]['id_user'];
     $_SESSION['user'] = $login[0]['role'];
     switch ($_SESSION['user']) {
@@ -32,7 +32,7 @@ if (isset($_POST['submit'])) {
         header('Location:' . $url . 'view/bendahara');
         break;
       case 'Tata Usaha':
-        header('Location:' . $url . 'view/tata_usaha');
+        header('Location:' . $url . 'tata_usaha');
         break;
       case 'Yayasan':
         header('Location:' . $url . 'view/yayasan');
@@ -44,6 +44,3 @@ if (isset($_POST['submit'])) {
     exit;
   }
 }
-
-
-?>

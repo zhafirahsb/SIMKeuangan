@@ -137,4 +137,17 @@ class Crud extends Koneksi
     }
     return $rows;
   }
+
+  public function query($quernya)
+  {
+    $query = $quernya;
+    $hasil = $this->conn->query($query);
+    if (!$hasil)
+      return false;
+    $rows = array();
+    while ($row = $hasil->fetch_assoc()) {
+      $rows[] = $row;
+    }
+    return $rows;
+  }
 }

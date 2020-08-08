@@ -1,27 +1,27 @@
-<?php 
-  session_start();
+<?php
+session_start();
 
-  if (isset($_SESSION['login'])) {
-    switch ($_SESSION['user']) {
-      case 'Admin':
-        header('Location:' . $url . 'view/admin');
-        break;
-      case 'Bendahara Yayasan':
-        header('Location:' . $url . 'view/bendahara');
-        break;
-      case 'Tata Usaha':
-        header('Location:' . $url . 'view/tata_usaha');
-        break;
-      case 'Yayasan':
-        header('Location:' . $url . 'view/yayasan');
-        break;
-      case 'Kepala Sekolah':
-        header('Location:' . $url . 'view/kepala');
-        break;
-    }
+if (isset($_SESSION['login'])) {
+  switch ($_SESSION['user']) {
+    case 'Admin':
+      header('Location:' . $url . 'view/admin');
+      break;
+    case 'Bendahara Yayasan':
+      header('Location:' . $url . 'view/bendahara');
+      break;
+    case 'Tata Usaha':
+      header('Location:' . $url . 'tata_usaha');
+      break;
+    case 'Yayasan':
+      header('Location:' . $url . 'view/yayasan');
+      break;
+    case 'Kepala Sekolah':
+      header('Location:' . $url . 'view/kepala');
+      break;
   }
-  require_once('url.php');
-  require_once('proses/proses_login.php');
+}
+require_once('url.php');
+require_once('proses/proses_login.php');
 ?>
 <!DOCTYPE html>
 <html lang="en">

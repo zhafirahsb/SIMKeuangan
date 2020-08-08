@@ -29,16 +29,16 @@
           <div class="card-block">
             <h4><u>Form Tambah Data Pengeluaran BOS</u></h4>
             <form class="mt-5" action="" method="POST">
-
               <input type="hidden" name="realisasi" value="<?= @$id_realisasi; ?>">
               <input type="hidden" name="detail" value="<?= @$detail_realisasi; ?>">
               <div class="form-group row">
                 <label class="col-sm-4 col-form-label">Tahun Ajaran</label>
                 <div class="col-sm-8">
                   <select name="tahun" class="form-control" required>
-                    <?php for ($i = 2017; $i <= date('Y'); $i++) {
+                    <?php
+                    foreach ($pendapatan as $p) {
                     ?>
-                      <option value="<?= $i ?>" <?= @$realisasi['tahun_ajaran'] == $i ? 'selected' : ''; ?>><?= $i; ?></option>
+                      <option value="<?= $p['tahun'] ?>" <?= @$realisasi['tahun_ajaran'] == $p['tahun'] ? 'selected' : ''; ?>><?= $p['tahun']; ?></option>
                     <?php
                     }
                     ?>
@@ -69,39 +69,43 @@
                   </select>
                 </div>
               </div>
-              <div class="form-group row">
-                <label class="col-sm-4 col-form-label">Tanggal</label>
-                <div class="col-sm-8">
-                  <input type="date" name="tanggal" class="form-control" value="<?= @$detail['tanggal']; ?>">
+              <div id="detail">
+                <hr>
+                <div class="form-group row">
+                  <label class="col-sm-4 col-form-label">Tanggal</label>
+                  <div class="col-sm-8">
+                    <input type="date" name="tanggal[]" class="form-control" value="<?= @$detail['tanggal']; ?>">
+                  </div>
                 </div>
-              </div>
-              <div class="form-group row">
-                <label class="col-sm-4 col-form-label">No. Kode</label>
-                <div class="col-sm-8">
-                  <input type="text" name="kode" class="form-control" value="<?= @$detail['no_kode']; ?>">
+                <div class="form-group row">
+                  <label class="col-sm-4 col-form-label">No. Kode</label>
+                  <div class="col-sm-8">
+                    <input type="text" name="kode[]" class="form-control" value="<?= @$detail['no_kode']; ?>">
+                  </div>
                 </div>
-              </div>
-              <div class="form-group row">
-                <label class="col-sm-4 col-form-label">No. Bukti</label>
-                <div class="col-sm-8">
-                  <input type="text" name="bukti" class="form-control" value="<?= @$detail['no_bukti']; ?>">
+                <div class="form-group row">
+                  <label class="col-sm-4 col-form-label">No. Bukti</label>
+                  <div class="col-sm-8">
+                    <input type="text" name="bukti[]" class="form-control" value="<?= @$detail['no_bukti']; ?>">
+                  </div>
                 </div>
-              </div>
-              <div class="form-group row">
-                <label class="col-sm-4 col-form-label">Uraian</label>
-                <div class="col-sm-8">
-                  <textarea name="uraian" class="form-control" cols="30" rows="10"><?= @$detail['uraian']; ?></textarea>
+                <div class="form-group row">
+                  <label class="col-sm-4 col-form-label">Uraian</label>
+                  <div class="col-sm-8">
+                    <textarea name="uraian[]" class="form-control"><?= @$detail['uraian']; ?></textarea>
+                  </div>
                 </div>
-              </div>
-              <div class="form-group row">
-                <label class="col-sm-4 col-form-label">Jumlah (Rp)</label>
-                <div class="col-sm-8">
-                  <input type="number" name="jumlah" class="form-control" value="<?= @$detail['jumlah']; ?>">
+                <div class="form-group row">
+                  <label class="col-sm-4 col-form-label">Jumlah (Rp)</label>
+                  <div class="col-sm-8">
+                    <input type="number" name="jumlah[]" class="form-control" value="<?= @$detail['jumlah']; ?>">
+                  </div>
                 </div>
               </div>
               <div class="form-group row">
                 <label class="col-sm-4 col-form-label"></label>
                 <div class="col-sm-8">
+                  <button type="button" class="btn btn-primary" id="tambah-uraian">Tambah Uraian</button>
                   <input type="submit" name="submit" class="btn btn-primary" value="Simpan">
                   <a href="<?= $url; ?>tata_usaha/realisasi/" class="btn btn-default">Batal</a>
                 </div>
@@ -127,7 +131,45 @@
   <!-- All Jquery -->
   <!-- ============================================================== -->
   <?php require('template/jquery.php') ?>
-
+  <script>
+    $(document).ready(function() {
+      $('#tambah-uraian').click(function() {
+        $('#detail').append(`
+        <hr>
+        <div class="form-group row">
+          <label class="col-sm-4 col-form-label">Tanggal</label>
+          <div class="col-sm-8">
+            <input type="date" name="tanggal[]" class="form-control"">
+          </div>
+        </div>
+        <div class="form-group row">
+          <label class="col-sm-4 col-form-label">No. Kode</label>
+          <div class="col-sm-8">
+            <input type="text" name="kode[]" class="form-control">
+          </div>
+        </div>
+        <div class="form-group row">
+          <label class="col-sm-4 col-form-label">No. Bukti</label>
+          <div class="col-sm-8">
+            <input type="text" name="bukti[]" class="form-control">
+          </div>
+        </div>
+        <div class="form-group row">
+          <label class="col-sm-4 col-form-label">Uraian</label>
+          <div class="col-sm-8">
+            <textarea name="uraian[]" class="form-control"></textarea>
+          </div>
+        </div>
+        <div class="form-group row">
+          <label class="col-sm-4 col-form-label">Jumlah (Rp)</label>
+          <div class="col-sm-8">
+            <input type="number" name="jumlah[]" class="form-control">
+          </div>
+        </div>
+        `);
+      });
+    });
+  </script>
 </body>
 
 </html>

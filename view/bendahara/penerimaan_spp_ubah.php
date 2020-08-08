@@ -1,8 +1,20 @@
-<?php 
+<?php
 session_start();
-require('../../url.php'); 
-require('../../proses/yayasan.php'); 
-require('../_template/head.php'); 
+require('../../url.php');
+require('../../model/crud.php');
+$crud = new Crud;
+if (isset($_POST['submit'])) {
+  $data = array(
+    "uraian='" . $_POST['uraian'] . "'",
+    "total='" . $_POST['total'] . "'",
+    "tanggal='" . $_POST['tanggal'] . "'",
+  );
+  $crud->update('yayasan_penerimaan_spp', $data, 'id_yayasan_penerimaan_spp', $_POST['id']);
+  header('Location:' . $url . 'view/bendahara/penerimaan_spp.php');
+  exit;
+}
+require('../../proses/yayasan.php');
+require('../_template/head.php');
 require('../_template/header.php');
 require('../_template/sidebar.php');
 ?>
@@ -25,8 +37,10 @@ require('../_template/sidebar.php');
         <h4><u>Penerimaan SPP</u></h4>
         <?php
         $id = $_GET['id'];
-        $data = get_penerimaan_spp($id); ?>
+        $data = get_penerimaan_spp($id);
+        ?>
         <form action="" method="POST">
+          <input type="hidden" name="id" value="<?= $id; ?>">
           <div class="row mt-3">
             <div class="col-2">
               <div class="form-group">

@@ -1,8 +1,8 @@
-<?php 
+<?php
 session_start();
 require('../../proses/function.php');
-require('../../url.php'); 
-require('../_template/head.php'); 
+require('../../url.php');
+require('../_template/head.php');
 require('../_template/header.php');
 require('../_template/sidebar.php');
 ?>
@@ -24,7 +24,7 @@ require('../_template/sidebar.php');
       <div class="col-12">
         <div class="card">
           <div class="card-block">
-            <h1>Selamat Datang Di Halaman <?=$_SESSION['user'];?></h1>
+            <h1>Selamat Datang Di Halaman <?= $_SESSION['user']; ?></h1>
           </div>
         </div>
       </div>
