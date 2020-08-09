@@ -82,8 +82,8 @@ require('../_template/sidebar.php');
               <td><?= $sp['uraian']; ?></td>
               <td>Rp. <?= number_format($sp['total'], 0, ',', '.'); ?></td>
               <td>
-                <a href="penerimaan_spp_ubah.php?id=<?= $sp['id_yayasan_penerimaan_spp']; ?>" class="btn btn-default">Ubah</a>
-                <a href="penerimaan_spp_hapus.php?id=<?= $sp['id_yayasan_penerimaan_spp']; ?>" class="btn btn-default">Hapus</a>
+                <a href="penerimaan_spp_ubah.php?id=<?= $sp['id_yayasan_penerimaan_spp']; ?>" class="btn btn-warning">Ubah</a>
+                <a href="penerimaan_spp_hapus.php?id=<?= $sp['id_yayasan_penerimaan_spp']; ?>" class="btn btn-danger" onclick="return confirm('Hapus Data Ini ?')">Hapus</a>
               </td>
             </tr>
           <?php

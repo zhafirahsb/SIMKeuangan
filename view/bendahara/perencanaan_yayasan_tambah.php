@@ -14,8 +14,6 @@ $volume = ['bulan', 'tahun', 'kali'];
 if (isset($_POST['submit'])) {
   tambah_rencana_pengeluaran_yys();
 }
-
-
 ?>
 <div class="page-wrapper">
   <!-- Container fluid  -->

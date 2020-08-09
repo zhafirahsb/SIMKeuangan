@@ -33,7 +33,7 @@ function get_penerimaan_spp($id = null)
 // menampilkan data Realisasi Pengeluaran Yayasan
 function get_pengeluaran_yys()
 {
-  $table = "yayasan_realisasi_pemasukan_pengeluaran";
+  $table = "yayasan_realisasi_pengeluaran";
   return get_data($table);
 }
 
@@ -201,5 +201,3 @@ function ubah_penerimaan_spp()
     header('location:' . $url . 'view/bendahara/penerimaan_spp.php');
     }
 }
-
-?>
