@@ -5,6 +5,8 @@ require('../../proses/yayasan.php');
 require('../_template/head.php');
 require('../_template/header.php');
 require('../_template/sidebar.php');
+require('../../model/crud.php');
+
 ?>
 <div class="page-wrapper">
   <!-- Container fluid  -->
@@ -31,6 +33,7 @@ require('../_template/sidebar.php');
             <th>Tanggal</th>
             <th>Uraian</th>
             <th>Jumlah</th>
+            <th>Aksi</th>
           </thead>
           <?php
           $pengeluaran = get_pengeluaran_yys();
@@ -42,6 +45,10 @@ require('../_template/sidebar.php');
               <td><?= date('d-m-Y', strtotime($sp['tanggal'])); ?></td>
               <td><?= $sp['uraian']; ?></td>
               <td>Rp. <?= number_format($sp['jumlah'], 0, ',', '.'); ?></td>
+              <td>
+                <a href="<?= $url; ?>view/bendahara/pengeluaran_yayasan_form.php?id=<?= $sp['id_yayasan_realisasi_pengeluaran'] ?>" class="btn btn-warning">Ubah</a>
+                <a href="<?= $url; ?>bendahara/yayasan/pengeluaran/hapus_pengeluaran.php?id=<?= $sp['id_yayasan_realisasi_pengeluaran'] ?>" class="btn btn-danger" onclick="return confirm('Akan menghapus data ini ?')">Hapus</a>
+              </td>
             </tr>
           <?php
             $no++;
@@ -56,7 +63,7 @@ require('../_template/sidebar.php');
   </div>
   <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
-      <form action="<?= $url; ?>bendahara/yayasan/perencanaan/tambah_pendapatan.php" method="post">
+      <form action="<?= $url; ?>bendahara/yayasan/pengeluaran/tambah_pengeluaran.php" method="post">
         <div class="modal-content">
           <div class="modal-header">
             <h5 class="modal-title" id="exampleModalLabel">Tambah Data</h5>
@@ -66,27 +73,16 @@ require('../_template/sidebar.php');
           </div>
           <div class="modal-body">
             <div class="form-group">
-              <label for="">Tahun</label>
-              <select name="tahun" class="form-control" required>
-                <option value="">Pilih Tahun</option>
-                <?php
-                for ($i = 2017; $i <= date('Y'); $i++) { ?>
-                  <option value='<?= $i ?>'><?= $i ?></option>";
-                <?php }
-                ?>
-              </select>
+              <label for="">Tanggal</label>
+              <input type="date" name="tanggal" class="form-control" required>
             </div>
             <div class="form-group">
-              <label for="">Keterangan</label>
-              <input type="text" name="keterangan" class="form-control" required>
+              <label for="">Uraian</label>
+              <input type="text" name="uraian" class="form-control" required>
             </div>
             <div class="form-group">
-              <label for="">Jumlah Siswa</label>
-              <input type="number" name="siswa" class="form-control" required>
-            </div>
-            <div class="form-group">
-              <label for="">Jumlah Iuran</label>
-              <input type="number" name="iuran" class="form-control" required>
+              <label for="">Jumlah</label>
+              <input type="number" name="jumlah" class="form-control" required>
             </div>
           </div>
           <div class="modal-footer">

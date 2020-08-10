@@ -51,17 +51,17 @@
               </li>
             </ul>
           </li>
-          <!-- <li>
+          <li>
             <a href="#" class="waves-effect"><i class="fa fa-clock-o m-r-10" aria-hidden="true"></i>Laporan Rekapitulasi Dana</a>
             <ul>
               <li class="">
-                <a href="<?= $url; ?>bendahara/laporan/bos" class="waves-effect"><i class="fa fa-clock-o m-r-10" aria-hidden="true"></i>Dana BOS</a>
+                <a href="<?= $url; ?>view/bendahara/laporan_bos.php" class="waves-effect"><i class="fa fa-clock-o m-r-10" aria-hidden="true"></i>Dana BOS</a>
               </li>
               <li class="">
-                <a href="<?= $url; ?>bendahara/laporan/yayasan" class="waves-effect"><i class="fa fa-clock-o m-r-10" aria-hidden="true"></i>Dana Yayasan</a>
+                <a href="<?= $url; ?>view/bendahara/laporan_yayasan.php" class="waves-effect"><i class="fa fa-clock-o m-r-10" aria-hidden="true"></i>Dana Yayasan</a>
               </li>
             </ul>
-          </li> -->
+          </li>
           <li class="">
             <a href="<?= $url; ?>proses/proses_logout.php" class="waves-effect"><i class="fa fa-power-off m-r-10" aria-hidden="true"></i>Logout</a>
           </li>
