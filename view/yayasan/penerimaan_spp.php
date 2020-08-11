@@ -1,8 +1,8 @@
-<?php 
+<?php
 session_start();
-require('../../url.php'); 
-require('../../proses/yayasan.php'); 
-require('../_template/head.php'); 
+require('../../url.php');
+require('../../proses/yayasan.php');
+require('../_template/head.php');
 require('../_template/header.php');
 require('../_template/sidebar.php');
 ?>
@@ -20,6 +20,19 @@ require('../_template/sidebar.php');
       </div>
     </div>
     <!-- Start Page Content -->
+    <?php
+    if (isset($_SESSION['notice'])) {
+    ?>
+      <div class="alert alert-success alert-dismissible fade show" role="alert">
+        <?= $_SESSION['notice']; ?>
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+    <?php
+      unset($_SESSION['notice']);
+    }
+    ?>
     <div class="card">
       <div class="card-block">
         <h4><u>Penerimaan SPP</u></h4>

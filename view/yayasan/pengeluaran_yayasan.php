@@ -1,10 +1,12 @@
-<?php 
+<?php
 session_start();
-require('../../url.php'); 
-require('../../proses/yayasan.php'); 
-require('../_template/head.php'); 
+require('../../url.php');
+require('../../proses/yayasan.php');
+require('../_template/head.php');
 require('../_template/header.php');
 require('../_template/sidebar.php');
+require('../../model/crud.php');
+
 ?>
 <div class="page-wrapper">
   <!-- Container fluid  -->
@@ -20,36 +22,37 @@ require('../_template/sidebar.php');
       </div>
     </div>
     <!-- Start Page Content -->
+
     <div class="card">
-          <div class="card-block">
-            <h4><u>Pengeluaran Dana Yayasan</u></h4>
-            <table class="table table-bordered mt-3" id="example">
-              <thead>
-                <th>No</th>
-                <th>Tanggal</th>
-                <th>Uraian</th>
-                <th>Jumlah</th>
-              </thead>
-              <?php
-              $pengeluaran = get_pengeluaran_yys();
-              $no = 1;
-              foreach ($pengeluaran as $sp) {
-              ?>
-                <tr>
-                  <td><?= $no; ?></td>
-                  <td><?= date('d-m-Y', strtotime($sp['tanggal'])); ?></td>
-                  <td><?= $sp['uraian']; ?></td>
-                  <td>Rp. <?= number_format($sp['jumlah'], 0, ',', '.'); ?></td>
-                </tr>
-              <?php
-                $no++;
-              }
-              ?>
-              <tbody>
-              </tbody>
-            </table>
-          </div>
-        </div>
+      <div class="card-block">
+        <h4><u>Pengeluaran Dana Yayasan</u></h4>
+        <table class="table table-bordered mt-3" id="example">
+          <thead>
+            <th>No</th>
+            <th>Tanggal</th>
+            <th>Uraian</th>
+            <th>Jumlah</th>
+          </thead>
+          <?php
+          $pengeluaran = get_pengeluaran_yys();
+          $no = 1;
+          foreach ($pengeluaran as $sp) {
+          ?>
+            <tr>
+              <td><?= $no; ?></td>
+              <td><?= date('d-m-Y', strtotime($sp['tanggal'])); ?></td>
+              <td><?= $sp['uraian']; ?></td>
+              <td>Rp. <?= number_format($sp['jumlah'], 0, ',', '.'); ?></td>
+            </tr>
+          <?php
+            $no++;
+          }
+          ?>
+          <tbody>
+          </tbody>
+        </table>
+      </div>
+    </div>
     <!-- End PAge Content -->
   </div>
   <!-- End Container fluid  -->
