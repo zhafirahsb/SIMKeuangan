@@ -13,17 +13,17 @@ $data = array(
   'total' => $_POST['jumlah'] * $_POST['dana'],
   'id_user' => $_SESSION['login'][1],
 );
-$standar = $crud->simpan('bos_rkas_rencana', $data);
-for ($i = 1; $i <= 8; $i++) {
+$crud->simpan('bos_rkas_rencana', $data);
+$standar = $crud->read_data('tbl_standar_nasional');
+foreach ($standar as $st) {
   $persentase = array(
     'tahun_ajaran' => $data['tahun'],
-    'npsn' => $i,
+    'npsn' => $st['idsnp'],
     'persentase' => 0,
     'id_user' => $_SESSION['login'][1],
     'dibuat_tanggal' => date('Y-m-d H:i:s'),
   );
   $crud->simpan('tbl_persentase_standar_nasional', $persentase);
 }
-
-// require('../view/perencanaan_bos.php');
 header('Location:' . $url . 'tata_usaha/perencanaan_bos');
+exit;

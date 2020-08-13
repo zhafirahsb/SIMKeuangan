@@ -8,13 +8,19 @@
         <!-- admin -->
         <?php if ($_SESSION['user'] == 'Admin') { ?>
           <li class="">
-            <a href="<?= $url; ?>view/admin" class="waves-effect"><i class="fa fa-clock-o m-r-10" aria-hidden="true"></i>Dashboard</a>
+            <a href="<?= $url; ?>view/admin" class="waves-effect"><i class="fa fa-home m-r-10" aria-hidden="true"></i>Dashboard</a>
           </li>
           <li class="">
             <a href="<?= $url; ?>view/admin/pengguna.php" class="waves-effect"><i class="fa fa-users m-r-10" aria-hidden="true"></i>Data pengguna</a>
           </li>
           <li class="">
             <a href="<?= $url; ?>view/admin/komponen.php" class="waves-effect"><i class="fa fa-edit  m-r-10" aria-hidden="true"></i>Komponen BOS</a>
+          </li>
+          <li class="">
+            <a href="<?= $url; ?>view/admin/standar.php" class="waves-effect"><i class="fa fa-edit  m-r-10" aria-hidden="true"></i>Standar Nasional</a>
+          </li>
+          <li class="">
+            <a href="<?= $url; ?>view/admin/persen_standar.php" class="waves-effect"><i class="fa fa-edit  m-r-10" aria-hidden="true"></i>Persentase Standar</a>
           </li>
           <li class="">
             <a href="<?= $url; ?>proses/proses_logout.php" class="waves-effect"><i class="fa fa-power-off m-r-10" aria-hidden="true"></i>Logout</a>
@@ -24,7 +30,7 @@
         <!-- Bendahara Yayasan -->
         <?php if ($_SESSION['user'] == 'Bendahara Yayasan') { ?>
           <li class="active">
-            <a href="<?= $url; ?>view/bendahara" class="waves-effect"><i class="fa fa-clock-o m-r-10" aria-hidden="true"></i>Dashboard</a>
+            <a href="<?= $url; ?>view/bendahara" class="waves-effect"><i class="fa fa-home m-r-10" aria-hidden="true"></i>Dashboard</a>
           </li>
           <li>
             <a href="#" class="waves-effect"><i class="fa fa-folder m-r-10" aria-hidden="true"></i>BOS</a>
@@ -52,13 +58,13 @@
             </ul>
           </li>
           <li>
-            <a href="#" class="waves-effect"><i class="fa fa-clock-o m-r-10" aria-hidden="true"></i>Laporan Rekapitulasi Dana</a>
+            <a href="#" class="waves-effect"><i class="fa fa-book m-r-10" aria-hidden="true"></i>Laporan Rekapitulasi Dana</a>
             <ul>
               <li class="">
-                <a href="<?= $url; ?>view/bendahara/laporan_bos.php" class="waves-effect"><i class="fa fa-clock-o m-r-10" aria-hidden="true"></i>Dana BOS</a>
+                <a href="<?= $url; ?>view/bendahara/laporan_bos.php" class="waves-effect"><i class="fa fa-bookmark m-r-10" aria-hidden="true"></i>Dana BOS</a>
               </li>
               <li class="">
-                <a href="<?= $url; ?>view/bendahara/laporan_yayasan.php" class="waves-effect"><i class="fa fa-clock-o m-r-10" aria-hidden="true"></i>Dana Yayasan</a>
+                <a href="<?= $url; ?>view/bendahara/laporan_yayasan.php" class="waves-effect"><i class="fa fa-bookmark m-r-10" aria-hidden="true"></i>Dana Yayasan</a>
               </li>
             </ul>
           </li>
@@ -70,7 +76,7 @@
         <!-- Tata Usaha -->
         <?php if ($_SESSION['user'] == 'Tata Usaha') { ?>
           <li class="active">
-            <a href="<?= $url; ?>view/tata_usaha" class="waves-effect"><i class="fa fa-clock-o m-r-10" aria-hidden="true"></i>Dashboard</a>
+            <a href="<?= $url; ?>view/tata_usaha" class="waves-effect"><i class="fa fa-home m-r-10" aria-hidden="true"></i>Dashboard</a>
           </li>
           <li><a href="#" class="waves-effect"><i class="fa fa-folder m-r-10" aria-hidden="true"></i>BOS</a>
             <ul>
@@ -101,7 +107,7 @@
         <!-- Yayasan -->
         <?php if ($_SESSION['user'] == 'Yayasan') { ?>
           <li class="active">
-            <a href="<?= $url; ?>view/yayasan" class="waves-effect"><i class="fa fa-clock-o m-r-10" aria-hidden="true"></i>Dashboard</a>
+            <a href="<?= $url; ?>view/yayasan" class="waves-effect"><i class="fa fa-home m-r-10" aria-hidden="true"></i>Dashboard</a>
           </li>
           <li>
             <a href="#" class="waves-effect"><i class="fa fa-folder m-r-10" aria-hidden="true"></i>BOS</a>
@@ -147,7 +153,7 @@
         <!-- Kepala Sekolah -->
         <?php if ($_SESSION['user'] == 'Kepala Sekolah') { ?>
           <li class="active">
-            <a href="<?= $url; ?>view/kepala" class="waves-effect"><i class="fa fa-clock-o m-r-10" aria-hidden="true"></i>Dashboard</a>
+            <a href="<?= $url; ?>view/kepala" class="waves-effect"><i class="fa fa-home m-r-10" aria-hidden="true"></i>Dashboard</a>
           </li>
           <li>
             <a href="#" class="waves-effect"><i class="fa fa-folder m-r-10" aria-hidden="true"></i>BOS</a>

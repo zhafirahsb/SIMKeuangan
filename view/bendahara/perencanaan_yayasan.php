@@ -133,7 +133,7 @@ if (isset($_GET['tahun'])) {
                                 </div>
                               </div>
                               <div class="modal-footer">
-                                <button type="reset" class="btn btn-secondary">Batal</button>
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>
                                 <input type="submit" class="btn btn-primary" name="submit" value="Simpan">
                               </div>
                             </div>

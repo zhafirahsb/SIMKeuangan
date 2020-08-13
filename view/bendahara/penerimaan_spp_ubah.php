@@ -48,7 +48,7 @@ require('../_template/sidebar.php');
                 <input type="date" class="form-control" name="tanggal" value="<?= $data[0]['tanggal']; ?>">
               </div>
             </div>
-            <div class="col-5">
+            <div class="col-4">
               <div class="form-group">
                 <label for="">Uraian</label>
                 <input type="text" class="form-control" name="uraian" value="<?= $data[0]['uraian']; ?>">
@@ -60,9 +60,16 @@ require('../_template/sidebar.php');
                 <input type="text" class="form-control" name="total" value="<?= $data[0]['total']; ?>">
               </div>
             </div>
-            <div class="col-1 align-self-center">
+            <div class="col-2 align-self-center">
               <div class="form-group">
-                <input type="submit" name="submit" value="Simpan" class="mt-4 mr-5 btn btn-default" onclick="<?php ubah_penerimaan_spp() ?>">
+                <div class="row">
+                  <div class="col-6">
+                    <input type="submit" name="submit" value="Simpan" class="mt-4 mr-5 btn btn-primary" onclick="<?php ubah_penerimaan_spp() ?>">
+                  </div>
+                  <div class="col-1">
+                    <a href="<?= $url; ?>view/bendahara/penerimaan_spp.php" class="mt-4 mr-5 btn btn-default">Batal</a>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
