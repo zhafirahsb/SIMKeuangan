@@ -146,7 +146,7 @@ if (isset($_GET['tahun'])) {
                   }
                   ?>
                   <tr>
-                    <td><?= $no + 1; ?></td>
+                    <th>Total</th>
                     <!-- <td><?= $p['tahun']; ?></td> -->
                     <th>Uang Iuran Sekolah Kelas VII - IX</th>
                     <td></td>
@@ -229,8 +229,8 @@ if (isset($_GET['tahun'])) {
                       <th></th>
                     </tr>
                     <?php
-                    if ($jb['jenis_biaya'] == 'Biaya Bantuan') {
-                      $uraian = get_uraian_rencana(['jenis_biaya' => 'Biaya Bantuan', 'tahun' => $tahun]);
+                    if ($jb['jenis_biaya'] == 'Biaya Bantuan' || $jb['jenis_biaya'] == 'Biaya Lainnya') {
+                      $uraian = get_uraian_rencana(['jenis_biaya' => $jb['jenis_biaya'], 'yayasan_detail_rencana_pengeluaran.tahun' => $tahun]);
                       if ($uraian) {
                         $j = 1;
                         foreach ($uraian as $u) {

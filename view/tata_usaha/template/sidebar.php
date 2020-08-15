@@ -5,7 +5,7 @@
     <nav class="sidebar-nav">
       <ul id="sidebarnav">
         <li class="active">
-          <a href="<?= $url; ?>tata_usaha" class="waves-effect"><i class="fa fa-clock-o m-r-10" aria-hidden="true"></i>Dashboard</a>
+          <a href="<?= $url; ?>tata_usaha" class="waves-effect"><i class="fa fa-home m-r-10" aria-hidden="true"></i>Dashboard</a>
         </li>
         <li>
           <a href="#" class="waves-effect"><i class="fa fa-folder m-r-10" aria-hidden="true"></i>BOS</a>
@@ -22,13 +22,13 @@
           </ul>
         </li>
         <li>
-          <a href="#" class="waves-effect"><i class="fa fa-clock-o m-r-10" aria-hidden="true"></i>Laporan Rekapitulasi Dana</a>
+          <a href="#" class="waves-effect"><i class="fa fa-book m-r-10" aria-hidden="true"></i>Laporan Rekapitulasi Dana</a>
           <ul>
             <li class="">
-              <a href="<?= $url; ?>tata_usaha/laporan/bos" class="waves-effect"><i class="fa fa-clock-o m-r-10" aria-hidden="true"></i>Dana BOS</a>
+              <a href="<?= $url; ?>tata_usaha/laporan/bos" class="waves-effect"><i class="fa fa-bookmark m-r-10" aria-hidden="true"></i>Dana BOS</a>
             </li>
             <li class="">
-              <a href="<?= $url; ?>tata_usaha/laporan/yayasan" class="waves-effect"><i class="fa fa-clock-o m-r-10" aria-hidden="true"></i>Dana Yayasan</a>
+              <a href="<?= $url; ?>tata_usaha/laporan/yayasan" class="waves-effect"><i class="fa fa-bookmark m-r-10" aria-hidden="true"></i>Dana Yayasan</a>
             </li>
           </ul>
         </li>

@@ -3,13 +3,15 @@ $('#masa_kerja').hide();
 var kategori_gaji = ['~pilih~', 'Honor Guru Tetap', 'Honor Guru Tidak Tetap', 'Honor Guru DPK', 'Tunjangan', 'Honor Pegawai'];
 var kategori_bantuan = ['~pilih~', 'Bantuan Sosial Siswa', 'Bantuan Hadiah', 'BPJS Kesehatan Kasek', 'BPJS Kesehatan Guru', 'BPJS Ketenagakerjaan', 'Seragam', 'THR'];
 var kategori_mk = ['Masa Kerja 0 - 1 Tahun', 'Masa Kerja 1 - 5 Tahun', 'Masa Kerja 5 - 9 Tahun', 'Masa Kerja 9 - 13 Tahun', 'Masa Kerja 13 Tahun - Dst'];
+// $('#detailisinya').hide();
 
 function pilihjenis() {
   var j = document.getElementById('jenis').value;
   console.log(j);
-  document.getElementById('detail_uraian').innerHTML = null;
+  document.getElementById('isidetailnya').innerHTML = '';
 
   if (j === '0') {
+    // $('#detailisinya').hide();
     $('#sub_jenis').show();
     var gaji = "";
     for (let i = 0; i < kategori_gaji.length; i++) {
@@ -20,12 +22,21 @@ function pilihjenis() {
   } else if (j === '1') {
     $('#masa_kerja').hide();
     $('#sub_jenis').hide();
+    // $('#detailisinya').hide();
+    // $('#detail_uraian').show();
     var bantuan = "";
+    bantuan += '<select name="detail_uraian[]" id="" class="form-control" required><option value="">~ Pilih Biaya ~</option>';
     for (let i = 0; i < kategori_bantuan.length; i++) {
-      bantuan = bantuan + '<option>' + kategori_bantuan[i] + '</option>';
+      bantuan += '<option>' + kategori_bantuan[i] + '</option>';
     }
-    document.getElementById('detail_uraian').innerHTML = bantuan;
+    bantuan += '</select>';
+    document.getElementById('isidetailnya').innerHTML = bantuan;
     console.log(bantuan);
+  } else if (j === '2') {
+    $('#masa_kerja').hide();
+    $('#sub_jenis').hide();
+    // $('#detailisinya').show();
+    document.getElementById('isidetailnya').innerHTML = '<input type="text" name="detail_uraian[]" class="form-control" required>';
   } else {
     $('#masa_kerja').hide();
     $('#sub_jenis').hide();
@@ -37,7 +48,7 @@ $('#pilih_sub_jenis').change(function () {
   var tahun = document.getElementById('tahun').value;
   console.log(sj);
   console.log(tahun);
-  document.getElementById('detail_uraian').innerHTML = null;
+  document.getElementById('isidetailnya').innerHTML = '';
   var data = "";
   if ((sj == 1) || (sj == 2)) {
     $('#masa_kerja').show();
@@ -47,7 +58,8 @@ $('#pilih_sub_jenis').change(function () {
     }
     document.getElementById('pilih_masa_kerja').innerHTML = mk;
     $('#pilih_masa_kerja').change(function () {
-      document.getElementById('detail_uraian').innerHTML = null;
+      // document.getElementById('detail_uraian').innerHTML = null;
+      document.getElementById('isidetailnya').innerHTML = null;
       var mk = document.getElementById('pilih_masa_kerja').value;
       console.log(mk);
       $.ajax({
@@ -57,11 +69,16 @@ $('#pilih_sub_jenis').change(function () {
         success: function (result) {
           console.log(result);
           var objResult = JSON.parse(result);
+          var bantuan = "";
+          bantuan += '<select name="detail_uraian[]" id="" class="form-control" required><option value="">~ Pilih Biaya ~</option>';
           $.each(objResult, function (k, v) {
             data = '<option>' + v.nama + '</option>';
-            var dataHandler = $("#detail_uraian");
-            dataHandler.append(data);
-          })
+            // var dataHandler = $("#detail_uraian");
+            // dataHandler.append(data);
+            bantuan += data;
+          });
+          bantuan += '</select>';
+          document.getElementById('isidetailnya').innerHTML = bantuan;
         }
       })
     })
@@ -74,15 +91,20 @@ $('#pilih_sub_jenis').change(function () {
       success: function (result) {
         console.log(result);
         var objResult = JSON.parse(result);
+        var bantuan = "";
+        bantuan += '<select name="detail_uraian[]" id="" class="form-control" required><option value="">~ Pilih Biaya ~</option>';
         $.each(objResult, function (k, v) {
           if (sj == 4) {
             data = '<option>' + v + '</option>';
           } else {
             data = '<option>' + v.nama + '</option>';
           }
-          var dataHandler = $("#detail_uraian");
-          dataHandler.append(data);
-        })
+          // var dataHandler = $("#detail_uraian");
+          // dataHandler.append(data);
+          bantuan += data;
+        });
+        bantuan += '</select>';
+        document.getElementById('isidetailnya').innerHTML = bantuan;
       }
     })
   }

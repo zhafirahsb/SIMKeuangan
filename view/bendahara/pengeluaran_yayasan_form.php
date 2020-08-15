@@ -8,6 +8,7 @@ require('../_template/sidebar.php');
 require('../../model/crud.php');
 $crud = new Crud;
 $pengeluaran = $crud->read_data('yayasan_realisasi_pengeluaran', ['id_yayasan_realisasi_pengeluaran' => $_GET['id']]);
+$jenis = $crud->query("SELECT DISTINCT(jenis_biaya) FROM yayasan_rencana_pengeluaran");
 ?>
 <div class="page-wrapper">
   <!-- Container fluid  -->
@@ -36,6 +37,19 @@ $pengeluaran = $crud->read_data('yayasan_realisasi_pengeluaran', ['id_yayasan_re
           <div class="form-group">
             <label for="">Uraian</label>
             <input type="text" name="uraian" class="form-control" value="<?= $pengeluaran[0]['uraian']; ?>" required>
+          </div>
+          <div class="form-group">
+            <label for="">Jenis Biaya</label>
+            <select name="jenis" class="form-control" id="" required>
+              <option value="">Pilih</option>
+              <?php
+              foreach ($jenis as $j) {
+              ?>
+                <option <?= $j['jenis_biaya'] == $pengeluaran[0]['jenis_biaya'] ? 'selected' : ''; ?> value="<?= $j['jenis_biaya']; ?>"><?= $j['jenis_biaya']; ?></option>
+              <?php
+              }
+              ?>
+            </select>
           </div>
           <div class=" form-group">
             <label for="">Jumlah</label>

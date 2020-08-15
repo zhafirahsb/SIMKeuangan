@@ -58,7 +58,7 @@ if ($pendapatan) {
     $no++;
   }
   $html .= '<tr>
-    <td>' . ($no + 1) . '</td>
+    <th>Total</th>
     <th>Uang Iuran Sekolah Kelas VII - IX</th>
     <td></td>
     <td></td>

@@ -6,7 +6,8 @@ require('../_template/head.php');
 require('../_template/header.php');
 require('../_template/sidebar.php');
 require('../../model/crud.php');
-
+$crud = new Crud;
+$jenis = $crud->query("SELECT DISTINCT(jenis_biaya) FROM yayasan_rencana_pengeluaran");
 ?>
 <div class="page-wrapper">
   <!-- Container fluid  -->
@@ -14,10 +15,10 @@ require('../../model/crud.php');
     <!-- Bread crumb and right sidebar toggle -->
     <div class="row page-titles">
       <div class="col-md-6 col-8 align-self-center">
-        <h3 class="text-themecolor m-b-0 m-t-0">Perencanaan Dana BOS</h3>
+        <h3 class="text-themecolor m-b-0 m-t-0">Pengeluaran Dana Yayasan</h3>
         <ol class="breadcrumb">
           <li class="breadcrumb-item"><a href="<?= $url; ?>">Home</a></li>
-          <li class="breadcrumb-item active">Perencanaan BOS</li>
+          <li class="breadcrumb-item active">Pengeluaran Dana Yayasan</li>
         </ol>
       </div>
     </div>
@@ -32,6 +33,7 @@ require('../../model/crud.php');
             <th>No</th>
             <th>Tanggal</th>
             <th>Uraian</th>
+            <th>Jenis Biaya</th>
             <th>Jumlah</th>
             <th>Aksi</th>
           </thead>
@@ -44,6 +46,7 @@ require('../../model/crud.php');
               <td><?= $no; ?></td>
               <td><?= date('d-m-Y', strtotime($sp['tanggal'])); ?></td>
               <td><?= $sp['uraian']; ?></td>
+              <td><?= $sp['jenis_biaya']; ?></td>
               <td>Rp. <?= number_format($sp['jumlah'], 0, ',', '.'); ?></td>
               <td>
                 <a href="<?= $url; ?>view/bendahara/pengeluaran_yayasan_form.php?id=<?= $sp['id_yayasan_realisasi_pengeluaran'] ?>" class="btn btn-warning">Ubah</a>
@@ -79,6 +82,19 @@ require('../../model/crud.php');
             <div class="form-group">
               <label for="">Uraian</label>
               <input type="text" name="uraian" class="form-control" required>
+            </div>
+            <div class="form-group">
+              <label for="">Jenis Biaya</label>
+              <select name="jenis" class="form-control" id="" required>
+                <option value="">Pilih</option>
+                <?php
+                foreach ($jenis as $j) {
+                ?>
+                  <option value="<?= $j['jenis_biaya']; ?>"><?= $j['jenis_biaya']; ?></option>
+                <?php
+                }
+                ?>
+              </select>
             </div>
             <div class="form-group">
               <label for="">Jumlah</label>

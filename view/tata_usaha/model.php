@@ -65,7 +65,6 @@
                       <th>Nama Program</th>
                       <th>Terealisasi</th>
                       <th>Rencana</th>
-                      <th>Rencana Terealisasi</th>
                     </thead>
                     <tbody>
                       <?php
@@ -91,10 +90,6 @@
                           <td><?= $st['nama_program']; ?></td>
                           <td>Rp.<?= number_format($dana_realisasi[0]['jumlah'], 0, '.', '.'); ?></td>
                           <td>Rp.<?= number_format($dana_rencana[0]['jumlah'], 0, '.', '.'); ?></td>
-                          <td>Rp.<?= number_format($dana_rencana[0]['jumlah'] - $dana_realisasi[0]['jumlah'], 0, '.', '.'); ?></td>
-                          <td>
-
-                          </td>
                         </tr>
                       <?php
                         $no++;
@@ -104,7 +99,6 @@
                         <td colspan="2">Total Dana</td>
                         <td>Rp.<?= number_format($jumlah1, 0, '.', '.');  ?></td>
                         <td>Rp.<?= number_format($jumlah2, 0, '.', '.');  ?></td>
-                        <td>Rp.<?= number_format($jumlah1 - $jumlah2, 0, '.', '.');  ?></td>
                       </tr>
                     </tbody>
                   </table>

@@ -7,6 +7,7 @@ if (isset($_POST['submit'])) {
   $crud = new Crud;
   $data = array(
     'uraian' => $_POST['uraian'],
+    'jenis_biaya' => $_POST['jenis'],
     'tanggal' => $_POST['tanggal'],
     'jumlah' => $_POST['jumlah'],
     'id_user' => $_SESSION['login'][1],

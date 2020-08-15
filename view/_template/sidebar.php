@@ -41,6 +41,9 @@
               <li class="">
                 <a href="<?= $url; ?>view/bendahara/realisasi_bos.php" class="waves-effect"><i class="fa fa-folder-o m-r-10" aria-hidden="true"></i>Realisasi Dana BOS</a>
               </li>
+              <li class="">
+                <a href="<?= $url; ?>view/bendahara/model.php" class="waves-effect"><i class="fa fa-folder-o m-r-10" aria-hidden="true"></i>Model</a>
+              </li>
             </ul>
           </li>
 
@@ -54,6 +57,9 @@
               </li>
               <li class="">
                 <a href="<?= $url; ?>view/bendahara/pengeluaran_yayasan.php" class="waves-effect"><i class="fa fa-folder-o m-r-10" aria-hidden="true"></i>Pengeluaran Dana</a>
+              </li>
+              <li class="">
+                <a href="<?= $url; ?>view/bendahara/model_yayasan.php" class="waves-effect"><i class="fa fa-folder-o m-r-10" aria-hidden="true"></i>Model</a>
               </li>
             </ul>
           </li>
@@ -118,6 +124,9 @@
               <li class="">
                 <a href="<?= $url; ?>view/yayasan/realisasi_bos.php" class="waves-effect"><i class="fa fa-folder-o m-r-10" aria-hidden="true"></i>Realisasi Dana BOS</a>
               </li>
+              <li class="">
+                <a href="<?= $url; ?>view/bendahara/model.php" class="waves-effect"><i class="fa fa-folder-o m-r-10" aria-hidden="true"></i>Model</a>
+              </li>
             </ul>
           </li>
           <li>
@@ -135,13 +144,13 @@
             </ul>
           </li>
           <li>
-            <a href="#" class="waves-effect"><i class="fa fa-clock-o m-r-10" aria-hidden="true"></i>Laporan Rekapitulasi Dana</a>
+            <a href="#" class="waves-effect"><i class="fa fa-book m-r-10" aria-hidden="true"></i>Laporan Rekapitulasi Dana</a>
             <ul>
               <li class="">
-                <a href="<?= $url; ?>view/yayasan/laporan_bos.php" class="waves-effect"><i class="fa fa-clock-o m-r-10" aria-hidden="true"></i>Dana BOS</a>
+                <a href="<?= $url; ?>view/yayasan/laporan_bos.php" class="waves-effect"><i class="fa fa-bookmark m-r-10" aria-hidden="true"></i>Dana BOS</a>
               </li>
               <li class="">
-                <a href="<?= $url; ?>view/yayasan/laporan_yayasan.php" class="waves-effect"><i class="fa fa-clock-o m-r-10" aria-hidden="true"></i>Dana Yayasan</a>
+                <a href="<?= $url; ?>view/yayasan/laporan_yayasan.php" class="waves-effect"><i class="fa fa-bookmark m-r-10" aria-hidden="true"></i>Dana Yayasan</a>
               </li>
             </ul>
           </li>
@@ -164,16 +173,33 @@
               <li class="">
                 <a href="<?= $url; ?>view/kepala/realisasi_bos.php" class="waves-effect"><i class="fa fa-folder-o m-r-10" aria-hidden="true"></i>Realisasi Dana BOS</a>
               </li>
+              <li class="">
+                <a href="<?= $url; ?>view/bendahara/model.php" class="waves-effect"><i class="fa fa-folder-o m-r-10" aria-hidden="true"></i>Model</a>
+              </li>
             </ul>
           </li>
           <li>
-            <a href="#" class="waves-effect"><i class="fa fa-clock-o m-r-10" aria-hidden="true"></i>Laporan Rekapitulasi Dana</a>
+            <a href="#" class="waves-effect"><i class="fa fa-folder m-r-10" aria-hidden="true"></i>YAYASAN</a>
             <ul>
-              <li class="">
-                <a href="<?= $url; ?>view/kepala/laporan_bos.php" class="waves-effect"><i class="fa fa-clock-o m-r-10" aria-hidden="true"></i>Dana BOS</a>
+              <li>
+                <a href="<?= $url; ?>view/kepala/perencanaan_yayasan.php" class="waves-effect"><i class="fa fa-folder-o m-r-10" aria-hidden="true"></i>Perencanaan Dana</a>
               </li>
               <li class="">
-                <a href="<?= $url; ?>view/kepala/laporan_yayasan.php" class="waves-effect"><i class="fa fa-clock-o m-r-10" aria-hidden="true"></i>Dana Yayasan</a>
+                <a href="<?= $url; ?>view/kepala/penerimaan_spp.php" class="waves-effect"><i class="fa fa-folder-o  m-r-10" aria-hidden="true"></i>Penerimaan SPP</a>
+              </li>
+              <li class="">
+                <a href="<?= $url; ?>view/kepala/pengeluaran_yayasan.php" class="waves-effect"><i class="fa fa-folder-o m-r-10" aria-hidden="true"></i>Pengeluaran Dana</a>
+              </li>
+            </ul>
+          </li>
+          <li>
+            <a href="#" class="waves-effect"><i class="fa fa-book m-r-10" aria-hidden="true"></i>Laporan Rekapitulasi Dana</a>
+            <ul>
+              <li class="">
+                <a href="<?= $url; ?>view/kepala/laporan_bos.php" class="waves-effect"><i class="fa fa-bookmark m-r-10" aria-hidden="true"></i>Dana BOS</a>
+              </li>
+              <li class="">
+                <a href="<?= $url; ?>view/kepala/laporan_yayasan.php" class="waves-effect"><i class="fa fa-bookmark m-r-10" aria-hidden="true"></i>Dana Yayasan</a>
               </li>
             </ul>
           </li>

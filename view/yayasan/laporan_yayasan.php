@@ -228,8 +228,8 @@ require('../_template/sidebar.php');
                   <th></th>
                 </tr>
                 <?php
-                if ($jb['jenis_biaya'] == 'Biaya Bantuan') {
-                  $uraian = get_uraian_rencana(['jenis_biaya' => 'Biaya Bantuan', 'tahun' => $tahun1]);
+                if ($jb['jenis_biaya'] == 'Biaya Bantuan' || $jb['jenis_biaya'] == 'Biaya Lainnya') {
+                  $uraian = get_uraian_rencana(['jenis_biaya' => $jb['jenis_biaya'], 'yayasan_detail_rencana_pengeluaran.tahun' => $tahun1]);
                   if ($uraian) {
                     $j = 1;
                     foreach ($uraian as $u) {

@@ -2,9 +2,7 @@
 session_start();
 require('../../url.php');
 require('../../proses/yayasan.php');
-require('../_template/head.php');
-require('../_template/header.php');
-require('../_template/sidebar.php');
+
 $biaya = get_jenis_biaya();
 $satuan = ['siswa', 'orang', 'jam'];
 $volume = ['bulan', 'tahun', 'kali'];
@@ -13,7 +11,12 @@ $volume = ['bulan', 'tahun', 'kali'];
 // tambah_rencana_pengeluaran_yys();
 if (isset($_POST['submit'])) {
   tambah_rencana_pengeluaran_yys();
+  header('Location:' . $url . 'view/bendahara/perencanaan_yayasan.php');
+  exit;
 }
+require('../_template/head.php');
+require('../_template/header.php');
+require('../_template/sidebar.php');
 ?>
 <div class="page-wrapper">
   <!-- Container fluid  -->
@@ -81,9 +84,11 @@ if (isset($_POST['submit'])) {
             <tbody id="datanya">
               <tr>
                 <td>
-                  <select name="detail_uraian[]" id="detail_uraian" class="form-control" required>
-                    <option value="">~ Pilih Biaya ~</option>
-                  </select>
+                  <div id="isidetailnya">
+                    <select name="detail_uraian[]" id="detail_uraian" class="form-control" required>
+                      <option value="">~ Pilih Biaya ~</option>
+                    </select>
+                  </div>
                 </td>
                 <td><input type="number" name="jumlah_satuan[]" class="form-control" id="jumlah_satuan" onkeyup="hitung()"></td>
                 <td>
