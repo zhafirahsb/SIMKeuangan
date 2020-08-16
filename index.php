@@ -66,7 +66,18 @@ require_once('proses/proses_login.php');
 
       <!-- Remind Passowrd -->
       <div id="formFooter">
-        <a class="underlineHover" href="#">Forgot Password?</a>
+        <a class="underlineHover" href="#" data-toggle="modal" data-target="#exampleModal">Forgot Password?</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal -->
+  <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="alert alert-warning" role="alert">
+          This is a warning alert—check it out!
+        </div>
       </div>
     </div>
   </div>

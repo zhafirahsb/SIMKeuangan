@@ -19,9 +19,9 @@
           <li class="">
             <a href="<?= $url; ?>view/admin/standar.php" class="waves-effect"><i class="fa fa-edit  m-r-10" aria-hidden="true"></i>Standar Nasional</a>
           </li>
-          <li class="">
+          <!-- <li class="">
             <a href="<?= $url; ?>view/admin/persen_standar.php" class="waves-effect"><i class="fa fa-edit  m-r-10" aria-hidden="true"></i>Persentase Standar</a>
-          </li>
+          </li> -->
           <li class="">
             <a href="<?= $url; ?>proses/proses_logout.php" class="waves-effect"><i class="fa fa-power-off m-r-10" aria-hidden="true"></i>Logout</a>
           </li>

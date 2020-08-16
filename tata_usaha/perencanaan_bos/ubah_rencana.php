@@ -9,6 +9,7 @@ if (isset($_POST['submit'])) {
     "tahun='" . $_POST['tahun'] . "'",
     "jumlah_siswa='" . $_POST['jumlah'] . "'",
     "dana_siswa='" . $_POST['dana'] . "'",
+    "saldo_tahun_lalu='" . $_POST['saldo'] . "'",
     "total='" . $_POST['jumlah'] * $_POST['dana'] . "'",
   );
 

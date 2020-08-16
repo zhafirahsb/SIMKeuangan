@@ -83,6 +83,12 @@
                         <input type="number" name="dana" class="form-control">
                       </div>
                     </div>
+                    <div class="col-3">
+                      <div class="form-group">
+                        <label for="">Saldo Tahun Lalu</label>
+                        <input type="number" name="saldo" class="form-control">
+                      </div>
+                    </div>
                     <div class="col-2 align-self-center">
                       <div class="form-group">
                         <input type="submit" name="submit" class="btn btn-primary" value="Simpan">
@@ -90,13 +96,15 @@
                     </div>
                   </div>
                 </form>
-                <table class="table table-bordered">
+                <table class="table table-bordered" style="font-size:14px;">
                   <thead>
                     <tr>
                       <th>Tahun Ajaran</th>
                       <th>Jumlah Siswa</th>
                       <th>Dana Persiswa</th>
                       <th>Total Dana</th>
+                      <th>Saldo Tahun Lalu</th>
+                      <th>Jumlah Penerimaan</th>
                       <th>Aksi</th>
                     </tr>
                   </thead>
@@ -110,9 +118,11 @@
                         <td><?= $rr['jumlah_siswa']; ?></td>
                         <td><?= number_format($rr['dana_siswa'], 0, '.', '.'); ?></td>
                         <td><?= number_format($rr['total'], 0, ',', '.'); ?></td>
+                        <td><?= number_format($rr['saldo_tahun_lalu'], 0, '.', '.'); ?></td>
+                        <td><?= number_format($rr['total'] + $rr['saldo_tahun_lalu'], 0, ',', '.'); ?></td>
                         <td>
-                          <a href="#" data-toggle="modal" data-target="#exampleModal<?= $no; ?>" class="btn btn-default">Ubah</a>
-                          <a href="hapus_rencana.php?rencana=<?= $rr['id_bos_rkas_rencana']; ?>&tahun=<?= $rr['tahun']; ?>" class="btn btn-default" onclick="return confirm('Akan menghapus data ini ?')">Hapus</a>
+                          <!-- <a href="#" data-toggle="modal" data-target="#exampleModal<?= $no; ?>" class="btn btn-default">Ubah</a> -->
+                          <a href="hapus_rencana.php?rencana=<?= $rr['id_bos_rkas_rencana']; ?>&tahun=<?= $rr['tahun']; ?>" class="btn btn-danger" onclick="return confirm('Akan menghapus data ini ?')">Hapus</a>
                         </td>
                       </tr>
                       <div class="modal fade" id="exampleModal<?= $no; ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -147,6 +157,10 @@
                                   <label for="">Dana Per Siswa</label>
                                   <input type="number" name="dana" value="<?= $rr['dana_siswa']; ?>" class="form-control">
                                 </div>
+                                <div class="form-group">
+                                  <label for="">Saldo Tahun Lalu</label>
+                                  <input type="number" name="saldo" value="<?= $rr['saldo_tahun_lalu']; ?>" class="form-control">
+                                </div>
                               </div>
                               <div class="modal-footer">
                                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -164,20 +178,6 @@
                     ?>
                   </tbody>
                 </table>
-                <div class="row">
-                  <div class="col-2 mt-3">
-                    <p>Saldo Tahun Lalu</p>
-                  </div>
-                  <div class="col-3 align-self-center">
-                    <input type="number" class="form-control" name="" id="">
-                  </div>
-                  <div class="col-3 mt-3">
-                    <label for="">Total Rencana Pemasukan</label>
-                  </div>
-                  <div class="col-4 align-self-center">
-                    <input type="number" class="form-control" name="" id="">
-                  </div>
-                </div>
               </div>
             </div>
           </div>

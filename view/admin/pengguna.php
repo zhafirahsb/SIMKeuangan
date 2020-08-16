@@ -30,6 +30,7 @@ require('../_template/sidebar.php');
                 <tr>
                   <th>No</th>
                   <th>Username</th>
+                  <th>Password</th>
                   <th>Jabatan</th>
                   <th>Aksi</th>
                 </tr>
@@ -43,6 +44,7 @@ require('../_template/sidebar.php');
                   <tr>
                     <td><?= $no + 1; ?></td>
                     <td><?= $p['username']; ?></td>
+                    <td><?= $p['password']; ?></td>
                     <td><?= $p['role']; ?></td>
                     <td>
                       <a href="" class="btn btn-warning" data-toggle="modal" data-target="#exampleModal<?= $no; ?>">Ubah</a>
@@ -63,6 +65,10 @@ require('../_template/sidebar.php');
                               <div class="form-group">
                                 <label>Username</label>
                                 <input type="text" class="form-control" name="username" value="<?= $p['username']; ?>">
+                              </div>
+                              <div class="form-group">
+                                <label>Password</label>
+                                <input type="password" class="form-control" name="username" value="<?= $p['password']; ?>">
                               </div>
                               <div class="form-group">
                                 <label>Jabatan</label>

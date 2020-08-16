@@ -44,6 +44,8 @@ $pendapatan_belanja = $crud->pendapatan_belanja();
                   <th>Jumlah Siswa</th>
                   <th>Dana Persiswa</th>
                   <th>Total Dana</th>
+                  <th>Saldo Tahun Lalu</th>
+                  <th>Jumlah Penerimaan</th>
                 </tr>
               </thead>
               <tbody>
@@ -56,6 +58,8 @@ $pendapatan_belanja = $crud->pendapatan_belanja();
                     <td><?= $rr['jumlah_siswa']; ?></td>
                     <td><?= number_format($rr['dana_siswa'], 0, '.', '.'); ?></td>
                     <td><?= number_format($rr['total'], 0, ',', '.'); ?></td>
+                    <td><?= number_format($rr['saldo_tahun_lalu'], 0, '.', '.'); ?></td>
+                    <td><?= number_format($rr['total'] + $rr['saldo_tahun_lalu'], 0, ',', '.'); ?></td>
                   </tr>
                 <?php
                   $no++;
