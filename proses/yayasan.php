@@ -119,7 +119,8 @@ function tambah_rencana_pengeluaran_yys()
         'jumlah' => $jumlah[$no],
         'total' => $total[$no]
       );
-      // var_dump($data);die;
+      // var_dump($data);
+      // die;
       simpan_data('yayasan_detail_rencana_pengeluaran', $data);
       $no++;
     }

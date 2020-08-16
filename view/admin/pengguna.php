@@ -68,7 +68,11 @@ require('../_template/sidebar.php');
                               </div>
                               <div class="form-group">
                                 <label>Password</label>
-                                <input type="password" class="form-control" name="username" value="<?= $p['password']; ?>">
+                                <input type="text" class="form-control" name="password" value="<?= $p['password']; ?>">
+                              </div>
+                              <div class="form-group">
+                                <label>Password Baru</label>
+                                <input type="password" class="form-control" name="password_baru">
                               </div>
                               <div class="form-group">
                                 <label>Jabatan</label>
