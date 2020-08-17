@@ -219,7 +219,8 @@
                       <th>Nama Program</th>
                       <th>Persentase</th>
                       <th>Jumlah</th>
-                      <th>Rencana Dana Digunakan</th>
+                      <th>Persentase</th>
+                      <th>Persentase Rencana Dana Digunakan</th>
                       <th>Aksi</th>
                     </thead>
                     <tbody>
@@ -231,7 +232,8 @@
                       $persentase = 0;
                       foreach ($standar as $st) {
                         $dana_rencana = $crud->query("SELECT SUM(jumlah) jumlah FROM bos_rkas JOIN bos_rkas_detail ON bos_rkas.id_bos_rkas = bos_rkas_detail.bos_rkas WHERE bos_rkas.npsn = '" . $st['idsnp'] . "' AND bos_rkas.tahun_ajaran = '" . $rkas_rencana1[0]['tahun'] . "'");
-                        $dana = ($st['persentase'] / 100) * $rkas_rencana1[0]['total'];
+                        $dana = ($st['persentase'] / 100) * ($rkas_rencana1[0]['total'] + $rkas_rencana1[0]['saldo_tahun_lalu']);
+
                         $persentase += $st['persentase'];
                         $jumlah += $dana;
                         $jumlah1 += $dana_rencana[0]['jumlah'];
@@ -241,6 +243,7 @@
                           <td><?= $st['nama_program']; ?></td>
                           <td><?= $st['persentase']; ?>%</td>
                           <td>Rp.<?= number_format($dana, 0, '.', '.'); ?></td>
+                          <td><?= round(($dana_rencana[0]['jumlah'] / ($rkas_rencana1[0]['total'] + $rkas_rencana1[0]['saldo_tahun_lalu'])) * 100, 2); ?>%</td>
                           <td>Rp.<?= number_format($dana_rencana[0]['jumlah'], 0, '.', '.'); ?></td>
                           <td>
                             <a href="detail_perencanaan.php?tahun=<?= $rkas_rencana1[0]['tahun']; ?>&standar=<?= $st['idsnp']; ?>" class="btn btn-default">Detail</a>
