@@ -42,7 +42,7 @@
                 <a href="<?= $url; ?>view/bendahara/realisasi_bos.php" class="waves-effect"><i class="fa fa-folder-o m-r-10" aria-hidden="true"></i>Realisasi Dana BOS</a>
               </li>
               <li class="">
-                <a href="<?= $url; ?>view/bendahara/model.php" class="waves-effect"><i class="fa fa-folder-o m-r-10" aria-hidden="true"></i>Model</a>
+                <a href="<?= $url; ?>view/bendahara/model.php" class="waves-effect"><i class="fa fa-folder-o m-r-10" aria-hidden="true"></i>Rencana Terealisasi</a>
               </li>
             </ul>
           </li>
@@ -59,7 +59,7 @@
                 <a href="<?= $url; ?>view/bendahara/pengeluaran_yayasan.php" class="waves-effect"><i class="fa fa-folder-o m-r-10" aria-hidden="true"></i>Pengeluaran Dana</a>
               </li>
               <li class="">
-                <a href="<?= $url; ?>view/bendahara/model_yayasan.php" class="waves-effect"><i class="fa fa-folder-o m-r-10" aria-hidden="true"></i>Model</a>
+                <a href="<?= $url; ?>view/bendahara/model_yayasan.php" class="waves-effect"><i class="fa fa-folder-o m-r-10" aria-hidden="true"></i>Rencana Terealisasi</a>
               </li>
             </ul>
           </li>
