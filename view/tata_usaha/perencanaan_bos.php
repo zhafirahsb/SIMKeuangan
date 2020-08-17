@@ -219,8 +219,8 @@
                       <th>Nama Program</th>
                       <th>Persentase</th>
                       <th>Jumlah</th>
-                      <th>Persentase</th>
                       <th>Persentase Rencana Dana Digunakan</th>
+                      <th>Rencana Dana Digunakan</th>
                       <th>Aksi</th>
                     </thead>
                     <tbody>

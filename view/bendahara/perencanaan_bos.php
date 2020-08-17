@@ -107,6 +107,7 @@ $pendapatan_belanja = $crud->pendapatan_belanja();
                   <th>Nama Program</th>
                   <th>Persentase</th>
                   <th>Jumlah</th>
+                  <th>Persentase Rencana Dana Digunakan</th>
                   <th>Rencana Dana Digunakan</th>
                 </thead>
                 <tbody>
@@ -128,6 +129,7 @@ $pendapatan_belanja = $crud->pendapatan_belanja();
                       <td><?= $st['nama_program']; ?></td>
                       <td><?= $st['persentase']; ?>%</td>
                       <td>Rp.<?= number_format($dana, 0, '.', '.'); ?></td>
+                      <td><?= round(($dana_rencana[0]['jumlah'] / ($rkas_rencana1[0]['total'] + $rkas_rencana1[0]['saldo_tahun_lalu'])) * 100, 2); ?>%</td>
                       <td>Rp.<?= number_format($dana_rencana[0]['jumlah'], 0, '.', '.'); ?></td>
                     </tr>
                   <?php
