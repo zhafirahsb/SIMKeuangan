@@ -17,7 +17,7 @@
               <a href="<?= $url; ?>tata_usaha/realisasi" class="waves-effect"><i class="fa fa-folder-o m-r-10" aria-hidden="true"></i>Realisasi Dana BOS</a>
             </li>
             <li class="">
-              <a href="<?= $url; ?>tata_usaha/model" class="waves-effect"><i class="fa fa-folder-o m-r-10" aria-hidden="true"></i>Model</a>
+              <a href="<?= $url; ?>tata_usaha/model" class="waves-effect"><i class="fa fa-folder-o m-r-10" aria-hidden="true"></i>Rencana Terealisasi</a>
             </li>
           </ul>
         </li>

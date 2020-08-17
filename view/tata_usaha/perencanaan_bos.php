@@ -189,7 +189,7 @@
                   <div class="row mb-5">
                     <div class="col-3 align-self-center">
                       <select name="tahun_ajaran" class="form-control" id="" required>
-                        <option value="">Pilih Tahun Ajaran</option>
+                        <option value="">Pilih Tahun</option>
                         <?php
                         for ($a = 2017; $a <= date('Y'); $a++) {
                         ?>
