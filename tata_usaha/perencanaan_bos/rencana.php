@@ -11,7 +11,7 @@ $data = array(
   'dana_siswa' => $_POST['dana'],
   'tanggal_dibuat' => date('Y-m-d H:i:s'),
   'total' => $_POST['jumlah'] * $_POST['dana'],
-  'saldo_tahun_lalu' => $_POST['saldo'],
+  // 'saldo_tahun_lalu' => $_POST['saldo'],
   'id_user' => $_SESSION['login'][1],
 );
 $crud->simpan('bos_rkas_rencana', $data);

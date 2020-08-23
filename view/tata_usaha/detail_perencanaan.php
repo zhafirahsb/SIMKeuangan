@@ -175,7 +175,7 @@
                                       </div>
                                       <div class="modal-body">
                                         <div class="form-group">
-                                          <label for="">Sub Progra</label>
+                                          <label for="">Sub Program</label>
                                           <input type="text" name="subprogram" class="form-control" value="<?= $rk['sub_program']; ?>" required>
                                         </div>
                                       </div>

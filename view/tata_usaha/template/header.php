@@ -10,7 +10,6 @@
           <img src="<?= $url; ?>assets/gambar/logo.jpg" height="90px" alt="homepage" class="dark-logo" />
           <!--You can put here icon as well // <i class="wi wi-sunset"></i> //-->
           <!-- Dark Logo icon -->
-
         </b>
         <!--End Logo icon -->
         <!-- Logo text -->

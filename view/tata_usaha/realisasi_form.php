@@ -101,13 +101,19 @@
                     <input type="number" name="jumlah[]" class="form-control" value="<?= @$detail['jumlah']; ?>">
                   </div>
                 </div>
+                <div class="form-group row">
+                  <label class="col-sm-4 col-form-label">Upload</label>
+                  <div class="col-sm-8">
+                    <input type="file" name="upload[]" class="form-control">
+                  </div>
+                </div>
               </div>
               <div class="form-group row">
                 <label class="col-sm-4 col-form-label"></label>
                 <div class="col-sm-8">
-                  <button type="button" class="btn btn-primary" id="tambah-uraian">Tambah Uraian</button>
+                  <button type="button" class="btn btn-primary btn-info" id="tambah-uraian">Tambah Uraian</button>
                   <input type="submit" name="submit" class="btn btn-primary" value="Simpan">
-                  <a href="<?= $url; ?>tata_usaha/realisasi/" class="btn btn-default">Batal</a>
+                  <a href="<?= $url; ?>tata_usaha/realisasi/" class="btn btn-secondary">Batal</a>
                 </div>
               </div>
             </form>
@@ -164,6 +170,12 @@
           <label class="col-sm-4 col-form-label">Jumlah (Rp)</label>
           <div class="col-sm-8">
             <input type="number" name="jumlah[]" class="form-control">
+          </div>
+        </div>
+        <div class="form-group row">
+          <label class="col-sm-4 col-form-label">Upload</label>
+          <div class="col-sm-8">
+            <input type="file" name="upload[]" class="form-control">
           </div>
         </div>
         `);

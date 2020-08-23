@@ -10,10 +10,18 @@ if (isset($_POST['submit'])) {
     $nama_program = $_POST['nama_program'];
     $sub_program = $_POST['sub_program'];
 
+    $sub = $crud->query("SELECT COUNT(*) as jumlah FROM bos_rkas WHERE tahun_ajaran = '" . $tahun_ajaran . "'")[0]['jumlah'] + 1;
+    if ($sub < 10) {
+      $no_sub = '0' . $nama_program . '0' . $sub;
+    } else {
+      $no_sub = '0' . $nama_program . $sub;
+    }
+
     $data = array(
       'tahun_ajaran'   => $tahun_ajaran,
       'npsn'           => $nama_program,
       'sub_program'    => $sub_program,
+      'no_kode'        => $no_sub,
       'tipe'           => $tipe,
       'id_user'        => $_SESSION['login'][1],
       'dibuat_tanggal' => date('Y-m-d H:i:s'),
@@ -25,16 +33,24 @@ if (isset($_POST['submit'])) {
     $uraian = $_POST['uraian'];
     $jumlah = $_POST['jumlah'];
     $no = 0;
+    $j_uraian = $crud->query("SELECT COUNT(*) as jumlah FROM bos_rkas_detail JOIN bos_rkas WHERE tahun_ajaran = '" . $tahun_ajaran . "'")[0]['jumlah'] + 1;
+
     $detail = array();
     foreach ($uraian as $u) {
+      if ($j_uraian < 10) {
+        $no_uraian = $no_sub . '0' . $j_uraian;
+      } else {
+        $no_uraian = $no_sub . $j_uraian;
+      }
       $detail = array(
         'bos_rkas' => $id,
-        'no_kode' => $no_kode[$no],
+        'no_kode' => $no_uraian,
         'uraian' => $uraian[$no],
         'jumlah' => $jumlah[$no],
       );
       $crud->simpan('bos_rkas_detail', $detail);
       $no++;
+      $j_uraian += $no;
     }
   } else {
     $data = array(

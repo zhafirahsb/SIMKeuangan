@@ -83,12 +83,12 @@
                         <input type="number" name="dana" class="form-control">
                       </div>
                     </div>
-                    <div class="col-3">
+                    <!-- <div class="col-3">
                       <div class="form-group">
                         <label for="">Saldo Tahun Lalu</label>
                         <input type="number" name="saldo" class="form-control">
                       </div>
-                    </div>
+                    </div> -->
                     <div class="col-2 align-self-center">
                       <div class="form-group">
                         <input type="submit" name="submit" class="btn btn-primary" value="Simpan">
@@ -111,6 +111,7 @@
                   <tbody>
                     <?php
                     $no = 0;
+                    $saldo_sebelum = 0;
                     foreach ($rkas_rencana as $rr) {
                     ?>
                       <tr>
@@ -118,8 +119,8 @@
                         <td><?= $rr['jumlah_siswa']; ?></td>
                         <td><?= number_format($rr['dana_siswa'], 0, '.', '.'); ?></td>
                         <td><?= number_format($rr['total'], 0, ',', '.'); ?></td>
-                        <td><?= number_format($rr['saldo_tahun_lalu'], 0, '.', '.'); ?></td>
-                        <td><?= number_format($rr['total'] + $rr['saldo_tahun_lalu'], 0, ',', '.'); ?></td>
+                        <td><?= number_format($saldo_sebelum, 0, '.', '.'); ?></td>
+                        <td><?= number_format($rr['total'] + $saldo_sebelum, 0, ',', '.'); ?></td>
                         <td>
                           <!-- <a href="#" data-toggle="modal" data-target="#exampleModal<?= $no; ?>" class="btn btn-default">Ubah</a> -->
                           <a href="hapus_rencana.php?rencana=<?= $rr['id_bos_rkas_rencana']; ?>&tahun=<?= $rr['tahun']; ?>" class="btn btn-danger" onclick="return confirm('Akan menghapus data ini ?')">Hapus</a>
@@ -172,6 +173,7 @@
                       </div>
                     <?php
                       $no++;
+                      $saldo_sebelum += $rr['total'];
                     }
                     ?>
                     <?php
@@ -203,7 +205,7 @@
                       <input type="submit" value="Submit" name="submit" class="btn btn-primary">
                     </div>
                     <div class="col-2 align-self-center">
-                      <a href="tambah.php" class="btn btn-primary">Tambah Data</a>
+                      <a href="tambah.php" class="btn btn-info">Tambah Data</a>
                     </div>
                   </div>
                 </form>
@@ -219,7 +221,7 @@
                       <th>Nama Program</th>
                       <th>Persentase</th>
                       <th>Jumlah</th>
-                      <th>Persentase Rencana Dana Digunakan</th>
+                      <!-- <th>Persentase Rencana Dana Digunakan</th> -->
                       <th>Rencana Dana Digunakan</th>
                       <th>Aksi</th>
                     </thead>
@@ -243,7 +245,7 @@
                           <td><?= $st['nama_program']; ?></td>
                           <td><?= $st['persentase']; ?>%</td>
                           <td>Rp.<?= number_format($dana, 0, '.', '.'); ?></td>
-                          <td><?= round(($dana_rencana[0]['jumlah'] / ($rkas_rencana1[0]['total'] + $rkas_rencana1[0]['saldo_tahun_lalu'])) * 100, 2); ?>%</td>
+                          <!-- <td><?= round(($dana_rencana[0]['jumlah'] / ($rkas_rencana1[0]['total'] + $rkas_rencana1[0]['saldo_tahun_lalu'])) * 100, 2); ?>%</td> -->
                           <td>Rp.<?= number_format($dana_rencana[0]['jumlah'], 0, '.', '.'); ?></td>
                           <td>
                             <a href="detail_perencanaan.php?tahun=<?= $rkas_rencana1[0]['tahun']; ?>&standar=<?= $st['idsnp']; ?>" class="btn btn-default">Detail</a>
