@@ -83,6 +83,7 @@
                   <th>Uraian</th>
                   <th>Jumlah</th>
                   <th>Aksi Uraian</th>
+                  <th>Foto</th>
                   <th>Aksi Sub Program</th>
                 </tr>
               </thead>
@@ -148,7 +149,6 @@
                                       <label for="">Jumlah</label>
                                       <input type="number" name="jumlah" class="form-control" value="<?= $rk2['jumlah'] ?>" required>
                                     </div>
-
                                   </div>
                                   <div class="modal-footer">
                                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -159,6 +159,7 @@
                             </div>
                           </div>
                         </td>
+                        <td><img src="<?= $url; ?>assets/uploads/<?= $rk2['foto'] ?>" width="100px" alt=""></td>
                         <?php
                         if ($no == 0) {
                         ?>

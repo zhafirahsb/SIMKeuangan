@@ -28,7 +28,7 @@
         <div class="card">
           <div class="card-block">
             <h4><u>Form Tambah Data Pengeluaran BOS</u></h4>
-            <form class="mt-5" action="" method="POST">
+            <form class="mt-5" action="" method="POST" enctype="multipart/form-data">
               <input type="hidden" name="realisasi" value="<?= @$id_realisasi; ?>">
               <input type="hidden" name="detail" value="<?= @$detail_realisasi; ?>">
               <div class="form-group row">

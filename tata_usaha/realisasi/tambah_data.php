@@ -13,6 +13,11 @@ if (isset($_POST['submit'])) {
     // 'tahun_ajaran' => $_POST['tanggal'],
   );
 
+  // print_r($realisasi);
+
+  // print_r($_FILES['upload']['name'][0]);
+  // die;
+
   $cek = $crud->read_data('bos_realisasi_rekapitulasi', ['idsnp' => $realisasi['idsnp'], 'sub_program_id' => $realisasi['sub_program_id'], 'tahun_ajaran' => $realisasi['tahun_ajaran']]);
 
   if (!$cek) {
@@ -21,9 +26,11 @@ if (isset($_POST['submit'])) {
     $realisasi_id = $cek[0]['id_bos_realisasi_rekapitulasi'];
   }
 
+  $target_dir = "../../assets/uploads/";
 
   for ($i = 0; $i < count($_POST['kode']); $i++) {
     # code...
+
     $detail_realisasi = array(
       'relasi_id' => $realisasi_id,
       'no_kode' => $_POST['kode'][$i],
@@ -32,6 +39,13 @@ if (isset($_POST['submit'])) {
       'jumlah' => $_POST['jumlah'][$i],
       'tanggal' => $_POST['tanggal'][$i],
     );
+
+    $target_file = $target_dir .  basename($_FILES["upload"]["name"][$i]);
+    $temp = explode(".", $_FILES["upload"]["name"][$i]);
+    $newfilename = round(microtime(true)) . '.' . end($temp);
+    if (move_uploaded_file($_FILES["upload"]["tmp_name"][$i], $target_dir . $newfilename)) {
+      $detail_realisasi['foto'] = $newfilename;
+    }
 
     $crud->simpan('bos_realisasi_detail_komponen', $detail_realisasi);
   }
