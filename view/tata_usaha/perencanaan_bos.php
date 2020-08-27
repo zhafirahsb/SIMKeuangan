@@ -119,7 +119,8 @@
                         <td><?= $rr['jumlah_siswa']; ?></td>
                         <td><?= number_format($rr['dana_siswa'], 0, '.', '.'); ?></td>
                         <td><?= number_format($rr['total'], 0, ',', '.'); ?></td>
-                        <td><?= number_format($saldo_sebelum, 0, '.', '.'); ?></td>
+                        <!-- <td><?= number_format($saldo_sebelum, 0, '.', '.'); ?></td> -->
+                        <td></td>
                         <td><?= number_format($rr['total'] + $saldo_sebelum, 0, ',', '.'); ?></td>
                         <td>
                           <!-- <a href="#" data-toggle="modal" data-target="#exampleModal<?= $no; ?>" class="btn btn-default">Ubah</a> -->
@@ -267,11 +268,11 @@
                                 <div class="modal-body">
                                   <div class="form-group">
                                     <label for="">Nama Program</label>
-                                    <input type="text" name="program" class="form-control" value="<?= $st['nama_program']; ?>" required>
+                                    <input type="text" readonly name="program" class="form-control" value="<?= $st['nama_program']; ?>" required>
                                   </div>
                                   <div class="form-group">
                                     <label for="">Persentase</label>
-                                    <input type="text" name="persentase" class="form-control" value="<?= $st['persentase']; ?>" required>
+                                    <input type="number" name="persentase" class="form-control" value="<?= $st['persentase']; ?>" required>
 
                                   </div>
                                 </div>

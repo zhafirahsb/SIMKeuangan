@@ -97,8 +97,8 @@
                       ?>
                       <tr>
                         <td colspan="2">Total Dana</td>
-                        <td>Rp.<?= number_format($jumlah1, 0, '.', '.');  ?></td>
                         <td>Rp.<?= number_format($jumlah2, 0, '.', '.');  ?></td>
+                        <td>Rp.<?= number_format($jumlah1, 0, '.', '.');  ?></td>
                       </tr>
                     </tbody>
                   </table>
