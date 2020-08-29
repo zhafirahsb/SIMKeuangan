@@ -13,10 +13,13 @@ if (isset($_POST['submit'])) {
     // 'tahun_ajaran' => $_POST['tanggal'],
   );
 
-  // print_r($realisasi);
-
-  // print_r($_FILES['upload']['name'][0]);
-  // die;
+  for ($i = 0; $i < count($_POST['kode']); $i++) {
+    if (empty($_POST['kode'][$i]) || !is_numeric($_POST['kode'][$i]) || empty($_POST['bukti'][$i]) || !is_numeric($_POST['bukti'][$i]) || empty($_POST['uraian'][$i]) || empty($_POST['jumlah'][$i]) || !is_numeric($_POST['jumlah'][$i]) || empty($_POST['tanggal'][$i])) {
+      $_SESSION['notice'] = 'Data yang Anda masukan salah !';
+      header('Location:' . $url . 'tata_usaha/realisasi/tambah_data.php');
+      exit;
+    }
+  }
 
   $cek = $crud->read_data('bos_realisasi_rekapitulasi', ['idsnp' => $realisasi['idsnp'], 'sub_program_id' => $realisasi['sub_program_id'], 'tahun_ajaran' => $realisasi['tahun_ajaran']]);
 

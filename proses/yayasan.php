@@ -103,6 +103,13 @@ function tambah_rencana_pengeluaran_yys()
   $volume = $_POST['volume'];
   $jumlah = $_POST['jumlah'];
   $total = $_POST['total'];
+
+  if (!is_numeric($jenis)) {
+    $_SESSION['notice'] = 'Data yang Anda masukan salah !';
+    header('Location:' . $url . 'view/bendahara/perencanaan_yayasan_tambah.php?tahun=' . $_POST['tahun']);
+    exit;
+  }
+
   if ($jenis == '0') {
     $data = array();
     $no = 0;
@@ -117,10 +124,16 @@ function tambah_rencana_pengeluaran_yys()
         'nilai_volume' => $jumlah_volume[$no],
         'volume' => $volume[$no],
         'jumlah' => $jumlah[$no],
-        'total' => $total[$no]
+        'total' => $total[$no],
+        'id_user' => $_SESSION['login'][1],
+        'dibuat_tanggal' => date('Y-m-d'),
       );
-      // var_dump($data);
-      // die;
+      if (empty($data['uraian']) || empty($data['nilai_satuan']) || empty($data['nilai_satuan']) || empty($data['nilai_volume']) || empty($data['jumlah']) || empty($data['total'])) {
+        $_SESSION['notice'] = 'Data yang Anda masukan salah !';
+        header('Location:' . $url . 'view/bendahara/perencanaan_yayasan_tambah.php?tahun=' . $_POST['tahun']);
+        exit;
+      }
+
       simpan_data('yayasan_detail_rencana_pengeluaran', $data);
       $no++;
     }
@@ -140,8 +153,15 @@ function tambah_rencana_pengeluaran_yys()
         'nilai_volume' => $jumlah_volume[$no],
         'volume' => $volume[$no],
         'jumlah' => $jumlah[$no],
-        'total' => $total[$no]
+        'total' => $total[$no],
+        'id_user' => $_SESSION['login'][1],
+        'dibuat_tanggal' => date('Y-m-d'),
       );
+      if (empty($data['uraian']) || empty($data['nilai_satuan']) || empty($data['nilai_satuan']) || empty($data['nilai_volume']) || empty($data['jumlah']) || empty($data['total'])) {
+        $_SESSION['notice'] = 'Data yang Anda masukan salah !';
+        header('Location:' . $url . 'view/bendahara/perencanaan_yayasan_tambah.php?tahun=' . $_POST['tahun']);
+        exit;
+      }
       simpan_data('yayasan_detail_rencana_pengeluaran', $data);
       $no++;
     }
@@ -161,8 +181,15 @@ function tambah_rencana_pengeluaran_yys()
         'nilai_volume' => $jumlah_volume[$no],
         'volume' => $volume[$no],
         'jumlah' => $jumlah[$no],
-        'total' => $total[$no]
+        'total' => $total[$no],
+        'id_user' => $_SESSION['login'][1],
+        'dibuat_tanggal' => date('Y-m-d'),
       );
+      if (empty($data['uraian']) || empty($data['nilai_satuan']) || empty($data['nilai_satuan']) || empty($data['nilai_volume']) || empty($data['jumlah']) || empty($data['total'])) {
+        $_SESSION['notice'] = 'Data yang Anda masukan salah !';
+        header('Location:' . $url . 'view/bendahara/perencanaan_yayasan_tambah.php?tahun=' . $_POST['tahun']);
+        exit;
+      }
       simpan_data('yayasan_detail_rencana_pengeluaran', $data);
       $no++;
     }
@@ -180,8 +207,13 @@ function tambah_penerimaan_spp()
       'dibuat_tanggal' => date('Y-m-d H:i:s'),
       'id_user' => $_SESSION['id']
     );
+    if (empty($_POST['uraian']) || !is_numeric($_POST['total']) || empty($_POST['total'])) {
+      $_SESSION['notice1'] = 'Data yang Anda masukan salah !';
+      // header('Location:' . $url . 'view/bendahara/penerimaan_spp.php');
+    } else {
+      return simpan_data('yayasan_penerimaan_spp', $data);
+    }
     // var_dump($data);die;
-    return simpan_data('yayasan_penerimaan_spp', $data);
   }
 }
 

@@ -11,6 +11,11 @@ if (isset($_POST['submit'])) {
     "tanggal='" . $_POST['tanggal'] . "'",
     "jumlah='" . $_POST['jumlah'] . "'",
   );
+  if (empty($_POST['tanggal']) || empty($_POST['uraian']) || empty($_POST['jenis']) || empty($_POST['jumlah']) || !is_numeric($_POST['jumlah'])) {
+    $_SESSION['notice'] = 'Data yang Anda masukan salah !';
+    header('Location:' . $url . 'view/bendahara/pengeluaran_yayasan_form.php?id=' . $_POST['id']);
+    exit;
+  }
   $crud->update('yayasan_realisasi_pengeluaran', $data, 'id_yayasan_realisasi_pengeluaran', $_POST['id']);
   header('Location:' . $url . 'view/bendahara/pengeluaran_yayasan.php');
 }

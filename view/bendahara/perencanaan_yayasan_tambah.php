@@ -40,12 +40,25 @@ require('../_template/sidebar.php');
     <div class="card">
       <div class="card-block">
         <h4>Tambah Rencana Pengeluaran Dana Yayasan</h4>
+        <?php
+        if (isset($_SESSION['notice'])) {
+        ?>
+          <div class="alert alert-danger alert-dismissible fade show" role="alert">
+            <?= $_SESSION['notice']; ?>
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+        <?php
+          unset($_SESSION['notice']);
+        }
+        ?>
         <form action="" method="post">
           <input type="hidden" name="tahun" class="form-control" id="tahun" value="<?= $_GET['tahun'] ?>">
           <div class="form-group row mt-3">
             <label class="col-sm-3 col-form-label">Jenis Biaya</label>
             <div class="col-sm-9">
-              <select name="jenis" id="jenis" class="form-control" onchange="pilihjenis()" required>
+              <select name="jenis" id="jenis" class="form-control" onchange="pilihjenis()">
                 <option value="">~ Pilih Biaya ~</option>
                 <?php $no = 0;
                 foreach ($biaya as $b) { ?>
@@ -85,7 +98,7 @@ require('../_template/sidebar.php');
               <tr>
                 <td>
                   <div id="isidetailnya">
-                    <select name="detail_uraian[]" id="detail_uraian" class="form-control" required>
+                    <select name="detail_uraian[]" id="detail_uraian" class="form-control">
                       <option value="">~ Pilih Biaya ~</option>
                     </select>
                   </div>

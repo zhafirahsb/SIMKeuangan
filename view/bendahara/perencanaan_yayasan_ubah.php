@@ -1,15 +1,16 @@
-<?php 
+<?php
 session_start();
-require('../../url.php'); 
-require('../../proses/yayasan.php'); 
-require('../_template/head.php'); 
+require('../../url.php');
+require('../../proses/yayasan.php');
+require('../_template/head.php');
 require('../_template/header.php');
 require('../_template/sidebar.php');
-$biaya = ['Biaya Gaji / Honor','Biaya Bantuan'];
-$gaji = ['Honor Guru Tetap','Honor Guru Tidak Tetap','Honor Guru DPK','Tunjangan','Honor Pegawai'];
-$bantuan = ['Bantuan Sosial Siswa','Bantuan Hadiah','BPJS Kesehatan Kasek','BPJS Kesehatan Guru','BPJS Ketenagakerjaan','Seragam','THR'];
+$biaya = ['Biaya Gaji / Honor', 'Biaya Bantuan'];
+$gaji = ['Honor Guru Tetap', 'Honor Guru Tidak Tetap', 'Honor Guru DPK', 'Tunjangan', 'Honor Pegawai'];
+$bantuan = ['Bantuan Sosial Siswa', 'Bantuan Hadiah', 'BPJS Kesehatan Kasek', 'BPJS Kesehatan Guru', 'BPJS Ketenagakerjaan', 'Seragam', 'THR'];
 $id = $_GET['id'];
-$detail_uraian = get_uraian_rencana(['id_yayasan_detail_rencana_pengeluaran'=>$id]);
+$tahun = $_GET['tahun'];
+$detail_uraian = get_uraian_rencana(['id_yayasan_detail_rencana_pengeluaran' => $id]);
 ?>
 <div class="page-wrapper">
   <!-- Container fluid  -->
@@ -28,8 +29,20 @@ $detail_uraian = get_uraian_rencana(['id_yayasan_detail_rencana_pengeluaran'=>$i
     <div class="card">
       <div class="card-block">
         <h4>Ubah Rencana Pengeluaran Dana Yayasan</h4>
-        <form action="" method="POST">
-          
+        <?php
+        if (isset($_SESSION['notice'])) {
+        ?>
+          <div class="alert alert-danger alert-dismissible fade show" role="alert">
+            <?= $_SESSION['notice']; ?>
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+        <?php
+          unset($_SESSION['notice']);
+        }
+        ?>
+        <form action="<?= $url; ?>bendahara/yayasan/perencanaan/ubah_pengeluaran.php" method="POST">
           <table class="table table-bordered">
             <thead>
               <tr class="text-center">
@@ -41,14 +54,16 @@ $detail_uraian = get_uraian_rencana(['id_yayasan_detail_rencana_pengeluaran'=>$i
               </tr>
             </thead>
             <tbody id="datanya">
+              <input type="hidden" name="detail_rencana" value="<?= $id; ?>">
+              <input type="hidden" name="tahun" value="<?= $tahun; ?>">
               <tr>
-                <td><input type="text" name="detail_uraian" class="form-control" id="" value="<?=$detail_uraian[0]['uraian']?>"></td>
-                <td><input type="number" name="jumlah_satuan" class="form-control" id="" value="<?=$detail_uraian[0]['nilai_satuan']?>"></td>
-                <td><input type="text" name="satuan" class="form-control" id="" value="<?=$detail_uraian[0]['satuan']?>"></td>
-                <td><input type="number" name="jumlah_volume" class="form-control" id="" value="<?=$detail_uraian[0]['nilai_volume']?>"></td>
-                <td><input type="text" name="volume" class="form-control" id="" value="<?=$detail_uraian[0]['volume']?>"></td>
-                <td><input type="number" name="jumlah" class="form-control" id="" value="<?=$detail_uraian[0]['jumlah']?>"></td>
-                <td><input type="number" name="total" class="form-control" id="" value="<?=$detail_uraian[0]['total']?>"></td>
+                <td><input type="text" name="detail_uraian" class="form-control" id="" value="<?= $detail_uraian[0]['uraian'] ?>"></td>
+                <td><input type="number" name="jumlah_satuan" class="form-control" id="" value="<?= $detail_uraian[0]['nilai_satuan'] ?>"></td>
+                <td><input type="text" readonly name="satuan" class="form-control" id="" value="<?= $detail_uraian[0]['satuan'] ?>"></td>
+                <td><input type="number" name="jumlah_volume" class="form-control" id="" value="<?= $detail_uraian[0]['nilai_volume'] ?>"></td>
+                <td><input type="text" readonly name="volume" class="form-control" id="" value="<?= $detail_uraian[0]['volume'] ?>"></td>
+                <td><input type="number" name="jumlah" class="form-control" id="" value="<?= $detail_uraian[0]['jumlah'] ?>"></td>
+                <td><input type="number" readonly class="form-control" id="" value="<?= $detail_uraian[0]['total'] ?>"></td>
               </tr>
             </tbody>
           </table>

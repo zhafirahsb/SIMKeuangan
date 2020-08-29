@@ -28,6 +28,19 @@
         <div class="card">
           <div class="card-block">
             <h4><u>Form Ubah Realisasi Pendapatan BOS</u></h4>
+            <?php
+            if (isset($_SESSION['notice1'])) {
+            ?>
+              <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                <?= $_SESSION['notice1']; ?>
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+            <?php
+              unset($_SESSION['notice1']);
+            }
+            ?>
             <form action="" method="post">
               <input type="hidden" name="realisasi" value="<?= $pendapatan[0]['id_bos_realisasi_pendapatan']; ?>">
               <div class="row">
@@ -48,7 +61,7 @@
                 <div class="col-4">
                   <div class="form-group">
                     <label>Jumlah Dana</label>
-                    <input type="number" name="jumlah_dana" class="form-control" value="<?= $pendapatan[0]['nominal']; ?>">
+                    <input type="text" name="jumlah_dana" class="form-control" value="<?= $pendapatan[0]['nominal']; ?>">
                   </div>
                 </div>
                 <div class="col-1 align-self-center">

@@ -28,19 +28,32 @@ $jenis = $crud->query("SELECT DISTINCT(jenis_biaya) FROM yayasan_rencana_pengelu
     <div class="card">
       <div class="card-block">
         <h4><u>Pengeluaran Dana Yayasan</u></h4>
+        <?php
+        if (isset($_SESSION['notice'])) {
+        ?>
+          <div class="alert alert-danger alert-dismissible fade show" role="alert">
+            <?= $_SESSION['notice']; ?>
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+        <?php
+          unset($_SESSION['notice']);
+        }
+        ?>
         <form action="<?= $url; ?>bendahara/yayasan/pengeluaran/ubah_pengeluaran.php" method="post">
           <input type="hidden" name="id" value="<?= $pengeluaran[0]['id_yayasan_realisasi_pengeluaran']; ?>">
           <div class="form-group">
             <label for="">Tanggal</label>
-            <input type="date" name="tanggal" class="form-control" value="<?= $pengeluaran[0]['tanggal']; ?>" required>
+            <input type="date" name="tanggal" class="form-control" value="<?= $pengeluaran[0]['tanggal']; ?>">
           </div>
           <div class="form-group">
             <label for="">Uraian</label>
-            <input type="text" name="uraian" class="form-control" value="<?= $pengeluaran[0]['uraian']; ?>" required>
+            <input type="text" name="uraian" class="form-control" value="<?= $pengeluaran[0]['uraian']; ?>">
           </div>
           <div class="form-group">
             <label for="">Jenis Biaya</label>
-            <select name="jenis" class="form-control" id="" required>
+            <select name="jenis" class="form-control" id="">
               <option value="">Pilih</option>
               <?php
               foreach ($jenis as $j) {
@@ -53,7 +66,7 @@ $jenis = $crud->query("SELECT DISTINCT(jenis_biaya) FROM yayasan_rencana_pengelu
           </div>
           <div class=" form-group">
             <label for="">Jumlah</label>
-            <input type="number" name="jumlah" class="form-control" value="<?= $pengeluaran[0]['jumlah']; ?>" required>
+            <input type="number" name="jumlah" class="form-control" value="<?= $pengeluaran[0]['jumlah']; ?>">
           </div>
           <a href=" <?= $url; ?>view/bendahara/pengeluaran_yayasan.php" class="btn btn-secondary">Batal</a>
           <input type="submit" class="btn btn-primary" name="submit" value="Simpan">

@@ -1,6 +1,26 @@
 <?php
 session_start();
 require('../../url.php');
+require('../../model/crud.php');
+if (isset($_POST['submit'])) {
+  $crud = new Crud;
+  $data = array(
+    'uraian' => $_POST['uraian'],
+    'total' => $_POST['total'],
+    'tanggal' => $_POST['tanggal'],
+    'dibuat_tanggal' => date('Y-m-d H:i:s'),
+    'id_user' => $_SESSION['id']
+  );
+  if (empty($_POST['tanggal']) || empty($_POST['uraian']) || !is_numeric($_POST['total']) || empty($_POST['total'])) {
+    $_SESSION['notice1'] = 'Data yang Anda masukan salah !';
+    header('Location:' . $url . 'view/bendahara/penerimaan_spp.php');
+    exit;
+  }
+  // else {
+  //   return simpan_data('yayasan_penerimaan_spp', $data);
+  // }
+  $crud->simpan('yayasan_penerimaan_spp', $data);
+}
 require('../../proses/yayasan.php');
 require('../_template/head.php');
 require('../_template/header.php');
@@ -36,29 +56,42 @@ require('../_template/sidebar.php');
     <div class="card">
       <div class="card-block">
         <h4><u>Penerimaan SPP</u></h4>
+        <?php
+        if (isset($_SESSION['notice1'])) {
+        ?>
+          <div class="alert alert-danger alert-dismissible fade show" role="alert">
+            <?= $_SESSION['notice1']; ?>
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+        <?php
+          unset($_SESSION['notice1']);
+        }
+        ?>
         <form action="" method="POST">
           <div class="row mt-3">
             <div class="col-2">
               <div class="form-group">
                 <label for="">Tanggal</label>
-                <input type="date" class="form-control" name="tanggal" required>
+                <input type="date" class="form-control" name="tanggal">
               </div>
             </div>
             <div class="col-5">
               <div class="form-group">
                 <label for="">Uraian</label>
-                <input type="text" class="form-control" name="uraian" required>
+                <input type="text" class="form-control" name="uraian">
               </div>
             </div>
             <div class="col-3">
               <div class="form-group">
                 <label for="">Total (Rp)</label>
-                <input type="text" class="form-control" name="total" required>
+                <input type="text" class="form-control" name="total">
               </div>
             </div>
             <div class="col-1 align-self-center">
               <div class="form-group">
-                <input type="submit" name="submit" value="Tambah" class="mt-4 mr-5 btn btn-default" onclick="<?php tambah_penerimaan_spp(); ?>">
+                <input type="submit" name="submit" value="Tambah" class="mt-4 mr-5 btn btn-default">
               </div>
             </div>
           </div>

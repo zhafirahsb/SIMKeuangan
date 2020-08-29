@@ -55,6 +55,19 @@
             <div class="card">
               <div class="card-block">
                 <h4 class="mb-3">Detail Rencana Pengeluaran</h4>
+                <?php
+                if (isset($_SESSION['notice'])) {
+                ?>
+                  <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                    <?= $_SESSION['notice']; ?>
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+                <?php
+                  unset($_SESSION['notice']);
+                }
+                ?>
                 <div class="form-group row mt-3">
                   <label class="col-sm-2 col-form-label">Tahun Ajaran</label>
                   <div class="col-sm-10">
@@ -140,7 +153,7 @@
                                         </div>
                                         <div class="form-group">
                                           <label for="">Jumlah</label>
-                                          <input type="number" name="jumlah" class="form-control" value="<?= $rk2['jumlah'] ?>" required>
+                                          <input type="text" name="jumlah" class="form-control" value="<?= $rk2['jumlah'] ?>">
                                         </div>
 
                                       </div>

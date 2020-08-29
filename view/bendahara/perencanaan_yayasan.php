@@ -36,6 +36,19 @@ if (isset($_GET['tahun'])) {
         <div class="card">
           <div class="card-block">
             <h4 class="mb-5"><u>Perencanaan Dana Yayasan (Pendapatan)</u></h4>
+            <?php
+            if (isset($_SESSION['notice'])) {
+            ?>
+              <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                <?= $_SESSION['notice']; ?>
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+            <?php
+              unset($_SESSION['notice']);
+            }
+            ?>
             <form action="" method="POST">
               <div class="row">
                 <div class="col-2">
@@ -110,7 +123,7 @@ if (isset($_GET['tahun'])) {
                               <div class="modal-body">
                                 <div class="form-group">
                                   <label for="">Tahun</label>
-                                  <select name="tahun" class="form-control" required>
+                                  <select name="tahun" class="form-control">
                                     <option value="">Pilih Tahun</option>
                                     <?php
                                     for ($i = 2017; $i <= date('Y'); $i++) { ?>
@@ -121,15 +134,15 @@ if (isset($_GET['tahun'])) {
                                 </div>
                                 <div class="form-group">
                                   <label for="">Keterangan</label>
-                                  <input type="text" name="keterangan" class="form-control" value="<?= $p['keterangan']; ?>" required>
+                                  <input type="text" name="keterangan" class="form-control" value="<?= $p['keterangan']; ?>">
                                 </div>
                                 <div class="form-group">
                                   <label for="">Jumlah Siswa</label>
-                                  <input type="number" name="siswa" class="form-control" value="<?= $p['jumlah_siswa']; ?>" required>
+                                  <input type="number" name="siswa" class="form-control" value="<?= $p['jumlah_siswa']; ?>">
                                 </div>
                                 <div class="form-group">
                                   <label for="">Jumlah Iuran</label>
-                                  <input type="number" name="iuran" class="form-control" value="<?= $p['jumlah_iuran']; ?>" required>
+                                  <input type="number" name="iuran" class="form-control" value="<?= $p['jumlah_iuran']; ?>">
                                 </div>
                               </div>
                               <div class="modal-footer">
@@ -198,6 +211,19 @@ if (isset($_GET['tahun'])) {
                 </div>
               </div>
             </form>
+            <?php
+            if (isset($_SESSION['notice1'])) {
+            ?>
+              <div class="alert alert-<?= $_SESSION['notice1'][0] == true ? 'success' : 'danger'; ?> alert-dismissible fade show" role="alert">
+                <?= $_SESSION['notice1'][1]; ?>
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+            <?php
+              unset($_SESSION['notice1']);
+            }
+            ?>
             <h4 class="text-center mb-3">Rencana Pengeluaran SMP Muhammadiyah 19 T.A. <?= $tahun; ?></h4>
             <table class="table table-bordered mt-3" id="example">
               <thead>
@@ -242,8 +268,8 @@ if (isset($_GET['tahun'])) {
                             <td><?= $u['nilai_volume'] . ' ' . $u['volume'] ?></td>
                             <td><?= 'Rp ' . $u['jumlah'] ?></td>
                             <td><?= 'Rp ' . $u['total'] ?></td>
-                            <td><a href="<?= $url; ?>view/bendahara/perencanaan_yayasan_ubah.php?id=<?= $u['id_yayasan_detail_rencana_pengeluaran'] ?>" class="btn btn-warning">ubah</a>
-                              <a href="<?= $url; ?>view/bendahara/perencanaan_yayasan_hapus.php?id=<?= $u['id_yayasan_detail_rencana_pengeluaran'] ?>" class="btn btn-danger">Hapus</a></td>
+                            <td><a href="<?= $url; ?>view/bendahara/perencanaan_yayasan_ubah.php?id=<?= $u['id_yayasan_detail_rencana_pengeluaran'] ?>&tahun=<?= $tahun; ?>" class="btn btn-warning">ubah</a>
+                              <a href="<?= $url; ?>view/bendahara/perencanaan_yayasan_hapus.php?id=<?= $u['id_yayasan_detail_rencana_pengeluaran'] ?>" onclick="return confirm('Akan menghapus data ini ?')" class="btn btn-danger">Hapus</a></td>
 
                           </tr>
                         <?php
@@ -278,8 +304,8 @@ if (isset($_GET['tahun'])) {
                                 <td><?= $u['nilai_volume'] . ' ' . $u['volume'] ?></td>
                                 <td><?= 'Rp ' . $u['jumlah'] ?></td>
                                 <td><?= 'Rp ' . $u['total'] ?></td>
-                                <td><a href="<?= $url; ?>view/bendahara/perencanaan_yayasan_ubah.php?id=<?= $u['id_yayasan_detail_rencana_pengeluaran'] ?>" class="btn btn-warning">ubah</a>
-                                  <a href="<?= $url; ?>view/bendahara/perencanaan_yayasan_hapus.php?id=<?= $u['id_yayasan_detail_rencana_pengeluaran'] ?>" class="btn btn-danger">Hapus</a></td>
+                                <td><a href="<?= $url; ?>view/bendahara/perencanaan_yayasan_ubah.php?id=<?= $u['id_yayasan_detail_rencana_pengeluaran'] ?>&tahun=<?= $tahun; ?>" class="btn btn-warning">ubah</a>
+                                  <a href="<?= $url; ?>view/bendahara/perencanaan_yayasan_hapus.php?id=<?= $u['id_yayasan_detail_rencana_pengeluaran'] ?>" onclick="return confirm('Akan menghapus data ini ?')" class="btn btn-danger">Hapus</a></td>
                               </tr>
                             <?php
                               $k++;
@@ -318,8 +344,8 @@ if (isset($_GET['tahun'])) {
                                 <td><?= $u['nilai_volume'] . ' ' . $u['volume'] ?></td>
                                 <td><?= 'Rp ' . $u['jumlah'] ?></td>
                                 <td><?= 'Rp ' . $u['total'] ?></td>
-                                <td><a href="<?= $url; ?>view/bendahara/perencanaan_yayasan_ubah.php?id=<?= $u['id_yayasan_detail_rencana_pengeluaran'] ?>" class="btn btn-warning">ubah</a>
-                                  <a href="<?= $url; ?>view/bendahara/perencanaan_yayasan_hapus.php?id=<?= $u['id_yayasan_detail_rencana_pengeluaran'] ?>" class="btn btn-danger">Hapus</a></td>
+                                <td><a href="<?= $url; ?>view/bendahara/perencanaan_yayasan_ubah.php?id=<?= $u['id_yayasan_detail_rencana_pengeluaran'] ?>&tahun=<?= $tahun; ?>" class="btn btn-warning">ubah</a>
+                                  <a href="<?= $url; ?>view/bendahara/perencanaan_yayasan_hapus.php?id=<?= $u['id_yayasan_detail_rencana_pengeluaran'] ?>" onclick="return confirm('Akan menghapus data ini ?')" class="btn btn-danger">Hapus</a></td>
                               </tr>
                   <?php
                               $l++;
@@ -362,7 +388,7 @@ if (isset($_GET['tahun'])) {
           <div class="modal-body">
             <div class="form-group">
               <label for="">Tahun</label>
-              <select name="tahun" class="form-control" required>
+              <select name="tahun" class="form-control">
                 <option value="">Pilih Tahun</option>
                 <?php
                 for ($i = 2017; $i <= date('Y'); $i++) { ?>
@@ -373,15 +399,15 @@ if (isset($_GET['tahun'])) {
             </div>
             <div class="form-group">
               <label for="">Keterangan</label>
-              <input type="text" name="keterangan" class="form-control" required>
+              <input type="text" name="keterangan" class="form-control">
             </div>
             <div class="form-group">
               <label for="">Jumlah Siswa</label>
-              <input type="number" name="siswa" class="form-control" required>
+              <input type="number" name="siswa" class="form-control">
             </div>
             <div class="form-group">
               <label for="">Jumlah Iuran</label>
-              <input type="number" name="iuran" class="form-control" required>
+              <input type="number" name="iuran" class="form-control">
             </div>
           </div>
           <div class="modal-footer">

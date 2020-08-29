@@ -88,12 +88,25 @@
             <div class="card">
               <div class="card-block">
                 <h3><u>Perencanaan Dana BOS (Belanja)</u></h3>
+                <?php
+                if (isset($_SESSION['notice'])) {
+                ?>
+                  <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                    <?= $_SESSION['notice']; ?>
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+                <?php
+                  unset($_SESSION['notice']);
+                }
+                ?>
                 <form action="" method="POST">
                   <input type="hidden" name="tipe" value="belanja">
                   <div class="form-group row mt-3">
                     <label class="col-sm-2 col-form-label">Tahun Ajaran</label>
                     <div class="col-sm-10">
-                      <select name="tahun_ajaran" class="form-control" required>
+                      <select name="tahun_ajaran" class="form-control">
                         <option value="">Tahun Ajaran</option>
                         <?php
                         foreach ($dana as $d) {
@@ -111,6 +124,7 @@
                     <label for="" class="col-sm-2 col-form-label">Standar Nasional</label>
                     <div class="col-sm-10">
                       <select name="nama_program" class="form-control mt-2">
+                        <option value="">Pilih Standar Nasional</option>
                         <?php foreach ($standar as $st) { ?>
                           <option value="<?= $st['idsnp']; ?>"><?= $st['nama_program']; ?></option>
                         <?php } ?>
@@ -120,7 +134,7 @@
                   <div class="form-group row">
                     <label class="col-sm-2 col-form-label">Sub Program</label>
                     <div class="col-sm-10">
-                      <input type="text" name="sub_program" class="form-control" required>
+                      <input type="text" name="sub_program" class="form-control">
                     </div>
                   </div>
                   <hr>
@@ -134,13 +148,13 @@
                     <div class="form-group row">
                       <label class="col-sm-2 col-form-label">Uraian</label>
                       <div class="col-sm-10">
-                        <input type="text" name="uraian[]" class="form-control" required>
+                        <input type="text" name="uraian[]" class="form-control">
                       </div>
                     </div>
                     <div class="form-group row">
                       <label class="col-sm-2 col-form-label">Jumlah</label>
                       <div class="col-sm-10">
-                        <input type="number" name="jumlah[]" class="form-control" required>
+                        <input type="text" name="jumlah[]" class="form-control">
                       </div>
                     </div>
                   </div>
@@ -167,13 +181,13 @@
         <div class="form-group row">
           <label class="col-sm-2 col-form-label">Uraian</label>
           <div class="col-sm-10">
-            <input type="text" name="uraian[]" class="form-control" required>
+            <input type="text" name="uraian[]" class="form-control">
           </div>
         </div>
         <div class="form-group row">
           <label class="col-sm-2 col-form-label">Jumlah</label>
           <div class="col-sm-10">
-            <input type="number" name="jumlah[]" class="form-control" required>
+            <input type="number" name="jumlah[]" class="form-control">
           </div>
         </div>
       `);

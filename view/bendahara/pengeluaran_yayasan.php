@@ -27,6 +27,19 @@ $jenis = $crud->query("SELECT DISTINCT(jenis_biaya) FROM yayasan_rencana_pengelu
     <div class="card">
       <div class="card-block">
         <h4><u>Pengeluaran Dana Yayasan</u></h4>
+        <?php
+        if (isset($_SESSION['notice'])) {
+        ?>
+          <div class="alert alert-danger alert-dismissible fade show" role="alert">
+            <?= $_SESSION['notice']; ?>
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+        <?php
+          unset($_SESSION['notice']);
+        }
+        ?>
         <button class="btn btn-primary mb-3 mt-3" data-toggle="modal" data-target="#exampleModal">Tambah Data</button>
         <table class="table table-bordered mt-3" id="example">
           <thead>
@@ -77,15 +90,15 @@ $jenis = $crud->query("SELECT DISTINCT(jenis_biaya) FROM yayasan_rencana_pengelu
           <div class="modal-body">
             <div class="form-group">
               <label for="">Tanggal</label>
-              <input type="date" name="tanggal" class="form-control" required>
+              <input type="date" name="tanggal" class="form-control">
             </div>
             <div class="form-group">
               <label for="">Uraian</label>
-              <input type="text" name="uraian" class="form-control" required>
+              <input type="text" name="uraian" class="form-control">
             </div>
             <div class="form-group">
               <label for="">Jenis Biaya</label>
-              <select name="jenis" class="form-control" id="" required>
+              <select name="jenis" class="form-control" id="">
                 <option value="">Pilih</option>
                 <?php
                 foreach ($jenis as $j) {
@@ -98,7 +111,7 @@ $jenis = $crud->query("SELECT DISTINCT(jenis_biaya) FROM yayasan_rencana_pengelu
             </div>
             <div class="form-group">
               <label for="">Jumlah</label>
-              <input type="number" name="jumlah" class="form-control" required>
+              <input type="number" name="jumlah" class="form-control">
             </div>
           </div>
           <div class="modal-footer">

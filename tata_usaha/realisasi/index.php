@@ -10,6 +10,11 @@ if (isset($_POST['submit'])) {
     'id_user' => $_SESSION['login'][1],
     'dibuat_tanggal' => date('Y-m-d H:i:s')
   );
+  if (empty($_POST['jumlah_dana']) || !is_numeric($_POST['jumlah_dana'])) {
+    $_SESSION['notice'] = 'Data yang Anda masukan salah !';
+    header('Location:' . $url . 'tata_usaha/realisasi/');
+    exit;
+  }
   $crud->simpan('bos_realisasi_pendapatan', $data);
   header('Location:' . $url . 'tata_usaha/realisasi/');
   exit;

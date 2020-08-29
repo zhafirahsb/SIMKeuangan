@@ -25,7 +25,7 @@ function pilihjenis() {
     // $('#detailisinya').hide();
     // $('#detail_uraian').show();
     var bantuan = "";
-    bantuan += '<select name="detail_uraian[]" id="" class="form-control" required><option value="">~ Pilih Biaya ~</option>';
+    bantuan += '<select name="detail_uraian[]" id="" class="form-control"><option value="">~ Pilih Biaya ~</option>';
     for (let i = 0; i < kategori_bantuan.length; i++) {
       bantuan += '<option>' + kategori_bantuan[i] + '</option>';
     }
@@ -36,7 +36,7 @@ function pilihjenis() {
     $('#masa_kerja').hide();
     $('#sub_jenis').hide();
     // $('#detailisinya').show();
-    document.getElementById('isidetailnya').innerHTML = '<input type="text" name="detail_uraian[]" class="form-control" required>';
+    document.getElementById('isidetailnya').innerHTML = '<input type="text" name="detail_uraian[]" class="form-control">';
   } else {
     $('#masa_kerja').hide();
     $('#sub_jenis').hide();
@@ -70,7 +70,7 @@ $('#pilih_sub_jenis').change(function () {
           console.log(result);
           var objResult = JSON.parse(result);
           var bantuan = "";
-          bantuan += '<select name="detail_uraian[]" id="" class="form-control" required><option value="">~ Pilih Biaya ~</option>';
+          bantuan += '<select name="detail_uraian[]" id="" class="form-control"><option value="">~ Pilih Biaya ~</option>';
           $.each(objResult, function (k, v) {
             data = '<option>' + v.nama + '</option>';
             // var dataHandler = $("#detail_uraian");
@@ -92,7 +92,7 @@ $('#pilih_sub_jenis').change(function () {
         console.log(result);
         var objResult = JSON.parse(result);
         var bantuan = "";
-        bantuan += '<select name="detail_uraian[]" id="" class="form-control" required><option value="">~ Pilih Biaya ~</option>';
+        bantuan += '<select name="detail_uraian[]" id="" class="form-control"><option value="">~ Pilih Biaya ~</option>';
         $.each(objResult, function (k, v) {
           if (sj == 4) {
             data = '<option>' + v + '</option>';
@@ -108,9 +108,6 @@ $('#pilih_sub_jenis').change(function () {
       }
     })
   }
-
-
-
 
   // document.getElementById('detail_uraian').innerHTML=null;
   // // dataHandler.append(null);
@@ -156,7 +153,6 @@ function hitung() {
   var total = satuan * volume * jumlah;
   console.log(total);
   document.getElementById('total').value = total;
-
 }
 
 
@@ -164,7 +160,7 @@ $('#tambah').click(function () {
   console.log('pencet');
   $('#datanya').append(`
     <tr>
-    <td> <select name="detail_uraian[]"  id="detail_uraian" class="form-control" required>
+    <td> <select name="detail_uraian[]"  id="detail_uraian" class="form-control">
             <option value="">~ Pilih Biaya ~</option>
           </select></td>
       <td><input type="number" name="jumlah_satuan[]" class="form-control" id=""></td>

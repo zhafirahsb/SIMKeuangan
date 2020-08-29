@@ -15,6 +15,12 @@ $data = array(
   'id_user' => $_SESSION['login'][1],
 );
 
+if (empty($data['jumlah_siswa']) || empty($data['dana_siswa'])) {
+  $_SESSION['notice'] = 'Data yang Anda masukan salah !';
+  header('Location:' . $url . 'tata_usaha/perencanaan_bos');
+  exit;
+}
+
 $crud->simpan('bos_rkas_rencana', $data);
 $standar = $crud->read_data('tbl_standar_nasional');
 

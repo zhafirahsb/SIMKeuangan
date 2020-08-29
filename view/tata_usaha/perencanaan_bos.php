@@ -55,6 +55,19 @@
             <div class="card">
               <div class="card-block">
                 <p>Rencana Pemasukan</p>
+                <?php
+                if (isset($_SESSION['notice'])) {
+                ?>
+                  <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                    <?= $_SESSION['notice']; ?>
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+                <?php
+                  unset($_SESSION['notice']);
+                }
+                ?>
                 <form action="<?= $url; ?>tata_usaha/perencanaan_bos/rencana.php" method="post">
                   <div class="row">
                     <div class="col-2">
@@ -74,7 +87,7 @@
                     <div class="col-2">
                       <div class="form-group">
                         <label for="">Jumlah Siswa</label>
-                        <input type="number" name="jumlah" class="form-control" required>
+                        <input type="number" name="jumlah" class="form-control">
                       </div>
                     </div>
                     <div class="col-3">
@@ -211,6 +224,17 @@
                   </div>
                 </form>
                 <?php
+                if (isset($_SESSION['notice1'])) {
+                ?>
+                  <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                    <?= $_SESSION['notice1']; ?>
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+                <?php
+                  unset($_SESSION['notice1']);
+                }
                 if (@count($rkas_rencana1) > 0) {
                   // foreach ($rkas_rencana as $rr) {
                 ?>
@@ -268,11 +292,11 @@
                                 <div class="modal-body">
                                   <div class="form-group">
                                     <label for="">Nama Program</label>
-                                    <input type="text" readonly name="program" class="form-control" value="<?= $st['nama_program']; ?>" required>
+                                    <input type="text" readonly name="program" class="form-control" value="<?= $st['nama_program']; ?>">
                                   </div>
                                   <div class="form-group">
                                     <label for="">Persentase</label>
-                                    <input type="number" name="persentase" class="form-control" value="<?= $st['persentase']; ?>" required>
+                                    <input type="text" name="persentase" class="form-control" value="<?= $st['persentase']; ?>">
 
                                   </div>
                                 </div>

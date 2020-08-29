@@ -28,13 +28,26 @@
         <div class="card">
           <div class="card-block">
             <h4><u>Form Tambah Data Pengeluaran BOS</u></h4>
+            <?php
+            if (isset($_SESSION['notice'])) {
+            ?>
+              <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                <?= $_SESSION['notice']; ?>
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+            <?php
+              unset($_SESSION['notice']);
+            }
+            ?>
             <form class="mt-5" action="" method="POST" enctype="multipart/form-data">
               <input type="hidden" name="realisasi" value="<?= @$id_realisasi; ?>">
               <input type="hidden" name="detail" value="<?= @$detail_realisasi; ?>">
               <div class="form-group row">
                 <label class="col-sm-4 col-form-label">Tahun Ajaran</label>
                 <div class="col-sm-8">
-                  <select name="tahun" class="form-control" required>
+                  <select name="tahun" class="form-control">
                     <?php
                     foreach ($pendapatan as $p) {
                     ?>

@@ -9,6 +9,11 @@ if (isset($_POST['submit'])) {
     "total='" . $_POST['total'] . "'",
     "tanggal='" . $_POST['tanggal'] . "'",
   );
+  if (empty($_POST['uraian']) || empty($_POST['total']) || !is_numeric($_POST['total']) || empty($_POST['tanggal'])) {
+    $_SESSION['notice'] = 'Data yang Anda masukan salah !';
+    header('Location:' . $url . 'view/bendahara/penerimaan_spp_ubah.php?id=' . $_POST['id']);
+    exit;
+  }
   $crud->update('yayasan_penerimaan_spp', $data, 'id_yayasan_penerimaan_spp', $_POST['id']);
   header('Location:' . $url . 'view/bendahara/penerimaan_spp.php');
   exit;
@@ -36,6 +41,17 @@ require('../_template/sidebar.php');
       <div class="card-block">
         <h4><u>Penerimaan SPP</u></h4>
         <?php
+        if (isset($_SESSION['notice'])) {
+        ?>
+          <div class="alert alert-danger alert-dismissible fade show" role="alert">
+            <?= $_SESSION['notice']; ?>
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+        <?php
+          unset($_SESSION['notice']);
+        }
         $id = $_GET['id'];
         $data = get_penerimaan_spp($id);
         ?>
@@ -64,7 +80,7 @@ require('../_template/sidebar.php');
               <div class="form-group">
                 <div class="row">
                   <div class="col-6">
-                    <input type="submit" name="submit" value="Simpan" class="mt-4 mr-5 btn btn-primary" onclick="<?php ubah_penerimaan_spp() ?>">
+                    <input type="submit" name="submit" value="Simpan" class="mt-4 mr-5 btn btn-primary">
                   </div>
                   <div class="col-1">
                     <a href="<?= $url; ?>view/bendahara/penerimaan_spp.php" class="mt-4 mr-5 btn btn-default">Batal</a>
