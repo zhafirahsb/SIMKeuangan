@@ -37,12 +37,13 @@ $rkas_rencana = $crud->read_data('bos_rkas_rencana');
             foreach ($rkas_rencana as $rr) {
             ?>
               <p>Tahun Ajaran <?= $rr['tahun']; ?></p>
-              <table class="table table-bordered mt-3" id="">
+              <table class="table table-bordered mt-3 table-striped table-hover" id="">
                 <thead>
                   <th>Kode</th>
                   <th>Nama Program</th>
                   <th>Terealisasi</th>
                   <th>Rencana</th>
+                  <th>Status</th>
                 </thead>
                 <tbody>
                   <?php
@@ -68,15 +69,16 @@ $rkas_rencana = $crud->read_data('bos_rkas_rencana');
                       <td><?= $st['nama_program']; ?></td>
                       <td>Rp.<?= number_format($dana_realisasi[0]['jumlah'], 0, '.', '.'); ?></td>
                       <td>Rp.<?= number_format($dana_rencana[0]['jumlah'], 0, '.', '.'); ?></td>
+                      <td><?= ($dana_rencana[0]['jumlah'] - $dana_realisasi[0]['jumlah']) > 0 ? 'Dana Cukup' : 'Dana Kurang'; ?></td>
                     </tr>
                   <?php
                     $no++;
                   }
                   ?>
                   <tr>
-                    <td colspan="2">Total Dana</td>
-                    <td>Rp.<?= number_format($jumlah1, 0, '.', '.');  ?></td>
-                    <td>Rp.<?= number_format($jumlah2, 0, '.', '.');  ?></td>
+                    <th colspan="2">Total Dana</th>
+                    <th>Rp.<?= number_format($jumlah1, 0, '.', '.');  ?></th>
+                    <th>Rp.<?= number_format($jumlah2, 0, '.', '.');  ?></th>
                   </tr>
                 </tbody>
               </table>

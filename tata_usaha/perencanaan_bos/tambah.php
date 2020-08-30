@@ -40,7 +40,7 @@ if (isset($_POST['submit'])) {
 
     $no = 0;
     foreach ($uraian as $u) {
-      if (empty($uraian[$no]) || empty($jumlah[$no]) || !is_numeric($jumlah[$no])) {
+      if (empty($uraian[$no]) || empty($jumlah[$no])) {
         $_SESSION['notice'] = 'Data yang Anda masukan salah !';
         header('Location:' . $url . 'tata_usaha/perencanaan_bos/tambah.php');
         exit;

@@ -268,13 +268,13 @@
                         <tr>
                           <td>1.<?= $no; ?></td>
                           <td><?= $st['nama_program']; ?></td>
-                          <td><?= $st['persentase']; ?>%</td>
+                          <td><?= number_format($st['persentase'], 2, ',', '.'); ?>%</td>
                           <td>Rp.<?= number_format($dana, 0, '.', '.'); ?></td>
                           <!-- <td><?= round(($dana_rencana[0]['jumlah'] / ($rkas_rencana1[0]['total'] + $rkas_rencana1[0]['saldo_tahun_lalu'])) * 100, 2); ?>%</td> -->
                           <td>Rp.<?= number_format($dana_rencana[0]['jumlah'], 0, '.', '.'); ?></td>
                           <td>
                             <a href="detail_perencanaan.php?tahun=<?= $rkas_rencana1[0]['tahun']; ?>&standar=<?= $st['idsnp']; ?>" class="btn btn-default">Detail</a>
-                            <a href="#" class="btn btn-default" data-toggle="modal" data-target="#komponen<?= $no; ?>">Ubah</a>
+                            <!-- <a href="#" class="btn btn-default" data-toggle="modal" data-target="#komponen<?= $no; ?>">Ubah</a> -->
                           </td>
                         </tr>
                         <div class="modal fade" id="komponen<?= $no; ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -314,7 +314,7 @@
                       ?>
                       <tr>
                         <th colspan="2">Total</th>
-                        <td><?= $persentase; ?>%</td>
+                        <td><?= number_format($persentase, 2, ',', '.'); ?>%</td>
                         <td><?= number_format($jumlah, 0, '.', '.');  ?></td>
                         <td><?= number_format($jumlah1, 0, '.', '.');  ?></td>
                       </tr>
@@ -338,9 +338,7 @@
     <!-- End Page wrapper  -->
     <!-- ============================================================== -->
   </div>
-
   <?php require('template/jquery.php') ?>
-
 </body>
 
 </html>
