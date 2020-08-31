@@ -118,29 +118,32 @@
                       <th>Total Dana</th>
                       <th>Saldo Tahun Lalu</th>
                       <th>Jumlah Penerimaan</th>
-                      <th>Aksi</th>
+                      <!-- <th>Aksi</th> -->
                     </tr>
                   </thead>
                   <tbody>
                     <?php
                     $no = 0;
-                    $saldo_sebelum = 0;
                     foreach ($rkas_rencana as $rr) {
-                      $tahun = $rr['tahun'] - 1;
-                      $pendapatan = $crud->query("SELECT * FROM bos_realisasi_pendapatan WHERE tahun='" . $tahun . "'");
-                      $pengeluaran = $crud->query("SELECT * FROM bos_rkas_rencana WHERE tahun='" . $tahun . "'");
+                      $saldo_sebelum = 0;
+                      if ($rr['tahun'] > 2017) {
+                        $tahun = $rr['tahun'] - 1;
+                        $pendapatan = $crud->read_data("bos_realisasi_pendapatan", ["tahun" => $tahun])[0]['nominal'];
+                        $pengeluaran = $crud->query("SELECT SUM(jumlah) as jumlah FROM bos_realisasi_rekapitulasi JOIN bos_realisasi_detail_komponen ON bos_realisasi_detail_komponen.relasi_id=bos_realisasi_rekapitulasi.id_bos_realisasi_rekapitulasi WHERE bos_realisasi_rekapitulasi.tahun_ajaran='" . $tahun . "'")[0]['jumlah'];
+                        $saldo_sebelum = $pendapatan - $pengeluaran;
+                      }
                     ?>
                       <tr>
                         <td><?= $rr['tahun']; ?></td>
                         <td><?= $rr['jumlah_siswa']; ?></td>
                         <td><?= number_format($rr['dana_siswa'], 0, '.', '.'); ?></td>
                         <td><?= number_format($rr['total'], 0, ',', '.'); ?></td>
-                        <!-- <td><?= number_format($saldo_sebelum, 0, '.', '.'); ?></td> -->
-                        <td></td>
+                        <td><?= number_format($saldo_sebelum, 0, '.', '.'); ?></td>
+                        <!-- <td></td> -->
                         <td><?= number_format($rr['total'] + $saldo_sebelum, 0, ',', '.'); ?></td>
                         <td>
                           <!-- <a href="#" data-toggle="modal" data-target="#exampleModal<?= $no; ?>" class="btn btn-default">Ubah</a> -->
-                          <a href="hapus_rencana.php?rencana=<?= $rr['id_bos_rkas_rencana']; ?>&tahun=<?= $rr['tahun']; ?>" class="btn btn-danger" onclick="return confirm('Akan menghapus data ini ?')">Hapus</a>
+                          <!-- <a href="hapus_rencana.php?rencana=<?= $rr['id_bos_rkas_rencana']; ?>&tahun=<?= $rr['tahun']; ?>" class="btn btn-danger" onclick="return confirm('Akan menghapus data ini ?')">Hapus</a> -->
                         </td>
                       </tr>
                       <div class="modal fade" id="exampleModal<?= $no; ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">

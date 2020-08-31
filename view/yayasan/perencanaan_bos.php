@@ -52,14 +52,21 @@ $pendapatan_belanja = $crud->pendapatan_belanja();
                 <?php
                 $no = 0;
                 foreach ($rkas_rencana as $rr) {
+                  $saldo_sebelum = 0;
+                  if ($rr['tahun'] > 2017) {
+                    $tahun = $rr['tahun'] - 1;
+                    $pendapatan = $crud->read_data("bos_realisasi_pendapatan", ["tahun" => $tahun])[0]['nominal'];
+                    $pengeluaran = $crud->query("SELECT SUM(jumlah) as jumlah FROM bos_realisasi_rekapitulasi JOIN bos_realisasi_detail_komponen ON bos_realisasi_detail_komponen.relasi_id=bos_realisasi_rekapitulasi.id_bos_realisasi_rekapitulasi WHERE bos_realisasi_rekapitulasi.tahun_ajaran='" . $tahun . "'")[0]['jumlah'];
+                    $saldo_sebelum = $pendapatan - $pengeluaran;
+                  }
                 ?>
                   <tr>
                     <td><?= $rr['tahun']; ?></td>
                     <td><?= $rr['jumlah_siswa']; ?></td>
                     <td><?= number_format($rr['dana_siswa'], 0, '.', '.'); ?></td>
                     <td><?= number_format($rr['total'], 0, ',', '.'); ?></td>
-                    <td><?= number_format($rr['saldo_tahun_lalu'], 0, '.', '.'); ?></td>
-                    <td><?= number_format($rr['total'] + $rr['saldo_tahun_lalu'], 0, ',', '.'); ?></td>
+                    <td><?= number_format($saldo_sebelum, 0, '.', '.'); ?></td>
+                    <td><?= number_format($rr['total'] + $saldo_sebelum, 0, ',', '.'); ?></td>
                   </tr>
                 <?php
                   $no++;
