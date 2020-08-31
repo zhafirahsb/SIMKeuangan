@@ -11,13 +11,13 @@
           <a href="#" class="waves-effect"><i class="fa fa-folder m-r-10" aria-hidden="true"></i>BOS</a>
           <ul>
             <li class="">
-              <a href="<?= $url; ?>tata_usaha/perencanaan_bos" class="waves-effect"><i class="fa fa-folder-o m-r-10" aria-hidden="true"></i>Perencanaan Dana Bos</a>
+              <a href="<?= $url; ?>tata_usaha/perencanaan_bos" class="waves-effect"><i class="fa fa-folder-o m-r-10" aria-hidden="true"></i>RKAS</a>
             </li>
             <li class="">
-              <a href="<?= $url; ?>tata_usaha/realisasi" class="waves-effect"><i class="fa fa-folder-o m-r-10" aria-hidden="true"></i>Realisasi Dana BOS</a>
+              <a href="<?= $url; ?>tata_usaha/realisasi" class="waves-effect"><i class="fa fa-folder-o m-r-10" aria-hidden="true"></i>Realisasi RKAS</a>
             </li>
             <li class="">
-              <a href="<?= $url; ?>tata_usaha/model" class="waves-effect"><i class="fa fa-folder-o m-r-10" aria-hidden="true"></i>Rencana Terealisasi</a>
+              <a href="<?= $url; ?>tata_usaha/model" class="waves-effect"><i class="fa fa-folder-o m-r-10" aria-hidden="true"></i>Monitoring</a>
             </li>
           </ul>
         </li>

@@ -126,6 +126,9 @@
                     $no = 0;
                     $saldo_sebelum = 0;
                     foreach ($rkas_rencana as $rr) {
+                      $tahun = $rr['tahun'] - 1;
+                      $pendapatan = $crud->query("SELECT * FROM bos_realisasi_pendapatan WHERE tahun='" . $tahun . "'");
+                      $pengeluaran = $crud->query("SELECT * FROM bos_rkas_rencana WHERE tahun='" . $tahun . "'");
                     ?>
                       <tr>
                         <td><?= $rr['tahun']; ?></td>

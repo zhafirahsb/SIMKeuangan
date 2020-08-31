@@ -66,6 +66,7 @@
                       <th>Rencana</th>
                       <th>Terealisasi</th>
                       <th>Status</th>
+                      <th>Keterangan</th>
                     </thead>
                     <tbody>
                       <?php
@@ -89,13 +90,15 @@
                         //     $jumlah += $pb['jumlah'];
                         //   }
                         // }
+                        $hasil = $dana_rencana[0]['jumlah'] - $dana_realisasi[0]['jumlah'];
                       ?>
                         <tr>
                           <td>1.<?= $no; ?></td>
                           <td><?= $st['nama_program']; ?></td>
                           <td>Rp.<?= number_format($dana_rencana[0]['jumlah'], 0, '.', '.'); ?></td>
                           <td>Rp.<?= number_format($dana_realisasi[0]['jumlah'], 0, '.', '.'); ?></td>
-                          <td><?= ($dana_rencana[0]['jumlah'] - $dana_realisasi[0]['jumlah']) > 0 ? 'Dana Cukup' : 'Dana Kurang'; ?></td>
+                          <td><?= $hasil > 0 ? 'Dana Cukup' : 'Dana Kurang'; ?></td>
+                          <td><?= $hasil < 0 ? 'Rp.' . number_format($hasil, 0, '.', '.') : '-'; ?></td>
                         </tr>
                       <?php
                         $no++;
