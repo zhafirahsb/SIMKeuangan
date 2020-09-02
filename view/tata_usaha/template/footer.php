@@ -1,3 +1,3 @@
 <footer class="footer text-center">
-© 2017 Monster Admin by wrappixel.com
+  © 2020 SMP Muhammadiyah - 19 Pematang Siantar
 </footer>
